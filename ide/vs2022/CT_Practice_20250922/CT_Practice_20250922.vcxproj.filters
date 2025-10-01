@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\string">
+      <UniqueIdentifier>{f596db25-e4c9-43ef-9a75-0ea603d27a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dp">
+      <UniqueIdentifier>{5c1b9c3a-74d0-4677-85bd-59e3147b7f1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dp\lcs">
+      <UniqueIdentifier>{70b290db-4b77-4f6b-be2a-2ab68ff289e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\string\kmp">
+      <UniqueIdentifier>{1fe1a88a-4bfc-4c07-8d50-a6585f5d7cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dp\lis">
+      <UniqueIdentifier>{77d55d6e-5e39-4c00-ac85-91176bf36b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\impl">
+      <UniqueIdentifier>{555929c2-cf93-47a4-ba10-366f51200f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\impl\simulation">
+      <UniqueIdentifier>{e06f6c53-0533-4ba2-82d5-9156b7415be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\queue">
+      <UniqueIdentifier>{86fa80e2-bcb0-456c-9711-6157fa5fe926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\queue\simulation">
+      <UniqueIdentifier>{ec583fb0-18dd-4438-9f72-1816eb4d78aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\prefix">
+      <UniqueIdentifier>{e9aee509-c754-43a1-b852-cacde9c10052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\prefix\counting">
+      <UniqueIdentifier>{14708d79-7b98-470d-96f7-20186a5a55bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\string\impl">
+      <UniqueIdentifier>{9b1a33ae-ba2c-4a15-bc52-1cefbbf99c46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\_review-note">
+      <UniqueIdentifier>{44b1e349-eeb8-4a4f-a9fa-3e05e0acf5c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\string\two-pointers">
+      <UniqueIdentifier>{56ef6173-e932-42e4-be2c-a13f42a679ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\impl\impl">
+      <UniqueIdentifier>{dd142bbb-53f1-4af5-92b9-dac25f652e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\impl\type-casting">
+      <UniqueIdentifier>{9bf123a1-4411-4cc7-a1f1-8769c0609a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\stack">
+      <UniqueIdentifier>{f716cd8e-a0dd-4fa6-83f1-8508d64db19f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\stack\basic">
+      <UniqueIdentifier>{46c7b826-edbf-4985-8207-83e7090414e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\stack\brackets">
+      <UniqueIdentifier>{659edadf-6725-4ee3-9822-7a0610ac93be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\stack\monotonic">
+      <UniqueIdentifier>{863ddaf2-e694-41b2-888f-59313b100d8f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="boj_09251_LCS.cpp">
+      <Filter>소스 파일\dp\lcs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01786_Finding.cpp">
+      <Filter>소스 파일\string\kmp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_12015_Longest_Increasing_Subsequence_2.cpp">
+      <Filter>소스 파일\dp\lis</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02947_Wooden_Pieces.cpp">
+      <Filter>소스 파일\impl\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_09252_LCS_2.cpp">
+      <Filter>소스 파일\dp\lcs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_05430_AC.cpp">
+      <Filter>소스 파일\impl\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01966_Printer_Queue.cpp">
+      <Filter>소스 파일\queue\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_10986_Remainder_Sum.cpp">
+      <Filter>소스 파일\prefix\counting</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_10809_Alphabet_Finder.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02675_String_Repetition.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_17609_Palindrome_and_Pseudo-Palindrome.cpp">
+      <Filter>소스 파일\string\two-pointers</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01316_Group_Word_Checker.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02577_Number_of_Occurrences.cpp">
+      <Filter>소스 파일\impl\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_04344_Above_Average.cpp">
+      <Filter>소스 파일\impl\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01213_Palindrome_Making.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_09086_String.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02941_Croatian_Alphabet.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01543_Document_Search.cpp">
+      <Filter>소스 파일\string\two-pointers</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11654_ASCII_Code.cpp">
+      <Filter>소스 파일\impl\type-casting</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_05525_IOIOI.cpp">
+      <Filter>소스 파일\string\kmp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_16916_Substring.cpp">
+      <Filter>소스 파일\string\kmp</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_10828_Stack.cpp">
+      <Filter>소스 파일\stack\basic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_04949_Balanced_World.cpp">
+      <Filter>소스 파일\stack\brackets</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_17298_Next_Greater_Element.cpp">
+      <Filter>소스 파일\stack\monotonic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\baekjoon_review.md">
+      <Filter>소스 파일\_review-note</Filter>
+    </None>
+  </ItemGroup>
+</Project>
