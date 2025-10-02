@@ -684,10 +684,12 @@ for (int i = 0, j = 0; i < n; i++)
 
 ## 📅 2025-10-01
 **BOJ 10828 - 스택**
+**BOJ 4949 - 균형잡힌 세상**
+**BOJ 17298 - 오큰수**
 
 ### BOJ 10828 - 스택 (Stack)
 - **Topic:** Stack | Implementation
-- **Folder:** `stack/basic`
+- **Folder:** `stack/basic/`
 - **Time Complexity:** O(Q)
 - **Space Complexity:** O(Q)
 
@@ -710,7 +712,7 @@ for (int i = 0, j = 0; i < n; i++)
 
 ### BOJ 4949 - 균형잡힌 세상 (Balanced World)
 - **Topic:** Stack | Parsing
-- **Folder:** `stack/brackets`
+- **Folder:** `stack/brackets/`
 - **Time Complexity:** O(L) per line
 - **Space Complexity:** O(L)
 
@@ -738,7 +740,7 @@ for (int i = 0, j = 0; i < n; i++)
 
 ### BOJ 17298 - 오큰수 (Next Greater Element)
 - **Topic:** Stack | Monotonic Stack
-- **Folder:** `stack/monotonic`
+- **Folder:** `stack/monotonic/`
 - **Time Complexity:** O(N)
 - **Space Complexity:** O(N)
 
@@ -763,5 +765,86 @@ for (int i = 0, j = 0; i < n; i++)
   - 내림차순: 전부 `-1`
   - 동일값 나열: 전부 `-1`
   - 오름차순: 각 원소의 오큰수는 바로 다음 원소
+
+---
+
+## 📅 2025-10-02
+**BOJ 9012 - 괄호**
+**BOJ 2504 - 괄호의 값**
+**BOJ 1935 - 후위 표기식2**
+
+### BOJ 9012 - 괄호 (Parentheses)
+- **Topic:** Stack | Parsing
+- **Folder:** `stack/brackets/`
+- **Time Complexity:** O(L) per test case
+- **Space Complexity:** O(L) (stack), O(1) (counter alternative)
+
+- **Key Idea:**
+ - `'('`는 push, `')'`는 스택 비었는지/짝 일치 확인 후 pop.
+ - 라인 종료 시 스택이 비어 있어야 YES.
+
+- **Caution:**
+ - 케이스마다 스택/플래그 초기화.
+ - 중간에 빈 스택에서 `')'`가 나오면 즉시 NO.
+
+- **Improvement:**
+ - 스택 대신 **balance 정수**(증감만)로 판정 가능 -> 메모리/상수항 절약.
+
+- **Problem Hint:**
+ - "중간 음수 금지, 최종 합 0"이 VPS의 본질.
+ - 테스트: `()()`->YES, `(()`->NO, `())`->NO, `((()))`->YES.
+
+---
+
+### BOJ 2504 - 괄호의 값 (Value of Brackets)
+- **Topic:** Stack | Parsing | Evaluation
+- **Folder:** `stack/evaluation/`
+- **Time Complexity:** O(L)
+- **Space Complexity:** O(L)
+
+- **Key Idea:** 
+ - 스택은 괄호 짝만 검증, 값 계산은 `mul`(중첩 계수)과 `val`로 분리.
+ - 여는 괄호에서 `mul`을 곱하고, 닫는 괄호에서 **바로 닫힘이면 `val += mul`**후 **반드시 `mul`을 되돌림**
+ 
+- **Caution:**
+ - 진행 중 불일치(스택 비었거나 종류 불일치) 시 즉시 `0`.
+ - 종료 시 스택이 비어 있어야 정답, 아니면 `0`.
+ - 플래그는 여는 순간 `true`, 닫는 순간 사용 후 `false`로 명확히 관리.
+
+- **Improvement:**
+ - 가독성: 닫힘 처리에서 `pop -> (필요 시) val += mul -> mul 되돌리기` 순서로 정리하면 읽기 수월.
+ - 입력 길이가 매우 클 수 있으면 `mul/val`을 `long long`로 여유 있게 잡는 선택 가능.
+ 
+- **Problem Hint:**
+ - 규칙 요약: `()`=2, `[]`= 3, 인접은 합, 중첩은 곱.
+ - 불변식: **여는 때 x / 닫는 때 (바로 닫힘이면 +) -> /**.
+ - 체크 케이스: `([])=6`, `()[[]]=11`, `[]()=5`, `[()[[]]]=33`.
+
+---
+
+### BOJ 1935 - 후위 표기식2 (Postfix Evaluation 2)
+- **Topic:** Stack | Postfix Evaluation
+- **Folder:** `stack/postfix/`
+- **Time Complexity:** O(L)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - `A..Z`를 입력한 값 배열에 매핑하고, 후위식을 순회하며 숫자 스택으로 평가.
+ - 연산자에서는 스택에서 두 값을 꺼내 `좌항 op 우항` 순서로 계산 후 다시 push.
+ - 마지막에 스택에 남는 하나의 값이 결과 -> `fixed`, `setprecision(2)`로 출력.
+
+- **Caution:**
+ - pop 순서 주의: `tmp1 = top()`(우항) -> pop -> `tmp2 = top()`(좌항) -> pop -> `tmp2 op tmp1`.
+ - 출력 포맷 오차 방지: `fixed << setprecision(2)`.
+ - 입력이 정상이라면 스택 최종 크기는 1이어야 한다.
+
+- **Improvement:**
+ - 연산자 처리 전에 **스택 크기 >= 2**인지 한 번에 검사하면 가독성.
+ - `case '/'`에서 불필요한 캐스팅 제거 가능(이미 double).
+ - (선택) 종료 전 스택 크기 확인으로 방어적 체크 추가.
+
+- **Problem Hint:**
+ - 후위식은 스택으로 자연스럽게 평가된다 - 피연산자 push, 연산자면 두 개 pop하여 계산.
+ - 테스트 예: `AB+C*`는 `(A+B)*C`와 동일하게 계산되어야 한다.
 
 ---

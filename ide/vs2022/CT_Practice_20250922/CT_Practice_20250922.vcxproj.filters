@@ -73,6 +73,9 @@
     <Filter Include="소스 파일\stack\monotonic">
       <UniqueIdentifier>{863ddaf2-e694-41b2-888f-59313b100d8f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\stack\evaluation">
+      <UniqueIdentifier>{c71143cd-e0f7-4ee6-99a2-f58c8fc900e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -147,9 +150,18 @@
     <ClCompile Include="boj_17298_Next_Greater_Element.cpp">
       <Filter>소스 파일\stack\monotonic</Filter>
     </ClCompile>
+    <ClCompile Include="boj_09012_Parentheses.cpp">
+      <Filter>소스 파일\stack\brackets</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02504_Value_of_Brackets.cpp">
+      <Filter>소스 파일\stack\evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="01935.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Downloads\baekjoon_review.md">
+    <None Include="baekjoon_review.md">
       <Filter>소스 파일\_review-note</Filter>
     </None>
   </ItemGroup>

@@ -19,7 +19,7 @@ Folder: string/impl/
 - “첫 번째와 마지막 글자를 출력한다” → 문자열 길이와 관계없이 동일 처리.
 */
 
-// 2025-09-29 D+0 REVIEW
+// 2025-10-02 D+3 REVIEW
 
 #include <iostream>
 #include <string>
@@ -31,17 +31,39 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int t;
-	cin >> t;
-
-	while (t--)
+	int n;
+	cin >> n;
+	while (n--)
 	{
 		string s;
 		cin >> s;
-
-		cout << s.front() << s.back() << "\n";
+		cout << s.front() << s.back() << '\n';
 	}
 }
+
+// 2025-09-29 D+0 REVIEW
+
+// #include <iostream>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		string s;
+// 		cin >> s;
+// 
+// 		cout << s.front() << s.back() << "\n";
+// 	}
+// }
 
 // 2025-09-29 ORIGINAL
 

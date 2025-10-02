@@ -22,7 +22,7 @@ Folder: string/two-pointers/
 - “최대 한 글자 삭제 허용” → 첫 불일치에서 양쪽 스킵을 각각 검증하면 충분.
 */
 
-// 2025-09-29 D+0 REVIEW
+// 2025-10-02 D+3 REVIEW
 
 #include <iostream>
 #include <string>
@@ -44,42 +44,104 @@ int main()
 		string s;
 		cin >> s;
 
-		int n = (int)s.size(), i = 0, j = n - 1;
+		int i = 0, j = (int)s.size() - 1;
 		bool is_pal = true;
 		while (i < j)
 		{
-			if (s[i] == s[j])
-			{
-				i++;
-				j--;
-			}
-			else
+			if (s[i] != s[j])
 			{
 				is_pal = false;
 				if (isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1))
 				{
-					cout << 1 << "\n";
+					cout << 1 << '\n';
 					break;
 				}
 				else
 				{
-					cout << 2 << "\n";
+					cout << 2 << '\n';
 					break;
 				}
+			}
+			else
+			{
+				i++;
+				j--;
 			}
 		}
 
 		if (is_pal)
-			cout << 0 << "\n";
+			cout << 0 << '\n';
 	}
 }
 
 bool isPalindrome(const string& og_str, int left, int right)
 {
 	while (left < right)
-		if (og_str[left++] != og_str[right--]) return false;
+	{
+		if (og_str[left++] != og_str[right--])
+			return false;
+	}
 	return true;
 }
+
+// 2025-09-29 D+0 REVIEW
+
+// #include <iostream>
+// #include <string>
+// 
+// using namespace std;
+// 
+// bool isPalindrome(const string& og_str, int left, int right);
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		string s;
+// 		cin >> s;
+// 
+// 		int n = (int)s.size(), i = 0, j = n - 1;
+// 		bool is_pal = true;
+// 		while (i < j)
+// 		{
+// 			if (s[i] == s[j])
+// 			{
+// 				i++;
+// 				j--;
+// 			}
+// 			else
+// 			{
+// 				is_pal = false;
+// 				if (isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1))
+// 				{
+// 					cout << 1 << "\n";
+// 					break;
+// 				}
+// 				else
+// 				{
+// 					cout << 2 << "\n";
+// 					break;
+// 				}
+// 			}
+// 		}
+// 
+// 		if (is_pal)
+// 			cout << 0 << "\n";
+// 	}
+// }
+// 
+// bool isPalindrome(const string& og_str, int left, int right)
+// {
+// 	while (left < right)
+// 		if (og_str[left++] != og_str[right--]) return false;
+// 	return true;
+// }
 
 
 // 2025-09-29 ORIGINAL
