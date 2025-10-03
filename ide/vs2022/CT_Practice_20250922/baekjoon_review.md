@@ -839,12 +839,87 @@ for (int i = 0, j = 0; i < n; i++)
  - 입력이 정상이라면 스택 최종 크기는 1이어야 한다.
 
 - **Improvement:**
- - 연산자 처리 전에 **스택 크기 >= 2**인지 한 번에 검사하면 가독성.
+ - 연산자 처리 전에 **스택 크기 >= 2**인지 한 번에 검사하면 가독성↑.
  - `case '/'`에서 불필요한 캐스팅 제거 가능(이미 double).
  - (선택) 종료 전 스택 크기 확인으로 방어적 체크 추가.
 
 - **Problem Hint:**
  - 후위식은 스택으로 자연스럽게 평가된다 - 피연산자 push, 연산자면 두 개 pop하여 계산.
  - 테스트 예: `AB+C*`는 `(A+B)*C`와 동일하게 계산되어야 한다.
+
+---
+
+## 📅 2025-10-03
+**BOJ 10773 - 제로**
+**BOJ 11866 - 요세푸스 문제 0**
+**BOJ 15828 - Router**
+
+### BOJ 10773 - 제로
+- **Topic:** Stack | Implementation
+- **Folder:** `stack/basic/`
+- **Time Complexity:** O(K)
+- **Space Complexity:** O(K)
+
+- **Key Idea:**
+ - 값이 0이면 최근 값을 취소(pop), 그 외엔 push하여 전체 과정을 스택으로 시뮬레이션.
+ - 최종적으로 스택에 남은 값들의 합을 출력.
+
+- **Caution:**
+ - 합과 스택 원소는 `long long`으로 처리해 오버플로 여유 확보.
+ - (방어) `pop`전 `empty()` 체크를 넣으면 안정성 증가. (문제에서는 무조건 있다고 하니 상관 없을듯)
+
+- **Improvement:**
+ - 입력 처리 중에 `sum`을 동시 갱신하면 마지막 합산 루프 제거 가능.
+
+- **Problem Hint:**
+ - "되돌리기/취소" 동작은 스택 패턴의 신호. push/pop으로 그대로 구현하면 된다.
+
+---
+
+### BOJ 11866 - 요세푸스 문제 0 (Josephus Problem 0)
+- **Topic:** Queue | Simulation
+- **Folder:** `queue/josephus/`
+- **Time Complexity:** O(N*K)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - 1..N을 큐에 넣고, `cur`로 K를 세며 K번째마다 `pop`하여 결과에 저장.
+ - K가 아닐 때는 `front`를 `push`로 뒤로 보내어 원형을 시뮬레이션.
+
+- **Caution:**
+ - 출력 형식: `"<a, b, c>"` (마지막 원소 뒤엔 콤마 없음, 개행 추가 권장).
+ - `cur`는 K에 도달하면 0으로 리셋하여 다시 카운트.
+
+- **Improvement:**
+ - `josephus.reserve(n)`으로 재할당 최소화.
+ - 대체 표현: 반복 내부에서 `k-1`회 회전 후 즉시 pop -> 가독성↑.
+
+- **Problem Hint:**
+ - "원형 + K번째 제거"는 큐로 자연스럽게 풀린다.
+ - 검증 예: `n=7, k=3 -> <3, 6, 2, 7, 5, 1, 4>`.
+
+---
+
+### BOJ 15828 - Router
+- **Topic:** Queue | Simulation
+- **Folder:** `queue/simulation/`
+- **Time Complexity:** O(M)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - 입력 스트림을 읽으며 `-1`이면 종료, `0`이면 비어있지 않을 때 pop, 양수면 `size < N`일 때만 push.
+ - 종료 후 큐가 비어 있으면 `"empty"`, 아니면 front부터 공백으로 구분해 출력.
+
+- **Caution:**
+ - 버퍼가 꽉 찼을 때의 패킷은 **드롭**.
+ - 빈 큐에서의 pop 요청(0)은 **무시**.
+ - 스트림 기반 루프로 입력 끝/종료 토큰 처리.
+
+- **Improvement:**
+- `(int)q.size()` 캐스팅 제거 -> `q.size() < n`.
+- 출력 마지막에 `'\n'` 추가.
+
+- **Problem Hint:**
+ - "고정 크기 버퍼" 시뮬레이션 문제: 큐 연ㄴ산(push/pop)과 드롭 규칙만 정확히 지키면 된다.
 
 ---

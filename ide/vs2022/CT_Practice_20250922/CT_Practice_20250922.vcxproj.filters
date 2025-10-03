@@ -79,6 +79,9 @@
     <Filter Include="소스 파일\stack\postfix-evaluation">
       <UniqueIdentifier>{042455fa-7912-4f89-be26-66b39ba8fe1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\queue\josephus">
+      <UniqueIdentifier>{7e828509-ef1e-4172-993e-f369a1ae442d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -161,6 +164,15 @@
     </ClCompile>
     <ClCompile Include="boj_01935_Postfix_Evaluation_2.cpp">
       <Filter>소스 파일\stack\postfix-evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_10773_Zero.cpp">
+      <Filter>소스 파일\stack\basic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11866_Josephus_Problem_0.cpp">
+      <Filter>소스 파일\queue\josephus</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_15828_Router.cpp">
+      <Filter>소스 파일\queue\simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

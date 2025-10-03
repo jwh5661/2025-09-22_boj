@@ -18,7 +18,7 @@ Folder : string/kmp/
  - Pn = I (OI)^n -> 결국 "IOI"가 연속 몇 번 등장하는지에 달려 있음.
 */
 
-// 2025-09-30 D+0 REVIEW
+// 2025-10-03 D+3 REVIEW
 
 #include <iostream>
 #include <string>
@@ -30,13 +30,13 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, m, streak = 0, cnt = 0;
-	string s;
-	cin >> n >> m >> s;
-	
+	int n, m, cnt = 0, streak = 0;
+	string str;
+	cin >> n >> m >> str;
+
 	for (int i = 1; i < m - 1;)
 	{
-		if (s[i - 1] == 'I' && s[i] == 'O' && s[i + 1] == 'I')
+		if (str[i - 1] == 'I' && str[i] == 'O' && str[i + 1] == 'I')
 		{
 			streak++;
 			if (streak >= n)
@@ -52,6 +52,41 @@ int main()
 
 	cout << cnt << '\n';
 }
+
+// 2025-09-30 D+0 REVIEW
+
+// #include <iostream>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m, streak = 0, cnt = 0;
+// 	string s;
+// 	cin >> n >> m >> s;
+// 	
+// 	for (int i = 1; i < m - 1;)
+// 	{
+// 		if (s[i - 1] == 'I' && s[i] == 'O' && s[i + 1] == 'I')
+// 		{
+// 			streak++;
+// 			if (streak >= n)
+// 				cnt++;
+// 			i += 2;
+// 		}
+// 		else
+// 		{
+// 			streak = 0;
+// 			i++;
+// 		}
+// 	}
+// 
+// 	cout << cnt << '\n';
+// }
 
 // 2025-09-30 ORIGINAL
 
