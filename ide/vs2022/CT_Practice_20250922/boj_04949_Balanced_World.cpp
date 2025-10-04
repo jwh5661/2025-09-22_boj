@@ -21,7 +21,7 @@ Folder: stack/brackets
 - 복잡한 괄호 라인도 규칙대로만 처리하면 yes/no가 명확히 결정된다.
 */
 
-// 2025-10-01 ORIGINAL
+// 2025-10-03 D+3 REVIEW
 
 #include <iostream>
 #include <stack>
@@ -34,31 +34,29 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	string s;
-	getline(cin, s);
-	while (s != ".")
+	string str;
+	while (getline(cin, str) && str != ".")
 	{
-		stack<int> my_s;
+		stack<char> stk;
 		bool is_balanced = true;
-		for (char c : s)
+		for (char c : str)
 		{
 			if (c == '(' || c == '[')
-				my_s.push(c);
+				stk.push(c);
 			else if (c == ')')
 			{
-				if (!my_s.empty() && my_s.top() == '(')
-					my_s.pop();
+				if (!stk.empty() && stk.top() == '(')
+					stk.pop();
 				else
 				{
 					is_balanced = false;
 					break;
 				}
-					
 			}
 			else if (c == ']')
 			{
-				if (!my_s.empty() && my_s.top() == '[')
-					my_s.pop();
+				if (!stk.empty() && stk.top() == '[')
+					stk.pop();
 				else
 				{
 					is_balanced = false;
@@ -67,13 +65,66 @@ int main()
 			}
 		}
 
-		if (is_balanced && my_s.empty())
-			cout << "yes" << '\n';
+		if (is_balanced && stk.empty())
+			cout << "yes\n";
 		else
-			cout << "no" << '\n';
-		getline(cin, s);
+			cout << "no\n";
 	}
 }
+
+// 2025-10-01 D+0 REVIEW
+
+// #include <iostream>
+// #include <stack>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string s;
+// 	getline(cin, s);
+// 	while (s != ".")
+// 	{
+// 		stack<int> my_s;
+// 		bool is_balanced = true;
+// 		for (char c : s)
+// 		{
+// 			if (c == '(' || c == '[')
+// 				my_s.push(c);
+// 			else if (c == ')')
+// 			{
+// 				if (!my_s.empty() && my_s.top() == '(')
+// 					my_s.pop();
+// 				else
+// 				{
+// 					is_balanced = false;
+// 					break;
+// 				}
+// 					
+// 			}
+// 			else if (c == ']')
+// 			{
+// 				if (!my_s.empty() && my_s.top() == '[')
+// 					my_s.pop();
+// 				else
+// 				{
+// 					is_balanced = false;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 
+// 		if (is_balanced && my_s.empty())
+// 			cout << "yes" << '\n';
+// 		else
+// 			cout << "no" << '\n';
+// 		getline(cin, s);
+// 	}
+// }
 
 // 2025-10-01 ORIGINAL
 

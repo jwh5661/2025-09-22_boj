@@ -21,7 +21,7 @@ Folder: stack/monotonic
 - 내림차순/동일값/오름차순 케이스로 스택 동작을 손으로 점검하면 감이 빠르게 잡힘.
 */
 
-// 2025-10-01 D+0 REVIEW
+// 2025-10-03 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -41,21 +41,56 @@ int main()
 	for (int i = 0; i < n; i++)
 		cin >> num[i];
 
-	stack<int> s;
+	stack<int> stk;
 	for (int i = 0; i < n; i++)
 	{
-		while (!s.empty() && num[i] > num[s.top()])
+		while (!stk.empty() && num[stk.top()] < num[i])
 		{
-			nge[s.top()] = num[i];
-			s.pop();
+			nge[stk.top()] = num[i];
+			stk.pop();
 		}
-		s.push(i);
+		stk.push(i);
 	}
 
-	for (int i : nge)
-		cout << i << ' ';
-	cout << '\n';
+	for (int i = 0; i < n; i++)
+		cout << nge[i] << (i == n - 1 ? "\n" : " ");
 }
+
+// 2025-10-01 D+0 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	cin >> n;
+// 
+// 	vector<int> num(n), nge(n, -1);
+// 	for (int i = 0; i < n; i++)
+// 		cin >> num[i];
+// 
+// 	stack<int> s;
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		while (!s.empty() && num[i] > num[s.top()])
+// 		{
+// 			nge[s.top()] = num[i];
+// 			s.pop();
+// 		}
+// 		s.push(i);
+// 	}
+// 
+// 	for (int i : nge)
+// 		cout << i << ' ';
+// 	cout << '\n';
+// }
 
 // 2025-10-01 ORIGINAL
 

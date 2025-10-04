@@ -923,3 +923,58 @@ for (int i = 0, j = 0; i < n; i++)
  - "고정 크기 버퍼" 시뮬레이션 문제: 큐 연ㄴ산(push/pop)과 드롭 규칙만 정확히 지키면 된다.
 
 ---
+
+## 📅 2025-10-05
+**BOJ 1874 - 스택 수열**
+**BOJ 1406 - 에디터**
+
+### BOJ 1874 - 스택 수열 (Stack Sequence)
+- **Topic:** Stack | Simulation | Invariant-Driven
+- **Folder:** `stack/sequence`
+- **Time Complexity:** O(N)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - **사후조건 우선**: 각 입력 `val` 처리 후에는 `stk.top() == val`이어야 pop이 가능하고, 아니면 불가능.
+ - 이를 보장하려면 **단조 변수 `j`를 `val`까지 밀어넣는 것**이 전부다 -> `while (j <= val) push(j++);`.
+ - 이렇게 하면 스택 상태(비었는지/작은지) 같은 부수 분기에 의존하지 않아 **검증이 쉬워지고** 반례 설계가 간단해진다.
+
+- **Caution:**
+ - `j`는 1..N에서 **단조 증가**하고, **중복 push불가**.
+ - `j > val`인데 `top != val`이면 더 이상 push할 수 없으니 **즉시 "NO"**.
+ - 로그는 `2*N` 길이까지 커질 수 있으므로 `vector<char>`에 기록 후 한 번에 출력.
+
+- **Improvement:**
+ - `v.reserve(2*N);`로 로그 벡터 재할당 최소화.
+ - 디버깅시 `assert(1 <= j && j <= n + 1);` 같은 **단조성 어서션**을 두면 오류 위치가 바로 드러난다.
+ - 입력을 처리하며 **최소 반례**를 빠르게 만들기: `n=1, seq=1` 완전 오름/완전 내림, 불가능 수열 `1 2 5 3 4`.
+
+- **Problem Hint:**
+ - 이 문제의 본질은 **"단조 증가하는 j를 어디까지 밀어야 하는가"**를 결정하는 것.
+ - 루프는 항상 **사후조건에서 역추적**하여 설계: "끝나고 `top=val`이 되도록 `j`를 `val`까지".
+
+---
+
+### BOJ 1406 - 에디터 (Editor)
+- **Topic:** Stack | Two-Stacks | Simulation
+- **Folder:** `stack/editor`
+- **Time Complexity:** O(N + M)
+- **Space Complexity:** O(N + M)
+
+- **Key Idea:**
+ - 커서 기준 **두 스택(left/right)** 로 분리해 커서 이동과 편집 연산을 모두 O(1)로 처리.
+ - `L`-> left->right, `D` -> right->left, `B` -> left pop, `P x` -> left push.
+ - 출력은 최종적으로 left를 right로 옮긴 뒤 right를 순서대로 출력.
+
+- **Caution:**
+ - 각 연산 전 대상 스택 **empty 체크** vlftn (L/D/B).
+ - 대량 출력 시 중간 flush 없이 마지막에 한 번에 출력.
+
+- **Improvement:**
+ - 가독성: `stk1/stk2` 대신 `left/right` 네이밍.
+ - 상수항 최적화: `std::stack<char>` 대신 `vector<char>`로 직접 push_back/pop_back 사용 가능.
+
+- **Problem Hint:**
+ - 에디터 커서 문제는 **두 스택**이 정석. 이동 연산을 push/pop 전환으로 치환하면 구현이 단순해진다.
+
+---

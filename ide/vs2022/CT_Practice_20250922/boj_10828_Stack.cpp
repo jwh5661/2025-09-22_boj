@@ -20,7 +20,7 @@ Folder: stack/basic
 - 자료구조 상태 변화 후 곧바로 요구 결과를 출력하는 패턴을 유지.
 */
 
-// 2025-10-01 D+0 REVIEW
+// 2025-10-04 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -35,44 +35,104 @@ int main()
 
 	int n;
 	cin >> n;
-	
-	vector<int> my_s;
-	my_s.reserve(n);
+
+	vector<int> v;
+	v.reserve(n);
 
 	while (n--)
 	{
-		string cmd;
-		cin >> cmd;
+		string s;
+		cin >> s;
 
-		if (cmd == "push")
+		if (s == "push")
 		{
 			int val;
 			cin >> val;
-			my_s.push_back(val);
+
+			v.push_back(val);
 		}
-		else if (cmd == "pop")
+		else if (s == "pop")
 		{
-			if (my_s.empty())
-				cout << -1 << '\n';
-			else
+			if (!v.empty())
 			{
-				cout << my_s.back() << '\n';
-				my_s.pop_back();
+				cout << v.back() << '\n';
+				v.pop_back();
 			}
-		}
-		else if (cmd == "size")
-			cout << (int)my_s.size() << '\n';
-		else if (cmd == "empty")
-			cout << (int)my_s.empty() << '\n';
-		else if (cmd == "top")
-		{
-			if (my_s.empty())
-				cout << -1 << '\n';
 			else
-				cout << my_s.back() << '\n';
+				cout << -1 << '\n';
+		}
+		else if (s == "size")
+			cout << v.size() << '\n';
+		else if (s == "empty")
+		{
+			if (v.empty())
+				cout << 1 << '\n';
+			else
+				cout << 0 << '\n';
+		}
+		else if (s == "top")
+		{
+			if (!v.empty())
+				cout << v.back() << '\n';
+			else
+				cout << -1 << '\n';
 		}
 	}
 }
+
+// 2025-10-01 D+0 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	cin >> n;
+// 	
+// 	vector<int> my_s;
+// 	my_s.reserve(n);
+// 
+// 	while (n--)
+// 	{
+// 		string cmd;
+// 		cin >> cmd;
+// 
+// 		if (cmd == "push")
+// 		{
+// 			int val;
+// 			cin >> val;
+// 			my_s.push_back(val);
+// 		}
+// 		else if (cmd == "pop")
+// 		{
+// 			if (my_s.empty())
+// 				cout << -1 << '\n';
+// 			else
+// 			{
+// 				cout << my_s.back() << '\n';
+// 				my_s.pop_back();
+// 			}
+// 		}
+// 		else if (cmd == "size")
+// 			cout << (int)my_s.size() << '\n';
+// 		else if (cmd == "empty")
+// 			cout << (int)my_s.empty() << '\n';
+// 		else if (cmd == "top")
+// 		{
+// 			if (my_s.empty())
+// 				cout << -1 << '\n';
+// 			else
+// 				cout << my_s.back() << '\n';
+// 		}
+// 	}
+// }
 
 // 2025-10-01 ORIGINAL
 
