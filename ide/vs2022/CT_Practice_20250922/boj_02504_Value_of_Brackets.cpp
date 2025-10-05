@@ -25,10 +25,11 @@ Folder: stack/evaluation
 
 */
 
-// 2025-10-02 D+0 REVIEW
+// 2025-10-05 D+3 REVIEW
 
 #include <iostream>
 #include <stack>
+#include <string>
 
 using namespace std;
 
@@ -39,31 +40,31 @@ int main()
 
 	string str;
 	cin >> str;
-
 	stack<char> stk;
-	int val = 0, mul = 1;
+	long long sum = 0, mul = 1;
 	bool just_open = false;
+	
 	for (char c : str)
 	{
 		if (c == '(')
 		{
-			stk.push(c);
 			mul *= 2;
+			stk.push(c);
 			just_open = true;
 		}
 		else if (c == '[')
 		{
-			stk.push(c);
 			mul *= 3;
+			stk.push(c);
 			just_open = true;
 		}
 		else if (c == ')')
 		{
 			if (!stk.empty() && stk.top() == '(')
 			{
-				if(just_open)
+				if (just_open)
 				{
-					val += mul;
+					sum += mul;
 					just_open = false;
 				}
 				mul /= 2;
@@ -81,7 +82,7 @@ int main()
 			{
 				if (just_open)
 				{
-					val += mul;
+					sum += mul;
 					just_open = false;
 				}
 				mul /= 3;
@@ -94,10 +95,86 @@ int main()
 			}
 		}
 	}
-
-	if (stk.empty()) cout << val << '\n';
-	else cout << 0 << '\n';
+	
+	if (stk.empty())
+		cout << sum << '\n';
+	else
+		cout << 0 << '\n';
 }
+
+// 2025-10-02 D+0 REVIEW
+
+// #include <iostream>
+// #include <stack>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string str;
+// 	cin >> str;
+// 
+// 	stack<char> stk;
+// 	int val = 0, mul = 1;
+// 	bool just_open = false;
+// 	for (char c : str)
+// 	{
+// 		if (c == '(')
+// 		{
+// 			stk.push(c);
+// 			mul *= 2;
+// 			just_open = true;
+// 		}
+// 		else if (c == '[')
+// 		{
+// 			stk.push(c);
+// 			mul *= 3;
+// 			just_open = true;
+// 		}
+// 		else if (c == ')')
+// 		{
+// 			if (!stk.empty() && stk.top() == '(')
+// 			{
+// 				if(just_open)
+// 				{
+// 					val += mul;
+// 					just_open = false;
+// 				}
+// 				mul /= 2;
+// 				stk.pop();
+// 			}
+// 			else
+// 			{
+// 				cout << 0 << '\n';
+// 				return 0;
+// 			}
+// 		}
+// 		else if (c == ']')
+// 		{
+// 			if (!stk.empty() && stk.top() == '[')
+// 			{
+// 				if (just_open)
+// 				{
+// 					val += mul;
+// 					just_open = false;
+// 				}
+// 				mul /= 3;
+// 				stk.pop();
+// 			}
+// 			else
+// 			{
+// 				cout << 0 << '\n';
+// 				return 0;
+// 			}
+// 		}
+// 	}
+// 
+// 	if (stk.empty()) cout << val << '\n';
+// 	else cout << 0 << '\n';
+// }
 
 // 2025-10-02 ORIGINAL
 
