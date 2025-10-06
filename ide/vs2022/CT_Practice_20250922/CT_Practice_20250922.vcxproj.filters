@@ -88,6 +88,15 @@
     <Filter Include="소스 파일\stack\postfix">
       <UniqueIdentifier>{042455fa-7912-4f89-be26-66b39ba8fe1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\queue\basic">
+      <UniqueIdentifier>{cdf19d2b-c24e-4a69-a11a-36946805be4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\deque">
+      <UniqueIdentifier>{de3e639b-dce6-432e-bfdc-5ca94b428155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\deque\rotation">
+      <UniqueIdentifier>{9f8fa1e0-77f0-4668-8c0c-283a498766bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -185,6 +194,15 @@
     </ClCompile>
     <ClCompile Include="boj_01406_Editor.cpp">
       <Filter>소스 파일\stack\editor</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_10845_Queue.cpp">
+      <Filter>소스 파일\queue\basic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01021_Rotating_Queue.cpp">
+      <Filter>소스 파일\deque\rotation</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_13335_Trucks.cpp">
+      <Filter>소스 파일\queue\simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

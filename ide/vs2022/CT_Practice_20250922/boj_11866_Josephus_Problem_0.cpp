@@ -22,7 +22,7 @@ Folder: queue/josephus
 
 */
 
-// 2025-10-03 D+0 REVIEW
+// 2025-10-06 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -38,10 +38,8 @@ int main()
 	int n, k;
 	cin >> n >> k;
 
-	vector<int> num;
-	num.reserve(n);
 	queue<int> q;
-
+	vector<int> num;
 	for (int i = 1; i <= n; i++)
 		q.push(i);
 
@@ -59,9 +57,49 @@ int main()
 
 	cout << '<';
 	for (int i = 0; i < n; i++)
-		cout << num[i] << (i == n - 1 ? "" : ", ");
-	cout << ">\n";
+		cout << num[i] << (i == n - 1 ? ">\n" : ", ");
 }
+
+// 2025-10-03 D+0 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, k;
+// 	cin >> n >> k;
+// 
+// 	vector<int> num;
+// 	num.reserve(n);
+// 	queue<int> q;
+// 
+// 	for (int i = 1; i <= n; i++)
+// 		q.push(i);
+// 
+// 	while (!q.empty())
+// 	{
+// 		int i = k - 1;
+// 		while (i--)
+// 		{
+// 			q.push(q.front());
+// 			q.pop();
+// 		}
+// 		num.push_back(q.front());
+// 		q.pop();
+// 	}
+// 
+// 	cout << '<';
+// 	for (int i = 0; i < n; i++)
+// 		cout << num[i] << (i == n - 1 ? "" : ", ");
+// 	cout << ">\n";
+// }
 
 // 2025-10-03 ORIGINAL
 

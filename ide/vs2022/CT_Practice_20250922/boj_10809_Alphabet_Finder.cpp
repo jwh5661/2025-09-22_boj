@@ -25,9 +25,11 @@ Folder: string/impl
 - 🔄 [수정] `(int)s.size()` 캐스팅 제거 → `size_t` 사용 권장.
 */
 
-// 2025-09-25 REVIEW D+3
+// 2025-10-06 REVIEW D+14
+
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -38,23 +40,53 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	string s;
-	cin >> s;
+	string str;
+	cin >> str;
 
 	fill(arr, arr + 26, -1);
 
-	for (int i = 0; i < (int)s.size(); i++)
+	for (int i = 0; i < str.size(); i++)
 	{
-		int idx = s[i] - 'a';
-		if (arr[idx] == -1)
-			arr[idx] = i;
+		if (arr[str[i] - 'a'] == -1)
+			arr[str[i] - 'a'] = i;
 	}
 
-	for (int i = 0; i < 26; i++)
-		cout << arr[i] << (i == 25 ? "" : " ");
+	for (int i : arr)
+		cout << i << ' ';
+	cout << '\n';
 }
 
-// 2025-09-22 REVIEW D+0
+// 2025-09-25 D+3 REVIEW
+// 
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int arr[26];
+//
+//int main()
+//{
+//	ios::sync_with_stdio(false);
+//	cin.tie(nullptr);
+//
+//	string s;
+//	cin >> s;
+//
+//	fill(arr, arr + 26, -1);
+//
+//	for (int i = 0; i < (int)s.size(); i++)
+//	{
+//		int idx = s[i] - 'a';
+//		if (arr[idx] == -1)
+//			arr[idx] = i;
+//	}
+//
+//	for (int i = 0; i < 26; i++)
+//		cout << arr[i] << (i == 25 ? "" : " ");
+//}
+
+// 2025-09-22 D+0 REVIEW
 // #include <iostream>
 // #include <string>
 // 

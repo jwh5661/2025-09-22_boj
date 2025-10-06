@@ -22,7 +22,7 @@ Folder: stack/basic
 
 */
 
-// 2025-10-03 D+0 REVIEW
+// 2025-10-06 D+3 REVIEW
 
 #include <iostream>
 #include <stack>
@@ -35,28 +35,64 @@ int main()
 	cin.tie(nullptr);
 
 	int k;
-	cin >> k;
 	long long sum = 0;
+	cin >> k;
+
 	stack<long long> stk;
 	while (k--)
 	{
 		long long val;
 		cin >> val;
-
 		if (val != 0)
+		{
 			stk.push(val);
-		else
+			sum += val;
+		}
+		else if (!stk.empty())
+		{
+			sum -= stk.top();
 			stk.pop();
-	}
-
-	while (!stk.empty())
-	{
-		sum += stk.top();
-		stk.pop();
+		}
 	}
 
 	cout << sum << '\n';
 }
+
+// 2025-10-03 D+0 REVIEW
+
+// #include <iostream>
+// #include <stack>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int k;
+// 	cin >> k;
+// 	long long sum = 0;
+// 	stack<long long> stk;
+// 	while (k--)
+// 	{
+// 		long long val;
+// 		cin >> val;
+// 
+// 		if (val != 0)
+// 			stk.push(val);
+// 		else
+// 			stk.pop();
+// 	}
+// 
+// 	while (!stk.empty())
+// 	{
+// 		sum += stk.top();
+// 		stk.pop();
+// 	}
+// 
+// 	cout << sum << '\n';
+// }
 
 // 2025-10-03 ORIGINAL
 

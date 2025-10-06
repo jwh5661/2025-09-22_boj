@@ -377,7 +377,7 @@ for (int i = 0, j = 0; i < n; i++)
 
 ### BOJ 9252 - LCS 2 (Longest Common Subsequence with reconstruction)
 - **Topic:** String | DP | LCS
-- **Folder:** `string/lcs/`
+- **Folder:** `dp/lcs/`
 - **Time Complexity:** O(n*m)
 - **Space Complexity:** O(n*m)
 
@@ -499,7 +499,7 @@ for (int i = 0, j = 0; i < n; i++)
 ## 📅 2025-09-29
 **BOJ 9086 - 문자열**
 **BOJ 1543 - 문서 검색**
-**BOK 17609 - 회문**
+**BOJ 17609 - 회문**
 
 ### BOJ 9086 - 문자열 (String)
 - **Topic:** String | Implementation
@@ -976,5 +976,81 @@ for (int i = 0, j = 0; i < n; i++)
 
 - **Problem Hint:**
  - 에디터 커서 문제는 **두 스택**이 정석. 이동 연산을 push/pop 전환으로 치환하면 구현이 단순해진다.
+
+---
+
+## 📅 2025-10-06
+**BOJ 10845 - 큐**
+**BOJ 1021 - 회전하는 큐**
+
+### BOJ 10845 - 큐 (Queue)
+- **Topic:** Queue | Implementation
+- **Folder:** `queue/basic/`
+- **Time Complexity:** O(M)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - 명령을 읽어 `std::queue<int>`에 그대로 매핑하여 시뮬레이션
+ - 빈 큐 예외(pop/front/back)만 정확히 처리하면 나머지는 단순 출력.
+
+- **Caution:**
+ - `pop/front/back`에서 빈 큐면 `-1`.
+ - `size`는 필요시 `static_cast<int>(q.size())`로 명시적 정수 출력.
+ - 출력마다 `'\n'`로 개행.
+
+- **Improvement:**
+ - `empty`는 `cout << (q.empty() ? 1 : 0 ) << '\n';`로 간결화 가눙
+
+- **Problem Hint:**
+ - 큐 연산 정의 그대로 구현하는 구현력 체크 문제.
+ - 표준 컨테이너 사용에 익숙해지는 데 적합
+
+---
+
+### BOJ 1021 - 회전하는 큐 (Rotating Queue)
+- **Topic:** Deque | Simulation | Rotation
+- **Folder:** `deque/rotation`
+- **Time Complexity:** O(N*M)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - 매 타깃마다 덱에서 위치 `idx`를 구해 **왼쪽 거리 `idx`**와 **오른쪽 거리 `size-idx`**를 비교, 더 짧은 방향으로만 회전.
+ - `front == target`가 되면 `pop_front`로 제거하고, 회전 횟수를 누적.
+
+- **Caution:**
+ - 인덱스 탐색은 매칭 즉시 `break`로 종료.
+ - 동일 거리일 때의 정책(왼쪽/오른쪽)을 코드 전반에 일관되게 유지.
+ - 회전 루프는 방향을 정한 뒤 **그 방향만** 수행(중간에 재계산 불필요).
+
+- **Improvement:**
+ - 인덱스 탐색을 `auto it = find(dq.begin(), dq.end(), target); idx = it - dq.begin();`로 간결화.
+ - 동일 거리 정책을 왼쪽 우선으로 바꾸려면 `if(idx <= size-idx)` 사용.
+
+- **Problem Hint:**
+ - 원형 데크에서의 최단 이동 문제는 결국 **두 거리 비교**다: `idx` vs `size-idx`.
+ - 회전 연산은 덱의 양끝 연산으로 O(1)에 구현된다.
+
+---
+
+### BOJ 13335 - 트럭 (Trucks)
+- **Topic:** Queue | Simulation | Sliding Window
+- **Folder:** `queue/simulation`
+- **Time Complexity:** O(N + T)
+- **Space Complexity:** O(w)
+
+- **Key Idea:**
+ - 다리를 길이 `w`의 큐로 모델링해, 매 틱마다 한 칸씩 전진시킨다.
+ - 다리 하중을 `cur_weight`로 관리하고, 꽉 찼을 때 먼저 내린 뒤 새 트럭을 올릴지를 판단.
+ - 못 올리면 `0`을 넣어 **시간만 경과**시키고, 모든 트럭을 올린 후 `+w`로 마지막 이동 보정.
+
+- **Caution:**
+ - 업데이트 순서: **내리기 -> 올리기/0 -> 시간증가**.
+ - 합계 자료형은 입력 범위에 따라 `int`로 충분하지만, 습관적으로 `long long`을 사용할 수도 있다.
+
+- **Improvement:**
+ - 따로 없음
+
+- **Problem Hint:**
+ - 다리 = 고정 길이 큐, 하중 = 큐 원소 합. 이 두 상태만 올바르게 유지하면 정답이 자연스럽게 나온다.
 
 ---

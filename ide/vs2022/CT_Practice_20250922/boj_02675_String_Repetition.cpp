@@ -24,7 +24,7 @@ Folder: string/impl
 - 🔄 [수정] 출력 시 string(n, c) 대신 for 루프로도 가능 → 성능은 유사, 디버깅 가독성은 루프가 나을 수도 있음.
 */
 
-// 2025-09-25 REVIEW D+3
+// 2025-10-06 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -41,16 +41,43 @@ int main()
 
 	while (t--)
 	{
-		int n;
-		string s;
-		cin >> n >> s;
-		for (char c : s)
-			cout << string(n, c);
-		cout << "\n";
+		int rep;
+		string str;
+		cin >> rep >> str;
+
+		for (char c : str)
+			cout << string(rep, c);
+		cout << '\n';
 	}
 }
 
-// 2025-09-22 REVIEW D+0
+// 2025-09-25 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		int n;
+// 		string s;
+// 		cin >> n >> s;
+// 		for (char c : s)
+// 			cout << string(n, c);
+// 		cout << "\n";
+// 	}
+// }
+
+// 2025-09-22 D+0 REVIEW
 
 // #include <iostream>
 // #include <string>
