@@ -982,6 +982,7 @@ for (int i = 0, j = 0; i < n; i++)
 ## 📅 2025-10-06
 **BOJ 10845 - 큐**
 **BOJ 1021 - 회전하는 큐**
+**BOJ 13335 - 트럭**
 
 ### BOJ 10845 - 큐 (Queue)
 - **Topic:** Queue | Implementation
@@ -1054,3 +1055,73 @@ for (int i = 0, j = 0; i < n; i++)
  - 다리 = 고정 길이 큐, 하중 = 큐 원소 합. 이 두 상태만 올바르게 유지하면 정답이 자연스럽게 나온다.
 
 ---
+
+## 📅 2025-10-08
+**BOJ 2164 - 카드2**
+**BOJ 7562 - 나이트의 이동**
+**BOJ 2346 - 풍선 터뜨리기**
+
+### BOJ 2164 - 카드2 (Card 2)
+- **Topic:** Queue | Simulation
+- **Folder:** `queue/basic/`
+- **Time Complexity:** O(N)
+- **Space Complexity:** O(N)
+
+- **Key Idea:**
+ - 큐에 1..N을 넣고, `pop`으로 맨 위 카드를 버린 뒤 `front`를 `push`로 맨 아래로 이동.
+ - 카드가 하나 남을 때까지 반복 후 남은 값을 출력.
+
+- **Caution:**
+ - 루프는 `q.size() > 1` 조건으로 유지.
+ - 출력은 개행 포함, 빠른 I/O 설정 유지.
+
+- **Improvement:**
+ - 수학적 풀이로 O(1)도 가능(최대 2의 거듭제곱 활용) - 학습용 참고.
+
+- **Problem Hint:**
+ - "버리고 하나 뒤로"는 큐 그 자체. 구현은 `pop -> push(front) -> pop`의 반복으로 충분.
+
+---
+
+### BOJ 7562 - 나이트의 이동 (Knight Moves)
+- **Topic:** BFS | Grid | Knight
+- **Folder:** `graph/bfs/`
+- **Time Complexity:** O(L^2)
+- **Space Complexity:** O(L^2)
+
+- **Key Idea:**
+ - 나이트의 8개 이동을 간선으로 모델링하고 BFS로 최단 거리 계산.
+ - 시작점을 `0`으로 두고, 유효 범위이면서 미방문인 칸을 `현재+1`로 갱신하며 큐에 넣는다.
+ - 목표 지점에 도달한 순간의 거리(dist)가 정답.
+
+- **Caution:**
+ - 매 테스트마다 `visited`를 `-1`로 재초기화.
+ - 좌표 범위와 미방문 체크 순서를 지켜서 불필요한 enqueue 방지.
+ - 현재 코드는 목표에서 `break` 후 `visited[end_x][end_y]`를 출력하는데, **발견 즉시 출력 후 테스트 루프 종료** 형태로 바꾸면 플로우가 더 직관적.
+
+- **Improvement:**
+ - `make_pair` 대신 `q.emplace(nx, ny)` 사용으로 미세한 효율/가독성 향상.
+ - `#define X/Y` 매크로 대신 `first/second` 사용하면 매크로 충돌 리스크 감소.
+ - (선택) 1차원 dist(`vector<int> dist(L*L, -1)`)로 캐시 지역성 개선 가능.
+
+- **Problem Hint:**
+ - 나이트는 대각선/직선이 아닌 "L자" 이동. 8개 오프셋만 정확히 순회하면 BFS가 최단을 보장한다.
+
+---
+
+### BOJ 2346 — 풍선 터뜨리기 (Balloon Popping)
+- **Topic:** Deque | Simulation | Rotation
+- **Folder:** deque/rotation
+- **Time Complexity:** O(N + K)  *(회전 합 K, 모듈러로 평균 감소)*
+- **Space Complexity:** O(N)
+- **Key Idea:**
+  - 덱에서 현재 풍선을 꺼내 번호를 출력하고, 숫자 k에 따라 덱을 회전해 다음 타깃을 맨 앞으로 가져온다.
+  - `k > 0` → `k-1`칸 왼쪽 회전, `k < 0` → `|k|`칸 오른쪽 회전.
+- **Caution:**
+  - `steps = abs(k) % size`로 줄이는 최적화 권장.
+  - 마지막 하나 남을 때까지 처리 후, 마지막 번호를 출력.
+- **Improvement:**
+  - `emplace_back(i, val)` 사용으로 약간 간결.
+  - 구조적 바인딩(`auto [idx,k] = dq.front();`)으로 가독성↑.
+- **Problem Hint:**
+  - 이 문제는 **덱 회전 시뮬레이션** 그 자체. 가운데 `erase`는 필요 없고, 양끝 연산으로 충분하다.
