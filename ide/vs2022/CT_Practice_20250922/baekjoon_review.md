@@ -1125,3 +1125,87 @@ for (int i = 0, j = 0; i < n; i++)
   - 구조적 바인딩(`auto [idx,k] = dq.front();`)으로 가독성↑.
 - **Problem Hint:**
   - 이 문제는 **덱 회전 시뮬레이션** 그 자체. 가운데 `erase`는 필요 없고, 양끝 연산으로 충분하다.
+
+  ---
+
+  ## 📅 2025-10-11
+  **BOJ 18258 - 큐 2**
+  **BOJ 1697 - 숨바꼭질**
+  **BOJ 2812 - 크게 만들기**
+  
+  ### BOJ 18258 - 큐 2 (Queue 2)
+  - **Topic:** Queue | Implementation | I/O
+  - **Folder:** `queue/basic/`
+  - **Time Complexity:** O(M)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 명령어를 읽어 `std::queue<int>` 연산으로 그대로 매핑하여 수행한다.
+   - 빈 큐 예외(pop/front/back)는 즉시 `-1`을 출력한다.
+   - 빠른 입출력 설정으로 대량 명령에 대비한다.
+
+  - **Caution:**
+   - `size`는 정수 출력 기대에 맞춰 `static_cast<int>(q.size())`를 사용할 수 있다.
+   - `'\n'` 사용으로 불필요한 flush 방지(`endl` 지양)
+
+  - **Improvement:**
+   - **출력 버퍼링**: 각 연산 결과를 문자열에 누적했다가 마지막에 한 번에 출력하면 상수항 감소.
+   - **파싱 최소화(선택)**: 첫 글자 기준 분기(`'p'`->push/pop, `'s'`->size, `'e'`->empty, `'f'`->front, `'b'`->back)로 문자열 비교 비용 절감.
+   - **커스텀 원형 큐(선택)**: 극단적 성능 추구 시 고정 배열 + head/tail로 직접 큐 구현.
+
+  - **Problem Hint:**
+   - 큐 연산 정의 그 자체를 구현하는 문제로, 예외 처리와 I/O만 정확히 하면 안정적으로 통과한다.
+  
+  ---
+  
+  ### BOJ 1697 - 숨바꼭질 (Hide and Seek)
+  - **Topic:** BFS | Shortest Path | Graph
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(MAX)
+  - **Space Complexity:** O(MAX)
+
+  - **Key Idea:**
+   - 정점: 위치 0..MAX, 간선: `{x-1, x+1, 2*x}`.
+   - BFS로 범위 내 미방문 이웃만 `dist = dist[cur] + 1`로 갱신.
+   - 큐에서 **목표 k를 꺼낸 시점의 dist**가 곧 최소 시간.
+
+  - **Caution:**
+   - 경계 체크 순서 `if(nx < 0 || nx > MAX) continue;` -> `if (visited[nx] != -1) continue;`.
+   - `visited`를 `-1`로 초기화해 거리/방문을 함께 관리.
+   - 시작과 목표가 같으면 즉시 `0`.
+
+  - **Improvement:**
+   - `constexpr int MAX = 100000;`로 **상태공간을 100000에 고정**(메모리·탐색량 절감, 정답 불변).
+   - 변수명 `dx` -> `nx`로 의미 명확화, 목표를 만난 즉시 `return 0;`로 종료하면 흐름 깔끔.
+
+  - **Problem Hint:**
+   - 무가중 최단 경로는 **BFS 정석**. 이웃 생성과 경계·방문 체크만 틀리지 않으면 항상 최단이 나온다.
+  
+  ---
+  
+  ### BOJ 2812 - 크게 만들기 (Make It Big)
+  - **Topic:** Greedy | Monotonic Stack
+  - **Folder:** `stack/monotonic/`
+  - **Time Complexity:** O(N)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 왼쪽부터 보며 스택 top보다 큰 숫자가 오면 가능할 때 pop해 **단조 감소 스택**을 유지.
+   - 최종 길이는 `n-k`여야 하므로, 남은 문자 수로 길이를 채울 수 있는지 확인하며 pop/push를 결정.
+
+  - **Caution:**
+   - 현재 코드는 "남은자리 >= 필요자리" 검사를 통해 pop 허용 여부를 판단.
+    - 대안: `k_rem`(남은 삭제 수)을 명시적으로 관리하면 구현이 간결해지고 검증이 쉬움.
+   - 마지막 출력은 스택을 뒤집어 순서를 복원.
+   
+  - **Improvement:**
+   - `stack<int>` 대신 `string`/`vector<char>` + `push_back/pop_back`를 쓰면 상수항 감소.
+   - 역출력용 보조 스택 대신, 스택을 **벡터로 두고 뒤에서부터 출력**하거나 `string(result.rbegin(), result.rend())` 사용.
+   - 조건식 간단화:
+    `remain = n - (i + 1); need = (n - k) - (int)stk.size();`로 분리해 읽기 쉽게.
+
+  - **Problem Hint:** 지문 키워드 → 접근법
+   - "왼쪽에서부터 가능한 한 큰 수를 앞에 배치"는 전형적인 greedy.
+   - **단조 감소 스택**을 떠올리면 구현이 한 줄로 정리된다.
+  ---
+  

@@ -24,7 +24,7 @@ Folder: string/kmp/
 - 공백 포함 가능 → `getline`으로 전체 라인 입력.
 */
 
-// 2025-09-26 D+3 REVIEW
+// 2025-10-11 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -37,53 +37,106 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	string s1, s2;
-	getline(cin, s1);
-	getline(cin, s2);
+	string t, p;
+	getline(cin, t);
+	getline(cin, p);
 
-	int n = (int)s1.size(), m = (int)s2.size();
+	int n = (int)t.size(), m = p.size();
 
-	if (m == 0)
+	if (n < m)
 	{
-		cout << 0 << "\n";
+		cout << 0 << '\n';
 		return 0;
 	}
 
-	// if (n < m)
-	// {
-	// 	swap(s1, s2);
-	// 	swap(n, m);
-	// }
-
-	vector<int> v(m, 0), idx;
+	vector<int> lps(m, 0), idx;
 	idx.reserve(n - m + 1);
-	for (int i = 1; i < m; i++)	// 0부터 시작하지 않는 이유 -> 여기서 j는 s2의 i까지 문자열이 있을 때, 지금까지의 가장 긴 접두사의 마지막 인덱스(=길이)를 뜻함
-								// 문자열이 1개 밖에 없을 때에는 자기 자신만 있으므로 접두사/접미사가 나타날 수 없음
-								// 그래서 v[0]은 무조건 0이고, 1부터 시작해서 v[i-1]과 비교하여 같은지 확인하면 된다.
+	for (int i = 1; i < m; i++)
 	{
-		int j = v[i - 1];
-		while (j > 0 && s2[i] != s2[j]) j = v[j - 1];	// 같은 문자열인 p에서 비교하는 거니까 s2[i]와 s2[j]를 비교, 
-														// 점프는 방금 확인한 문자앞까지 문자를 잘라서 
-		if (s2[i] == s2[j]) j++;
-		v[i] = j;
+		int j = lps[i - 1];
+		while (j > 0 && p[i] != p[j]) j = lps[j - 1];
+		if (p[i] == p[j]) j++;
+		lps[i] = j;
 	}
 
 	for (int i = 0, j = 0; i < n; i++)
 	{
-		while (j > 0 && s1[i] != s2[j]) j = v[j - 1];
-		if (s1[i] == s2[j]) j++;
+		while (j > 0 && t[i] != p[j]) j = lps[j - 1];
+		if (t[i] == p[j])
+			j++;
 		if (j == m)
 		{
 			idx.push_back(i - m + 1);
-			j = v[j - 1];	// 이거 해야 다음 일치 찾을 때 미리 줄여놓을 수 있음
+			j = lps[j - 1];
 		}
 	}
 
-	cout << (int)idx.size() << "\n";	// 새로 변수 만들지 말고 크기로 출력
+	cout << idx.size() << '\n';
 	for (int i : idx)
-		cout << i + 1 << " ";	// 1번 인덱스부터 시작이니까 출력에 + 1
-	cout << "\n";
+		cout << i + 1 << ' ';
+	cout << '\n';
 }
+
+// 2025-09-26 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string s1, s2;
+// 	getline(cin, s1);
+// 	getline(cin, s2);
+// 
+// 	int n = (int)s1.size(), m = (int)s2.size();
+// 
+// 	if (m == 0)
+// 	{
+// 		cout << 0 << "\n";
+// 		return 0;
+// 	}
+// 
+// 	// if (n < m)
+// 	// {
+// 	// 	swap(s1, s2);
+// 	// 	swap(n, m);
+// 	// }
+// 
+// 	vector<int> v(m, 0), idx;
+// 	idx.reserve(n - m + 1);
+// 	for (int i = 1; i < m; i++)	// 0부터 시작하지 않는 이유 -> 여기서 j는 s2의 i까지 문자열이 있을 때, 지금까지의 가장 긴 접두사의 마지막 인덱스(=길이)를 뜻함
+// 								// 문자열이 1개 밖에 없을 때에는 자기 자신만 있으므로 접두사/접미사가 나타날 수 없음
+// 								// 그래서 v[0]은 무조건 0이고, 1부터 시작해서 v[i-1]과 비교하여 같은지 확인하면 된다.
+// 	{
+// 		int j = v[i - 1];
+// 		while (j > 0 && s2[i] != s2[j]) j = v[j - 1];	// 같은 문자열인 p에서 비교하는 거니까 s2[i]와 s2[j]를 비교, 
+// 														// 점프는 방금 확인한 문자앞까지 문자를 잘라서 
+// 		if (s2[i] == s2[j]) j++;
+// 		v[i] = j;
+// 	}
+// 
+// 	for (int i = 0, j = 0; i < n; i++)
+// 	{
+// 		while (j > 0 && s1[i] != s2[j]) j = v[j - 1];
+// 		if (s1[i] == s2[j]) j++;
+// 		if (j == m)
+// 		{
+// 			idx.push_back(i - m + 1);
+// 			j = v[j - 1];	// 이거 해야 다음 일치 찾을 때 미리 줄여놓을 수 있음
+// 		}
+// 	}
+// 
+// 	cout << (int)idx.size() << "\n";	// 새로 변수 만들지 말고 크기로 출력
+// 	for (int i : idx)
+// 		cout << i + 1 << " ";	// 1번 인덱스부터 시작이니까 출력에 + 1
+// 	cout << "\n";
+// }
 
 // 2025-09-23 D+0 REVIEW
 

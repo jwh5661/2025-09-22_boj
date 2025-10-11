@@ -22,9 +22,10 @@ Folder: string/
 ✔️ 지문 힌트
 - `"c=","c-","dz=","d-","lj","nj","s=","z="` → 이들 조합은 각각 **하나의 문자**로 취급.
 - 문자열 길이 제한이 작아(≤100) 선형 스캔으로 충분.
+
 */
 
-// 2025-09-26 D+3 REVIEW
+// 2025-10-11 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -36,28 +37,25 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	string s;
-	cin >> s;
-
-	int cnt = 0, n = (int)s.size();
+	string str;
+	cin >> str;
+	int n = (int)str.size(), cnt = 0;
 
 	for (int i = 0; i < n; i++)
 	{
-		if (i + 2 < n && s[i] == 'd' && s[i + 1] == 'z' && s[i + 2] == '=')
+		if (i + 2 < n && str[i] == 'd' && str[i + 1] == 'z' && str[i + 2] == '=')
 		{
 			cnt++;
 			i += 2;
 		}
-
 		else if (i + 1 < n &&
 			(
-				(s[i] == 'c' && (s[i + 1] == '=' || s[i + 1] == '-')) ||
-				(s[i] == 'd' && s[i + 1] == '-') ||
-				(s[i] == 'l' && s[i + 1] == 'j') ||
-				(s[i] == 'n' && s[i + 1] == 'j') ||
-				(s[i] == 's' && s[i + 1] == '=') ||
-				(s[i] == 'z' && s[i + 1] == '=')
-				))
+				(str[i] == 'c' && (str[i + 1] == '=' || str[i + 1] == '-')) ||
+				(str[i] == 'd' && str[i + 1] == '-') ||
+				(str[i] == 'l' && str[i + 1] == 'j') ||
+				(str[i] == 'n' && str[i + 1] == 'j') ||
+				(str[i] == 's' && str[i + 1] == '=') ||
+				(str[i] == 'z' && str[i + 1] == '=')))
 		{
 			cnt++;
 			i++;
@@ -65,8 +63,52 @@ int main()
 		else
 			cnt++;
 	}
-	cout << cnt << "\n";
+	cout << cnt << '\n';
 }
+
+// 2025-09-26 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string s;
+// 	cin >> s;
+// 
+// 	int cnt = 0, n = (int)s.size();
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		if (i + 2 < n && s[i] == 'd' && s[i + 1] == 'z' && s[i + 2] == '=')
+// 		{
+// 			cnt++;
+// 			i += 2;
+// 		}
+// 
+// 		else if (i + 1 < n &&
+// 			(
+// 				(s[i] == 'c' && (s[i + 1] == '=' || s[i + 1] == '-')) ||
+// 				(s[i] == 'd' && s[i + 1] == '-') ||
+// 				(s[i] == 'l' && s[i + 1] == 'j') ||
+// 				(s[i] == 'n' && s[i + 1] == 'j') ||
+// 				(s[i] == 's' && s[i + 1] == '=') ||
+// 				(s[i] == 'z' && s[i + 1] == '=')
+// 				))
+// 		{
+// 			cnt++;
+// 			i++;
+// 		}
+// 		else
+// 			cnt++;
+// 	}
+// 	cout << cnt << "\n";
+// }
 
 // 2025-09-23 D+0 REVIEW
 
