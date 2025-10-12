@@ -103,6 +103,9 @@
     <Filter Include="소스 파일\graph\bfs">
       <UniqueIdentifier>{ed64a438-b88d-4bf2-accc-1c09ccdb9097}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\deque\basic">
+      <UniqueIdentifier>{ac2f9b36-6c6d-42bd-bdb2-fae25b0ffe7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -227,6 +230,15 @@
     </ClCompile>
     <ClCompile Include="boj_02812_Make_It_Big.cpp">
       <Filter>소스 파일\stack\monotonic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_10866_Deque.cpp">
+      <Filter>소스 파일\deque\basic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02667_Numbering_Complexes.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_07576_Tomato.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

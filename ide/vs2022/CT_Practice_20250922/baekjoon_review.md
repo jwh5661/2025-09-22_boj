@@ -1209,3 +1209,79 @@ for (int i = 0, j = 0; i < n; i++)
    - **단조 감소 스택**을 떠올리면 구현이 한 줄로 정리된다.
   ---
   
+  ## 📅 2025-10-12
+  **BOJ 10866 - 덱**
+  **BOJ 2667 - 단지 번호 붙이기**
+  **BOJ 7576 - 토마토**
+  
+  ### BOJ 10866 - 덱 (Deque)
+  - **Topic:** Deque | Implementation | I/O
+  - **Folder:** `deque/basic/`
+  - **Time Complexity:** O(M)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 표준 `std::deque<int>`로 명령을 그대로 매핑해 처리.
+
+  - **Caution:**
+   - 빈 덱 예외(pop/front/back->-1)만 정확히 처리하면 안정적으로 통과.
+   
+  - **Improvement:**
+   - 출력 누적(버퍼링)과 간단한 명령 파싱 최적화로 상수항을 줄일 수 있음.
+
+  - **Problem Hint:**
+   - 하라는 대로 하자.
+  
+  ---
+  
+  ### BOJ 2667 - 단지 번호 붙이기 (Numbering Complexes)
+  - **Topic:** BFS | Grid | Connected-Components
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(N^2)
+  - **Space Complexity:** O(N^2)
+
+  - **Key Idea:**
+   - 격자를 순회하며 `visited[i][j]==false && map[i][j]==1`이면 새로운 단지 시작.
+   - 큐에 시작 좌표를 넣고, 4방향 `(dx, dy)`로 범위·값·방문 체크 후 확장.
+   - 확장할 때마다 현재 단지 크기 증가, 탐색 완료 후 벡터에 push.
+
+  - **Caution:**
+   - 매크로 `X/Y`는 세미콜론 제거 또는 사용하지 않고 `first/second` 사용.
+   - 시작 셀 방문 처리 위치를 한 곳으로 일관되게 두기(현재는 main에서 처리 -> OK).
+
+  - **Improvement:**
+   - 가독성: `BFS`가 단지 크기를 `int`로 **반환**하게 하고, main에서 `size.push_back(bfs(i,j));` 형태로 수집하면 명료.
+   - `auto cur = q.front(); q.pop();` 후 `cur.first/cur.second` 사용으로 `q.front()` 중복 접근 제거.
+   - 전역 `map` 이름은 STL과 혼동될 수 있어 `grid` 등으로 변경 권장.
+
+  - **Problem Hint:**
+   - 전형적인 격자 연결 요소 문제. 4방향 BFS로 각 컴포넌트의 크기만 구해 오름차순 출력하면 된다.
+  
+  ---
+  
+  ### BOJ 7576 - 토마토 (Tomato)
+  - **Topic:** BFS | Multi-Source | Grid
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(N*M)
+  - **Space Complexity:** O(N*M)
+
+  - **Key Idea:**
+   - 1(익은 토마토)들을 모두 큐에 담에ㅏ 시작하는 멀티 소스 BFS.
+   - 인접 0을 `현재값+1`로 갱신해 각 칸에 "익은 날"을 저장.
+   - 탐색 후 0이 남아 있으면 -1, 아니면 `max - 1`이 정답.
+
+  - **Caution:**
+   - 좌표 경계 -> 상태값(0/1/-1) -> 갱신 순서로 조건 체크.
+   - 입력이 전부 -1일 수도 있으니 최댓값 초기값을 1로 두면 `mx-1=0`.
+   - 큐 삽입은 `emplace` 사용 시 상수항 미세 개선 가능.
+
+  - **Improvement:**
+   - 매크로 대신 `first/second` 사용으로 가독성↑.
+   - dx/dy 순서를 고정(상하좌우 등)해 디버깅 일관성 확보.
+   - 매우 큰 I/O에서 출력 모으기(이 문제에선 출력이 1줄이라 필요 없음).
+
+  - **Problem Hint:**
+   - 시작점이 여러 개인 최단 거리 전파 문제는 **멀티 소스 BFS**로 풀면 깔끔하다.
+  
+  ---
+  
