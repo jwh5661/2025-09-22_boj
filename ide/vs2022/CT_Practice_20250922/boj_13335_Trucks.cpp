@@ -23,7 +23,7 @@ Folder: queue/simulation
 
 */
 
-// 2025-10-06 ORIGINAL
+// 2025-10-13 D+3 REVIEW
 
 #include <iostream>
 #include <queue>
@@ -35,39 +35,89 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, w, l, cur_weight = 0, t = 0;
-	cin >> n >> w >> l;
+	int n, w, L;
+	cin >> n >> w >> L;
 
-	queue<int> q, bridge_q;
+	int cur_weight = 0, time = 0;
+	queue<int> waiting;
+	queue<int> bridge;
+
 	for (int i = 0; i < n; i++)
 	{
-		int tmp;
-		cin >> tmp;
-		q.push(tmp);
+		int weight;
+		cin >> weight;
+		waiting.push(weight);
 	}
-		
 
-	while (!q.empty())
+	while (!waiting.empty())
 	{
-		int cur_truck = q.front();
-		if (bridge_q.size() >= w)
+		if (bridge.size() == w)
 		{
-			cur_weight -= bridge_q.front();
-			bridge_q.pop();
+			cur_weight -= bridge.front();
+			bridge.pop();
 		}
 
-		if (l >= cur_weight + cur_truck)
+		int cur_truck = waiting.front();
+
+		if (bridge.size() < w && cur_weight + cur_truck <= L)
 		{
-			bridge_q.push(cur_truck);
+			waiting.pop();
 			cur_weight += cur_truck;
-			q.pop();
+			bridge.push(cur_truck);
 		}
 		else
-			bridge_q.push(0);
-
-		t++;
+			bridge.push(0);
+		time++;
 	}
-	t += w;
 
-	cout << t << '\n';
+	cout << time + w << '\n';
 }
+
+// 2025-10-06 ORIGINAL
+
+// #include <iostream>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, w, l, cur_weight = 0, t = 0;
+// 	cin >> n >> w >> l;
+// 
+// 	queue<int> q, bridge_q;
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		int tmp;
+// 		cin >> tmp;
+// 		q.push(tmp);
+// 	}
+// 		
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur_truck = q.front();
+// 		if (bridge_q.size() >= w)
+// 		{
+// 			cur_weight -= bridge_q.front();
+// 			bridge_q.pop();
+// 		}
+// 
+// 		if (l >= cur_weight + cur_truck)
+// 		{
+// 			bridge_q.push(cur_truck);
+// 			cur_weight += cur_truck;
+// 			q.pop();
+// 		}
+// 		else
+// 			bridge_q.push(0);
+// 
+// 		t++;
+// 	}
+// 	t += w;
+// 
+// 	cout << t << '\n';
+// }

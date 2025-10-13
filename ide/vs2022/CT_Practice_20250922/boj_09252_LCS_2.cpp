@@ -23,7 +23,7 @@ Folder: dp/lcs/
 - 둘째 줄: LCS 문자열(길이>0일 때만)
 */
 
-// 2025-09-28 D+3 REVIEW
+// 2025-10-13 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -37,41 +37,94 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	string s1, s2;
-	cin >> s1 >> s2;
+	string str1, str2, ans;
+	cin >> str1 >> str2;
 
-	int n = (int)s1.size(), m = (int)s2.size();
-
-	vector<vector<int>> lcs(n + 1, vector<int>(m + 1, 0));
+	int n = static_cast<int>(str1.size()), m = static_cast<int>(str2.size());
+	vector<vector<int>> lcs(n + 1, vector<int>(m + 1));
 	for (int i = 1; i <= n; i++)
 	{
 		for (int j = 1; j <= m; j++)
 		{
-			if (s1[i - 1] == s2[j - 1]) lcs[i][j] = lcs[i - 1][j - 1] + 1;	// 비교할 때 s1과 s2는 index에 -1 해야 함
-			else lcs[i][j] = max(lcs[i - 1][j], lcs[i][j - 1]);
+			if (str1[i - 1] == str2[j - 1])
+				lcs[i][j] = lcs[i - 1][j - 1] + 1;
+			else
+				lcs[i][j] = max(lcs[i - 1][j], lcs[i][j - 1]);
 		}
 	}
 
-	string ans;
+	cout << lcs[n][m] << '\n';
+
 	int i = n, j = m;
-	while (i > 0 && j > 0)
+	while (i > 0 && j > 0)	// 둘 중 하나가 0이 되면 강제 종료
 	{
-		if (s1[i - 1] == s2[j - 1])	// 마찬가지
+		if (str1[i - 1] == str2[j - 1])
 		{
-			ans.push_back(s1[i - 1]);
-			i--;
-			j--;
+			ans += str1[i - 1];
+			i--; j--;
 		}
 		else
 		{
-			if (lcs[i][j - 1] >= lcs[i - 1][j]) j--;
-			else i--;
+			if (lcs[i - 1][j] <= lcs[i][j - 1])
+				j--;
+			else
+				i--;
 		}
 	}
+
 	reverse(ans.begin(), ans.end());
-	cout << lcs[n][m] << "\n";
-	if (lcs[n][m] > 0) cout << ans << "\n";
+	cout << ans << '\n';
 }
+
+// 2025-09-28 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string s1, s2;
+// 	cin >> s1 >> s2;
+// 
+// 	int n = (int)s1.size(), m = (int)s2.size();
+// 
+// 	vector<vector<int>> lcs(n + 1, vector<int>(m + 1, 0));
+// 	for (int i = 1; i <= n; i++)
+// 	{
+// 		for (int j = 1; j <= m; j++)
+// 		{
+// 			if (s1[i - 1] == s2[j - 1]) lcs[i][j] = lcs[i - 1][j - 1] + 1;	// 비교할 때 s1과 s2는 index에 -1 해야 함
+// 			else lcs[i][j] = max(lcs[i - 1][j], lcs[i][j - 1]);
+// 		}
+// 	}
+// 
+// 	string ans;
+// 	int i = n, j = m;
+// 	while (i > 0 && j > 0)
+// 	{
+// 		if (s1[i - 1] == s2[j - 1])	// 마찬가지
+// 		{
+// 			ans.push_back(s1[i - 1]);
+// 			i--;
+// 			j--;
+// 		}
+// 		else
+// 		{
+// 			if (lcs[i][j - 1] >= lcs[i - 1][j]) j--;
+// 			else i--;
+// 		}
+// 	}
+// 	reverse(ans.begin(), ans.end());
+// 	cout << lcs[n][m] << "\n";
+// 	if (lcs[n][m] > 0) cout << ans << "\n";
+// }
 
 // 2025-09-25 D+0 REVIEW
 

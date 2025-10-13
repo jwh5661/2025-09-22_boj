@@ -25,7 +25,7 @@ Folder: queue/basic
 
 */
 
-// 2025-10-06 ORIGINAL
+// 2025-10-13 D+3 REVIEW
 
 #include <iostream>
 #include <string>
@@ -39,51 +39,104 @@ int main()
 	cin.tie(nullptr);
 
 	int n;
-	string str;
 	cin >> n;
+
 	queue<int> q;
 
 	while (n--)
 	{
+		string str;
 		cin >> str;
-		if (str == "push")
+
+		if (str[0] == 'p')
 		{
-			int val;
-			cin >> val;
-			q.push(val);
-		}
-		else if (str == "pop")
-		{
-			if (!q.empty())
+			if (str[1] == 'u')
 			{
-				cout << q.front() << '\n';
-				q.pop();
+				int val;
+				cin >> val;
+				q.push(val);
 			}
-			else
-				cout << -1 << '\n';
+			else if (str[1] == 'o')
+			{
+				if (!q.empty())
+				{
+					cout << q.front() << '\n';
+					q.pop();
+				}
+				else
+					cout << -1 << '\n';
+			}
 		}
-		else if (str == "size")
+		else if (str[0] == 's')
 			cout << q.size() << '\n';
-		else if (str == "empty")
-		{
-			if (q.empty())
-				cout << 1 << '\n';
-			else
-				cout << 0 << '\n';
-		}
-		else if (str == "front")
-		{
-			if (!q.empty())
-				cout << q.front() << '\n';
-			else
-				cout << -1 << '\n';
-		}
-		else if (str == "back")
-		{
-			if (!q.empty())
-				cout << q.back() << '\n';
-			else
-				cout << -1 << '\n';
-		}
+		else if (str[0] == 'e')
+			cout << (q.empty() ? 1 : 0) << '\n';
+		else if (str[0] == 'f')
+			cout << (q.empty() ? -1 : q.front()) << '\n';
+		else if (str[0] == 'b')
+			cout << (q.empty() ? -1 : q.back()) << '\n';
 	}
 }
+
+// 2025-10-06 ORIGINAL
+
+// #include <iostream>
+// #include <string>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	string str;
+// 	cin >> n;
+// 	queue<int> q;
+// 
+// 	while (n--)
+// 	{
+// 		cin >> str;
+// 		if (str == "push")
+// 		{
+// 			int val;
+// 			cin >> val;
+// 			q.push(val);
+// 		}
+// 		else if (str == "pop")
+// 		{
+// 			if (!q.empty())
+// 			{
+// 				cout << q.front() << '\n';
+// 				q.pop();
+// 			}
+// 			else
+// 				cout << -1 << '\n';
+// 		}
+// 		else if (str == "size")
+// 			cout << q.size() << '\n';
+// 		else if (str == "empty")
+// 		{
+// 			if (q.empty())
+// 				cout << 1 << '\n';
+// 			else
+// 				cout << 0 << '\n';
+// 		}
+// 		else if (str == "front")
+// 		{
+// 			if (!q.empty())
+// 				cout << q.front() << '\n';
+// 			else
+// 				cout << -1 << '\n';
+// 		}
+// 		else if (str == "back")
+// 		{
+// 			if (!q.empty())
+// 				cout << q.back() << '\n';
+// 			else
+// 				cout << -1 << '\n';
+// 		}
+// 	}
+// }

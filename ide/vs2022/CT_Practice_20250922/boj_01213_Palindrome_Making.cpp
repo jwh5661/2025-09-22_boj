@@ -25,7 +25,7 @@ Folder: string/
 - 입력은 대문자 알파벳만 -> 알파벳 크기 26.
 */
 
-// 2025-09-28 D+3 REVIEW
+// 2025-10-13 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -38,23 +38,25 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	string s, pal; cin >> s;
-	int mid = -1, n = (int)s.size();
+	string str, pal;
+	cin >> str;
+
 	vector<int> freq(26, 0);
-	
-	for (char c : s)
+	for (char c : str)
 		freq[c - 'A']++;
+
+	int mid = -1;
 
 	for (int i = 0; i < 26; i++)
 	{
-		if (mid == -1 && freq[i] % 2 != 0)
+		if (freq[i] % 2 != 0 && mid == -1)
 		{
 			mid = i;
 			freq[i]--;
 		}
-		else if (mid != -1 && freq[i] % 2 != 0)
+		else if (freq[i] % 2 != 0 && mid != -1)
 		{
-			cout << "I'm Sorry Hansoo\n";
+			cout << "I'm Sorry Hansoo" << '\n';
 			return 0;
 		}
 	}
@@ -62,18 +64,67 @@ int main()
 	for (int i = 0; i < 26; i++)
 	{
 		int half = freq[i] / 2;
-		pal.append(half, i + 'A');
 		freq[i] = half;
+		pal += string(half, i + 'A');
 	}
 
-	if (mid != -1)
-		pal += mid + 'A';
+	if(mid != -1) pal += mid + 'A';
 
 	for (int i = 25; i >= 0; i--)
-		pal.append(freq[i], i + 'A');
+		pal += string(freq[i], i + 'A');
 
-	cout << pal << "\n";
+	cout << pal << '\n';
 }
+
+// 2025-09-28 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string s, pal; cin >> s;
+// 	int mid = -1, n = (int)s.size();
+// 	vector<int> freq(26, 0);
+// 	
+// 	for (char c : s)
+// 		freq[c - 'A']++;
+// 
+// 	for (int i = 0; i < 26; i++)
+// 	{
+// 		if (mid == -1 && freq[i] % 2 != 0)
+// 		{
+// 			mid = i;
+// 			freq[i]--;
+// 		}
+// 		else if (mid != -1 && freq[i] % 2 != 0)
+// 		{
+// 			cout << "I'm Sorry Hansoo\n";
+// 			return 0;
+// 		}
+// 	}
+// 
+// 	for (int i = 0; i < 26; i++)
+// 	{
+// 		int half = freq[i] / 2;
+// 		pal.append(half, i + 'A');
+// 		freq[i] = half;
+// 	}
+// 
+// 	if (mid != -1)
+// 		pal += mid + 'A';
+// 
+// 	for (int i = 25; i >= 0; i--)
+// 		pal.append(freq[i], i + 'A');
+// 
+// 	cout << pal << "\n";
+// }
 
 // 2025-09-25 D+0 REVIEW
 

@@ -23,7 +23,7 @@ Folder: impl/simulation/
 - 입력 크기 5 -> 단순 시뮬레이션으로 충분.
 */
 
-// 2025-09-28 D+3 REVIEW
+// 2025-10-13 D+14 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -36,25 +36,61 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	vector<int> num(5);
+	vector<int> wood;
 	for (int i = 0; i < 5; i++)
-		cin >> num[i];
+	{
+		int num;
+		cin >> num;
+		wood.push_back(num);
+	}
 
-	while (!is_sorted(num.begin(), num.end()))
+	while (!is_sorted(wood.begin(), wood.end()))
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (num[i] > num[i + 1])
+			if (wood[i] > wood[i + 1])
 			{
-				swap(num[i], num[i + 1]);
-
-				for (int x : num)
-					cout << x << " ";
-				cout << "\n";
+				swap(wood[i], wood[i + 1]);
+				for (int n : wood)
+					cout << n << ' ';
+				cout << '\n';
 			}
 		}
 	}
 }
+
+// 2025-09-28 D+3 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	vector<int> num(5);
+// 	for (int i = 0; i < 5; i++)
+// 		cin >> num[i];
+// 
+// 	while (!is_sorted(num.begin(), num.end()))
+// 	{
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			if (num[i] > num[i + 1])
+// 			{
+// 				swap(num[i], num[i + 1]);
+// 
+// 				for (int x : num)
+// 					cout << x << " ";
+// 				cout << "\n";
+// 			}
+// 		}
+// 	}
+// }
 
 // 2025-09-25 D+0 REVIEW
 
