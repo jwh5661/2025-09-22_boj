@@ -1285,3 +1285,80 @@ for (int i = 0, j = 0; i < n; i++)
   
   ---
   
+  ## 📅 2025-10-14
+  **BOJ 2606 - 바이러스**
+  **BOJ 13023 - ABCDE**
+  **BOJ 1012 - 유기농 배추**
+  
+  ### BOJ 2606 - 바이러스
+  - **Topic:** BFS | Graph | Adjacency List
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(V + E)
+  - **Space Complexity:** O(V + E)
+
+  - **Key Idea:**
+   - 1번 정점에서 BFS 시작, 방문하지 않은 이웃만 큐에 넣으면서 방문 처리.
+   - 방문되는 각 정점을 셀 때 1번 정점은 제외 -> 감염된 컴퓨터 수가 됨.
+
+  - **Caution:**
+   - 입력이 많은 편은 아니지만, 빠른 입출력 설정 유지.
+   - 간선 중복 입력이 와도 visited 체크로 안전.
+
+  - **Improvement (선택):**
+   - DFS로도 동일한 정답 가능(스택/재귀)하지만 BFS가 직관적.
+
+  - **Problem Hint:**
+   - 하라는 대로 하자.
+  
+  ---
+  
+  ### BOJ 13023 - ABCDE (ABCDE)
+  - **Topic:** DFS | Backtracking | Graph
+  - **Folder:** `graph/dfs/`
+  - **Time Complexity:** O(V * (V + E))
+  - **Space Complexity:** O(V + E)
+
+  - **Key Idea:**
+   - 각 정점을 시작으로 DFS를 돌며 현재 경로 길이를 `depth`로 관리.
+   - 재귀 진입 시 `visited[u]=true; depth++;` -> 직후 `depth==5`면 성공.
+   - 모든 이웃 탐색 후 `depth--; visited[u]=false;`로 백트래킹.
+
+  - **Caution:**
+   - **오프바이원**: 성공 판정은 `depth` 증가 **이후**에 해야 함.
+   - `visited` 복구 누락 시 다른 경로 차단 -> 오답.
+   - 입력 인덱싱(0-based)과 인접 리스트 크기 일치 확인.
+
+  - **Improvement:**
+   - 전역 `depth` 대신 `DFS(u, d)`로 **깊이 인자화**하면 상태 관리가 명확.
+   - 전역 `found`로 **가지치기**(`if (found) return;) 유지.
+
+  - **Problem Hint:**
+   - "연속한 5명"은 그래프의 **단순 경로** 문제. DFS로 경로를 뻗다가 길이 5가 되는 순간 멈추면 된다.
+  
+  ---
+  
+  ### BOJ 1012 - 유기농 배추 (Organic Cabbage)
+  - **Topic:** BFS | Grid | Connected-Components
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(T * M * N)
+  - **Space Complexity:** O(M * N)
+
+  - **Key Idea:**
+   - 격자를 순회하며 `visited[x][y]==false && cabbage[x][y]==1`이면 BFS를 시작.
+   - 큐에서 꺼낸 좌표의 4방향을 확인해 범위/방문/값 체크 후 확장.
+   - BFS를 한 번 시작할 때마다 지렁이 수를 1 증가.
+
+  - **Caution:**
+   - 본 문제의 입력은 보통 `M(rkfh)=x`, `N(세로)=y`로 제공됨. 코드에서 1차원 인덱스를 x, 2차원을 y로 쓰고 있으므로 **dx, dy, 경계, 배열 차원**이 서로 맞물리는지 항상 점검.
+   - 다중 테스트케이스에서 매번 초기화 필요.
+
+  - **Improvement:**
+   - `q.emplace(x, y);` 사용으로 미세 상수항 감소.
+   - 매크로 대신 `cur.first/cur.second` 사용 시 가독성 향상.
+   - 변수 명 `m, n` 대신 `cols, rows`처럼 의미를 드러내면 헷갈림 감소.
+
+  - **Problem Hint:**
+   - 하라는 대로 하자.
+  
+  ---
+  

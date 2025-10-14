@@ -106,6 +106,9 @@
     <Filter Include="소스 파일\deque\basic">
       <UniqueIdentifier>{ac2f9b36-6c6d-42bd-bdb2-fae25b0ffe7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\graph\dfs">
+      <UniqueIdentifier>{4341bb6d-de96-47e6-9ad2-5cbab6e1490b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -239,6 +242,15 @@
     </ClCompile>
     <ClCompile Include="boj_07576_Tomato.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_2606_Virus.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_13023_ABCDE.cpp">
+      <Filter>소스 파일\graph\dfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01012.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
