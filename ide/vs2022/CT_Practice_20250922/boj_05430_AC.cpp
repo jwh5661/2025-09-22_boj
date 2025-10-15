@@ -24,7 +24,7 @@ Folder: impl/simulation/
 - reverse를 실제로 수행하면 TLE; 인덱스만 움직이는 게 핵심.
 */
 
-// 2025-09-29 D+3 REVIEW
+// 2025-10-15 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -42,28 +42,26 @@ int main()
 
 	while (t--)
 	{
-		string p, num_string;
+		string p, num_str;
 		int n, val = 0;
-		cin >> p >> n >> num_string;
+		cin >> p >> n >> num_str;
 
 		vector<int> num;
 		num.reserve(n);
 		bool in_num = false, is_reversed = false, is_error = false;
-		for (char c : num_string)
+
+		for (char c : num_str)
 		{
 			if ('0' <= c && c <= '9')
 			{
 				in_num = true;
 				val = val * 10 + (c - '0');
 			}
-			else
+			else if (in_num)
 			{
-				if (in_num)
-				{
-					in_num = false;
-					num.push_back(val);
-					val = 0;
-				}
+				in_num = false;
+				num.push_back(val);
+				val = 0;
 			}
 		}
 
@@ -72,17 +70,17 @@ int main()
 		{
 			if (c == 'R')
 				is_reversed = !is_reversed;
-			else
+			else if (c == 'D')
 			{
-				if (l > r)
+				if (l <= r)
 				{
-					is_error = true;
-					break;
+					if (is_reversed) r--;
+					else l++;
 				}
 				else
 				{
-					if (!is_reversed) l++;
-					else r--;
+					is_error = true;
+					break;
 				}
 			}
 		}
@@ -92,21 +90,105 @@ int main()
 			cout << "error\n";
 			continue;
 		}
-		
-		cout << "[";
-		if (!is_reversed)
-		{
-			for (int i = l; i <= r; i++)
-				cout << num[i] << (i == r ? "" : ",");
-		}
-		else
+
+		cout << '[';
+		if (is_reversed)
 		{
 			for (int i = r; i >= l; i--)
 				cout << num[i] << (i == l ? "" : ",");
 		}
+		else
+		{
+			for (int i = l; i <= r; i++)
+				cout << num[i] << (i == r ? "" : ",");
+		}
 		cout << "]\n";
 	}
 }
+
+// 2025-09-29 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		string p, num_string;
+// 		int n, val = 0;
+// 		cin >> p >> n >> num_string;
+// 
+// 		vector<int> num;
+// 		num.reserve(n);
+// 		bool in_num = false, is_reversed = false, is_error = false;
+// 		for (char c : num_string)
+// 		{
+// 			if ('0' <= c && c <= '9')
+// 			{
+// 				in_num = true;
+// 				val = val * 10 + (c - '0');
+// 			}
+// 			else
+// 			{
+// 				if (in_num)
+// 				{
+// 					in_num = false;
+// 					num.push_back(val);
+// 					val = 0;
+// 				}
+// 			}
+// 		}
+// 
+// 		int l = 0, r = n - 1;
+// 		for (char c : p)
+// 		{
+// 			if (c == 'R')
+// 				is_reversed = !is_reversed;
+// 			else
+// 			{
+// 				if (l > r)
+// 				{
+// 					is_error = true;
+// 					break;
+// 				}
+// 				else
+// 				{
+// 					if (!is_reversed) l++;
+// 					else r--;
+// 				}
+// 			}
+// 		}
+// 
+// 		if (is_error)
+// 		{
+// 			cout << "error\n";
+// 			continue;
+// 		}
+// 		
+// 		cout << "[";
+// 		if (!is_reversed)
+// 		{
+// 			for (int i = l; i <= r; i++)
+// 				cout << num[i] << (i == r ? "" : ",");
+// 		}
+// 		else
+// 		{
+// 			for (int i = r; i >= l; i--)
+// 				cout << num[i] << (i == l ? "" : ",");
+// 		}
+// 		cout << "]\n";
+// 	}
+// }
 
 // 2025-09-26 D+0 REVIEW
 

@@ -249,7 +249,16 @@
     <ClCompile Include="boj_13023_ABCDE.cpp">
       <Filter>소스 파일\graph\dfs</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01012.cpp">
+    <ClCompile Include="boj_01012_Organic_Cabbage.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02178_Maze_Exploration.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11724_Number_of_Connected_Components.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01987.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

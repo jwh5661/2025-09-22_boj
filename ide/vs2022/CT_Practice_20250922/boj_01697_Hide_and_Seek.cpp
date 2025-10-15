@@ -24,7 +24,7 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-11 ORIGINAL
+// 2025-10-15 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -40,28 +40,66 @@ int main()
 	int n, k;
 	cin >> n >> k;
 
+	vector<int> location(100001, -1);
 	queue<int> q;
-	vector<int> visited(100001, -1);
 
 	q.push(n);
-	visited[n] = 0;
+	location[n] = 0;
 
-	while (!q.empty())
+	while (q.front() != k)
 	{
-		int cur = q.front(); 
-		if (cur == k)
-		{
-			cout << visited[k] << '\n';
-			break;
-		}
-		q.pop();
+		int cur = q.front(); q.pop();
 
-		for (int dx : {cur + 1, cur - 1, cur * 2})
+		for (int i : {cur - 1, cur + 1, 2 * cur})
 		{
-			if (0 > dx || dx > 100000) continue;
-			if (visited[dx] != -1) continue;
-			q.push(dx);
-			visited[dx] = visited[cur] + 1;
+			if (0 > i || i > 100000) continue;
+			if (location[i] != -1) continue;
+			q.push(i);
+			location[i] = location[cur] + 1;
 		}
 	}
+
+	cout << location[k] << '\n';
 }
+
+// 2025-10-11 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, k;
+// 	cin >> n >> k;
+// 
+// 	queue<int> q;
+// 	vector<int> visited(100001, -1);
+// 
+// 	q.push(n);
+// 	visited[n] = 0;
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur = q.front(); 
+// 		if (cur == k)
+// 		{
+// 			cout << visited[k] << '\n';
+// 			break;
+// 		}
+// 		q.pop();
+// 
+// 		for (int dx : {cur + 1, cur - 1, cur * 2})
+// 		{
+// 			if (0 > dx || dx > 100000) continue;
+// 			if (visited[dx] != -1) continue;
+// 			q.push(dx);
+// 			visited[dx] = visited[cur] + 1;
+// 		}
+// 	}
+// }

@@ -1362,3 +1362,84 @@ for (int i = 0, j = 0; i < n; i++)
   
   ---
   
+  ## 📅 2025-10-15
+  **BOJ 2178 - 미로 탐색**
+  **BOJ 11724 - 연결 요소의 개수**
+  **BOJ 1987 - 알파벳**
+  
+  ### BOJ 2178 - 미로 탐색 (Maze Exploration)
+  - **Topic:** BFS | Grid | Shortest-Path
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(N*M)
+  - **Space Complexity:** O(N*M)
+
+  - **Key Idea:**
+   - 큐에 (1,1)을 넣고, 4방향으로 확장하면서 `visited[nx][ny] = visited[cur]+1`.
+   - 최종 `visited[N][M]`이 최소 이동 칸 수.
+
+  - **Caution:**
+   - 1-based 인덱스 사용 시 배열 크기를 `n+1, m+1`로 생성
+   - `maze`를 `vector<string>`이나 `vector<vector<int>>`로 두면 의미가 더 명확
+
+  - **Improvement:**
+   - 조기 종료: `if (cur == make_pair(n,m)) break;`로 약간의 가지치기 가능.
+   - 0-based로 바꾸면 인덱싱이 간단해지고 경계식도 직관적.
+   - `q.emplace(nxt_x, nxt_y);` 사용으로 미세 상수항 개선.
+
+  - **Problem Hint:**
+   - 동일 가중치 격자 최단 경로 = **BFS**가 정답이다.
+  
+  ---
+  
+  ### BOJ 11724 - 연결 요소의 개수 (Number of Connected Components)
+  - **Topic:** BFS | Graph | Connected-Components
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(N + M)
+  - **Space Complexity:** O(N + M)
+
+  - **Key Idea:**
+   - 1..N 순회하며 `visited[i]==false`면 `cnt++` 후 BFS로 해당 컴포넌트 전체 방문.
+   - 큐에서 꺼낸 정점의 모든 이웃을 방문하지 않았을 때만 큐에 삽입.
+
+  - **Caution:**
+   - 1-based 인덱스와 배열 크기를 일관되게 유지.
+   - 큐 삽입 시 바로 `visited=true` 처리해 중복 삽입 방지(현재 구현처럼).
+
+  - **Improvement:**
+   - `con_list[cur]` 순회에서 `const auto&` 사용 등 미세 가독성 향상 가능.
+   - 간선 입력이 크지 않다면 추가 최적화는 불필요.
+
+  - **Problem Hint:**
+   - 하라는 대로 하자.
+  
+  ---
+  
+  ### BOJ 1987 - 알파벳 (Alphabet)
+  - **Topic:** DFS | Backtracking | Grid
+  - **Folder:** `graph/dfs/`
+  - **Time Complexity:** O(R*C*min(26, R*C))
+  - **Space Complexity:** O(26)
+
+  - **Key Idea:**
+   - `is_used[26]`로 알파벳 사용 여부만 관리하며 DFS 백트래킹.
+   - 다음 칸의 알파벳이 사용 중이면 그 분기는 중단.
+   - 경로 길이는 `depth`로 관리하고, 되돌아올 때 `mx = max(mx, depth)`.
+
+  - **Caution:**
+   - 1-based 인덱스 사용 시 경계 체크 일관 유지.
+   - `mx == 26`이면 즉시 가지치기(현재 코드 구현됨).
+   - `board`를 `vector<string>`(0-based)로 바꾸면 인덱싱이 간결하나, 현재도 일관적이면 문제 없음.
+
+  - **Improvement:**
+   - 미세 최적화: `mx = max(mx, depth);`를 **자식 호출 직후/루프 중간**에 배치해 조기 가지치기 조건(`if (mx==26)`)과 결합하면 평균 탐색량 감소.
+   - 방향 배열을 `constexpr int dx[4]` 등으로 선언해 의도 명확화.
+
+  - **Problem Hint:**
+   - **상태는 "사용된 알파벳 집합"**이다 -> 격자 방문 여부보다 **알파벳 사용 여부**가 핵심.
+   - 알파벳은 26개뿐 -> **최대 경로 길이는 26**이 상한. 여기에 도달하면 더 탐색할 필요 없음.
+   - 다음 칸으로 갈 때는 **현재 사용 집합에 그 글자가 없는지만 체크**하면 된다.
+   - 대안 관점: 상태를 `(x, y, mask)`로 볼 수 있어 DFS가 자연스럽다. (메모이제이션은 상태 수가 커서 기본 풀이에선 생략)
+   - 그리디로는 해결 불가. **완전탐색+가지치기(백트래킹)**가 정석.
+
+  ---
+  

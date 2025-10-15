@@ -22,7 +22,8 @@ Folder: stack/monotonic
 - "앞에서 더 작은 숫자를 지워 더 큰 숫자를 당겨온다" -> **greedy + 단조 스택**이 정석.
 
 */
-// 2025-10-11 ORIGINAL
+
+// 2025-10-15 D+3 REVIEW
 
 #include <iostream>
 #include <string>
@@ -39,29 +40,80 @@ int main()
 	string str;
 	cin >> n >> k >> str;
 
-	stack<int> stk;
-	for (int i = 0; i < str.size(); i++)
-	{
-		int val = str[i] - '0';
+	stack<int> stk, ans;
 
-		// 값이 top보다 큰데 top을 pop하고 값을 stack에 추가해도 아직 추가할 수가 더 남아 있다면 반복
-		while (!stk.empty() && stk.top() < val && ((int)str.size() - (i + 1) >= n - k - (int)stk.size()))
+	for (char c : str)
+	{
+		int val = c - '0';
+
+		while (!stk.empty() && stk.top() < val && k > 0)
+		{
+			k--;
 			stk.pop();
-		if(stk.size() < n - k)
-			stk.push(val);
+		}
+		stk.push(val);
 	}
 
-	stack<int> out;
-	while (!stk.empty())
+	while (k > 0)
 	{
-		out.push(stk.top());
+		k--;
 		stk.pop();
 	}
 
-	while (!out.empty())
+	while (!stk.empty())
 	{
-		cout << out.top();
-		out.pop();
+		ans.push(stk.top());
+		stk.pop();
+	}
+
+	while (!ans.empty())
+	{
+		cout << ans.top();
+		ans.pop();
 	}
 	cout << '\n';
 }
+
+// 2025-10-11 ORIGINAL
+
+// #include <iostream>
+// #include <string>
+// #include <stack>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, k;
+// 	string str;
+// 	cin >> n >> k >> str;
+// 
+// 	stack<int> stk;
+// 	for (int i = 0; i < str.size(); i++)
+// 	{
+// 		int val = str[i] - '0';
+// 
+// 		// 값이 top보다 큰데 top을 pop하고 값을 stack에 추가해도 아직 추가할 수가 더 남아 있다면 반복
+// 		while (!stk.empty() && stk.top() < val && ((int)str.size() - (i + 1) >= n - k - (int)stk.size()))
+// 			stk.pop();
+// 		if(stk.size() < n - k)
+// 			stk.push(val);
+// 	}
+// 
+// 	stack<int> out;
+// 	while (!stk.empty())
+// 	{
+// 		out.push(stk.top());
+// 		stk.pop();
+// 	}
+// 
+// 	while (!out.empty())
+// 	{
+// 		cout << out.top();
+// 		out.pop();
+// 	}
+// 	cout << '\n';
+// }

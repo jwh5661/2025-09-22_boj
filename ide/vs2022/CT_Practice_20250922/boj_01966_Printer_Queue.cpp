@@ -30,7 +30,7 @@ Folder: queue/simulation
 - 최대 중요도 소진 시 mx_priority가 순차적으로 내려가 자연스럽게 처리.
 */
 
-// 2025-09-29 D+3 REIVEW
+// 2025-10-15 D+14 REIVEW
 
 #include <iostream>
 #include <vector>
@@ -51,37 +51,92 @@ int main()
 		int n, m, mx_prio = -1, cnt = 0;
 		cin >> n >> m;
 
-		vector<int> prio(10, 0);
+		vector<int> num_prio(10, 0);
 		queue<pair<int, int>> q;
 		for (int i = 0; i < n; i++)
 		{
-			int p;
-			cin >> p;
-			prio[p]++;
-			q.push(make_pair(i, p));
-			if (mx_prio < p) mx_prio = p;
+			int prio;
+			cin >> prio;
+			q.emplace(i, prio);
+			num_prio[prio]++;
+			if (mx_prio < prio) mx_prio = prio;
 		}
 
 		while (!q.empty())
 		{
+			while (num_prio[mx_prio] == 0) mx_prio--;
+
 			auto cur = q.front(); q.pop();
-			while (prio[mx_prio] == 0) mx_prio--;
+
 			if (cur.second == mx_prio)
 			{
 				cnt++;
 				if (cur.first == m)
 				{
-					cout << cnt << "\n";
+					cout << cnt << '\n';
 					break;
 				}
 				else
-					prio[mx_prio]--;
+					num_prio[cur.second]--;
 			}
 			else
 				q.push(cur);
 		}
 	}
 }
+
+// 2025-09-29 D+3 REIVEW
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		int n, m, mx_prio = -1, cnt = 0;
+// 		cin >> n >> m;
+// 
+// 		vector<int> prio(10, 0);
+// 		queue<pair<int, int>> q;
+// 		for (int i = 0; i < n; i++)
+// 		{
+// 			int p;
+// 			cin >> p;
+// 			prio[p]++;
+// 			q.push(make_pair(i, p));
+// 			if (mx_prio < p) mx_prio = p;
+// 		}
+// 
+// 		while (!q.empty())
+// 		{
+// 			auto cur = q.front(); q.pop();
+// 			while (prio[mx_prio] == 0) mx_prio--;
+// 			if (cur.second == mx_prio)
+// 			{
+// 				cnt++;
+// 				if (cur.first == m)
+// 				{
+// 					cout << cnt << "\n";
+// 					break;
+// 				}
+// 				else
+// 					prio[mx_prio]--;
+// 			}
+// 			else
+// 				q.push(cur);
+// 		}
+// 	}
+// }
 
 // 2025-09-26 D+0 REIVEW
 
