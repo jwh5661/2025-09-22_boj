@@ -258,8 +258,17 @@
     <ClCompile Include="boj_11724_Number_of_Connected_Components.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01987.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_01987_Alphabet.cpp">
+      <Filter>소스 파일\graph\dfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_03015_Oasis_Reunion.cpp">
+      <Filter>소스 파일\stack\monotonic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_06198_Rooftop_Garden.cpp">
+      <Filter>소스 파일\stack\monotonic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01158_Josephus_Problem.cpp">
+      <Filter>소스 파일\queue\josephus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

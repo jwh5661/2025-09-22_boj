@@ -20,7 +20,7 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-14 ORIGINAL
+// 2025-10-16 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -49,7 +49,7 @@ int main()
 
 	while (t--)
 	{
-		int k, worm = 0;
+		int k, cnt = 0;
 		cin >> m >> n >> k;
 
 		cabbage = vector<vector<int>>(m, vector<int>(n, 0));
@@ -66,37 +66,117 @@ int main()
 		{
 			for (int j = 0; j < n; j++)
 			{
-				if (visited[i][j]) continue;
 				if (cabbage[i][j] == 0) continue;
-				worm++;
+				if (visited[i][j]) continue;
+				cnt++;
 				BFS(i, j);
 			}
 		}
 
-		cout << worm << '\n';
+		cout << cnt << '\n';
 	}
 }
 
 void BFS(int x, int y)
 {
 	queue<pair<int, int>> q;
-	q.push(make_pair(x, y));
+	q.emplace(x, y);
 	visited[x][y] = true;
 
 	while (!q.empty())
 	{
 		auto cur = q.front(); q.pop();
-		
+
 		for (int i = 0; i < 4; i++)
 		{
-			int nxt_x = cur.X + dx[i];
-			int nxt_y = cur.Y + dy[i];
-
-			if (nxt_x < 0 || nxt_x >= m || nxt_y < 0 || nxt_y >= n) continue;
-			if (visited[nxt_x][nxt_y]) continue;
-			if (cabbage[nxt_x][nxt_y] == 0) continue;
-			q.push(make_pair(nxt_x, nxt_y));
-			visited[nxt_x][nxt_y] = true;
+			int nx = cur.X + dx[i];
+			int ny = cur.Y + dy[i];
+			if (nx < 0 || nx >= m || ny < 0 || ny >=n) continue;
+			if (cabbage[nx][ny] == 0) continue;
+			if (visited[nx][ny]) continue;
+			q.emplace(nx, ny);
+			visited[nx][ny] = true;
 		}
 	}
 }
+
+// 2025-10-14 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// #define X first
+// #define Y second
+// 
+// using namespace std;
+// 
+// void BFS(int x, int y);
+// 
+// vector<vector<int>> cabbage;
+// vector<vector<bool>> visited;
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { 1, -1, 0, 0 };
+// int n, m;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		int k, worm = 0;
+// 		cin >> m >> n >> k;
+// 
+// 		cabbage = vector<vector<int>>(m, vector<int>(n, 0));
+// 		visited = vector<vector<bool>>(m, vector<bool>(n, false));
+// 
+// 		for (int i = 0; i < k; i++)
+// 		{
+// 			int x, y;
+// 			cin >> x >> y;
+// 			cabbage[x][y] = 1;
+// 		}
+// 
+// 		for (int i = 0; i < m; i++)
+// 		{
+// 			for (int j = 0; j < n; j++)
+// 			{
+// 				if (visited[i][j]) continue;
+// 				if (cabbage[i][j] == 0) continue;
+// 				worm++;
+// 				BFS(i, j);
+// 			}
+// 		}
+// 
+// 		cout << worm << '\n';
+// 	}
+// }
+// 
+// void BFS(int x, int y)
+// {
+// 	queue<pair<int, int>> q;
+// 	q.push(make_pair(x, y));
+// 	visited[x][y] = true;
+// 
+// 	while (!q.empty())
+// 	{
+// 		auto cur = q.front(); q.pop();
+// 		
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			int nxt_x = cur.X + dx[i];
+// 			int nxt_y = cur.Y + dy[i];
+// 
+// 			if (nxt_x < 0 || nxt_x >= m || nxt_y < 0 || nxt_y >= n) continue;
+// 			if (visited[nxt_x][nxt_y]) continue;
+// 			if (cabbage[nxt_x][nxt_y] == 0) continue;
+// 			q.push(make_pair(nxt_x, nxt_y));
+// 			visited[nxt_x][nxt_y] = true;
+// 		}
+// 	}
+// }

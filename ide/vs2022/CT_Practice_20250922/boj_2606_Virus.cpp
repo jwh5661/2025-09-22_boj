@@ -17,7 +17,7 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-14 ORIGINAL
+// 2025-10-16 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -30,13 +30,11 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int v, e;
+	int v, e, cnt = 0;
 	cin >> v >> e;
 
 	vector<vector<int>> con_list(v + 1);
-	vector<bool> visited(v + 1, false);
-	queue<int> q;
-	int cnt = 0;
+	vector<bool> visited(v + 1);
 
 	for (int i = 0; i < e; i++)
 	{
@@ -46,20 +44,66 @@ int main()
 		con_list[arr].push_back(dep);
 	}
 
+	queue<int> q;
 	q.push(1);
 	visited[1] = true;
-
 	while (!q.empty())
 	{
 		int cur = q.front(); q.pop();
 		for (int i : con_list[cur])
 		{
 			if (visited[i]) continue;
-			q.push(i);
-			visited[i] = true;
 			cnt++;
+			visited[i] = true;
+			q.push(i);
 		}
 	}
-
 	cout << cnt << '\n';
 }
+
+// 2025-10-14 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int v, e;
+// 	cin >> v >> e;
+// 
+// 	vector<vector<int>> con_list(v + 1);
+// 	vector<bool> visited(v + 1, false);
+// 	queue<int> q;
+// 	int cnt = 0;
+// 
+// 	for (int i = 0; i < e; i++)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 		con_list[dep].push_back(arr);
+// 		con_list[arr].push_back(dep);
+// 	}
+// 
+// 	q.push(1);
+// 	visited[1] = true;
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur = q.front(); q.pop();
+// 		for (int i : con_list[cur])
+// 		{
+// 			if (visited[i]) continue;
+// 			q.push(i);
+// 			visited[i] = true;
+// 			cnt++;
+// 		}
+// 	}
+// 
+// 	cout << cnt << '\n';
+// }

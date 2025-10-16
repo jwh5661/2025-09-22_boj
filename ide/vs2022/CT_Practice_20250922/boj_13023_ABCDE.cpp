@@ -21,7 +21,7 @@ Folder: graph/dfs
 
 */
 
-// 2025-10-14 ORIGINAL
+// 2025-10-16 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -40,13 +40,13 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int v, e;
-	cin >> v >> e;
+	int n, m;
+	cin >> n >> m;
 
-	con_list.resize(v);
-	visited = vector<bool>(v, false);
+	con_list = vector<vector<int>>(n);
+	visited = vector<bool>(n, false); 
 
-	for (int i = 0; i < e; i++)
+	for (int i = 0; i < m; i++)
 	{
 		int dep, arr;
 		cin >> dep >> arr;
@@ -54,9 +54,9 @@ int main()
 		con_list[arr].push_back(dep);
 	}
 
-	for (int i = 0; i < v; i++)
+	for (int i = 0; i < n; i++)
 	{
-		fill(visited.begin(), visited.end(), false);
+		if (visited[i]) continue;
 		depth = 0;
 		DFS(i);
 		if (found)
@@ -72,13 +72,14 @@ int main()
 void DFS(int node)
 {
 	if (found) return;
-	visited[node] = true;
 	depth++;
+	visited[node] = true;
+
 	if (depth == 5)
 	{
 		found = true;
-		depth--;
 		visited[node] = false;
+		depth--;
 		return;
 	}
 
@@ -87,7 +88,78 @@ void DFS(int node)
 		if (visited[i]) continue;
 		DFS(i);
 	}
-	
+
 	depth--;
 	visited[node] = false;
 }
+
+// 2025-10-14 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// void DFS(int node);
+// 
+// vector<vector<int>> con_list;
+// vector<bool> visited;
+// int depth;
+// bool found = false;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int v, e;
+// 	cin >> v >> e;
+// 
+// 	con_list.resize(v);
+// 	visited = vector<bool>(v, false);
+// 
+// 	for (int i = 0; i < e; i++)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 		con_list[dep].push_back(arr);
+// 		con_list[arr].push_back(dep);
+// 	}
+// 
+// 	for (int i = 0; i < v; i++)
+// 	{
+// 		fill(visited.begin(), visited.end(), false);
+// 		depth = 0;
+// 		DFS(i);
+// 		if (found)
+// 		{
+// 			cout << 1 << '\n';
+// 			return 0;
+// 		}
+// 	}
+// 
+// 	cout << 0 << '\n';
+// }
+// 
+// void DFS(int node)
+// {
+// 	if (found) return;
+// 	visited[node] = true;
+// 	depth++;
+// 	if (depth == 5)
+// 	{
+// 		found = true;
+// 		depth--;
+// 		visited[node] = false;
+// 		return;
+// 	}
+// 
+// 	for (int i : con_list[node])
+// 	{
+// 		if (visited[i]) continue;
+// 		DFS(i);
+// 	}
+// 	
+// 	depth--;
+// 	visited[node] = false;
+// }

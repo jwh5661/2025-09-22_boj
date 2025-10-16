@@ -1442,4 +1442,83 @@ for (int i = 0, j = 0; i < n; i++)
    - 그리디로는 해결 불가. **완전탐색+가지치기(백트래킹)**가 정석.
 
   ---
+
+  ## 📅 2025-10-16
+  **BOJ 3015 - 오아시스 재결합**
+  **BOJ 6198 - 옥상 정원 꾸미기**
+  **BOJ 1158 - 요세푸스 문제**
+  
+  ### BOJ 3015 - 오아시스 재결합 (Oasis Reunion)
+  - **Topic:** Monotonic Stack | Stack | Counting
+  - **Folder:** `stack/monotonic/`
+  - **Time Complexity:** O(N)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 스택을 키 내림차순으로 유지하며 `(height, count)`를 저장.
+   - 새 키가 오면 더 작은 키 그룹을 모두 pop하면서 `+count`, 같은 키는 `+count` 후 병합.
+   - 정리 후 스택이 남아 있으면 맨 위 큰 키와 `+1`.
+
+  - **Caution:**
+   - 정답형은 `long long`.
+   - 같은 키 로직: `ans += top.count` -> `group += top.count` -> `pop()` 순으로 처리.
+   - 시작값은 `0`; `n-1` 같은 사전 가산은 하지 않기.
+
+  - **Improvement:**
+   - 같은 키를 추가 할 때 그냥 스택으로 숫자를 넣는 게 아니라 스택을 pair로 선언해서 count를 올려준다는 발상을 해야 한다.
+
+  - **Problem Hint:**
+   - 쌍을 직접 세면 O(N^2).
+   - **단조 스택**으로 "보이는 관계"를 한 번의 통과로 세어라:
+    - 작으면 전부 보임 -> 그룹 수만큼 더함
+    - 같으면 서로 전부 보임 -> 그룹 수만큼 더하고 병합
+    - 크면 바로 한 명만 보임 -> +1
+  
+  ---
+  
+  ### BOJ 6198 - 옥상 정원 꾸미기 (Rooftop Garden)
+  - **Topic:** Monotonic Stack | Stack | Greedy
+  - **Folder:** `stack/monotonic/`
+  - **Time Complexity:** O(N)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 단조 감소 스택을 유지하며, 현재 높이 `h`보다 **작거나 같은** 높이는 팝.
+   - 팝 이후 스 택에 남은 수(`stk.size()`)가 `h`를 볼 수 있는 **왼쪽 건물 수**이므로 누적.
+   - 그 뒤 `h`를 스택에 푸시.
+
+  - **Caution:**
+   - 비교 연산은 `<=` (같은 높이도 시야 차단).
+   - 누적 카운트는 `long long`.
+   - 별도 마무리 합산 불필요(순회 중 모두 계산).
+
+  - **Improvement:**
+   - `build.reserve(n)`로 미세한 재할당 방지.
+
+  - **Problem Hint:**
+   - 한 빌딩에서 보이는 건물은 **왼쪽에 있는 자신보다 높은 건물들**뿐이다.
+   - "보이는 쌍"을 직접 세지 말고, **오른쪽에서 등장할 때마다** 스택 크기만큼 한 번에 더하라.
+  
+  ---
+  
+  ### BOJ 1158 - 요세푸스 문제 (Josephus Problem)
+  - **Topic:** Queue | Simulation
+  - **Folder:** `queue/simulation/`
+  - **Time Complexity:** O(N*K)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 큐에 1..N을 넣고 `(K-1)`회 회전 + `K`번째 pop을 반복.
+
+  - **Caution:**
+   - 출력 형식의 쉼표/공백/괄호를 정확히 맞추기.
+
+  - **Improvement:**
+   - `int r = (k - 1) % q.size();`만큼만 회전해 불필요한 이동을 줄일 수 있음.
+   - 결과를 `string out;`에 누적 후 한 번에 `cout << out;` 출력.
+
+  - **Problem Hint:**
+   - 하라는 대로 하자.
+  
+  ---
   
