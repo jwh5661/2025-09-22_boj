@@ -22,7 +22,7 @@ Folder: impl/type-casting/
 - "입력으로 주어진 문자의 아스키 코드 값을 출력한다" → 문자 그대로 `int(c)`.
 */
 
-// 2025-10-3 D+3 REVIEW
+// 2025-10-20 D+14 REVIEW
 
 #include <iostream>
 
@@ -35,8 +35,24 @@ int main()
 
 	char c;
 	cin >> c;
-	cout << static_cast<int>(static_cast<unsigned char>(c)) << '\n';
+	cout << static_cast<int>(c) << '\n';
 }
+
+// 2025-10-3 D+3 REVIEW
+
+// #include <iostream>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	char c;
+// 	cin >> c;
+// 	cout << static_cast<int>(static_cast<unsigned char>(c)) << '\n';
+// }
 
 // 2025-09-30 D+0 REVIEW
 

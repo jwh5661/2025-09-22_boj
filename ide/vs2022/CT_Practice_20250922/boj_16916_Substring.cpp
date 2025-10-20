@@ -23,7 +23,7 @@ Folder: string/kmp
 - 최악 예시 T="aaaa...a", P="aaaab"에서도 KMP는 선형.
 */
 
-//2025-10-03 D+3 REVIEW
+//2025-10-20 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -47,18 +47,18 @@ int main()
 		return 0;
 	}
 
-	vector<int> lis(m, 0);
+	vector<int> lps(m, 0);
 	for (int i = 1; i < m; i++)
 	{
-		int j = lis[i - 1];
-		while (j > 0 && p[i] != p[j]) j = lis[j - 1];
+		int j = lps[i - 1];
+		while (j > 0 && p[i] != p[j]) j = lps[j - 1];
 		if (p[i] == p[j]) j++;
-		lis[i] = j;
+		lps[i] = j;
 	}
 
 	for (int i = 0, j = 0; i < n; i++)
 	{
-		while (j > 0 && s[i] != p[j]) j = lis[j - 1];
+		while (j > 0 && s[i] != p[j]) j = lps[j - 1];
 		if (s[i] == p[j])
 		{
 			j++;
@@ -72,6 +72,56 @@ int main()
 
 	cout << 0 << '\n';
 }
+
+//2025-10-03 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string s, p;
+// 	cin >> s >> p;
+// 
+// 	int n = (int)s.size(), m = (int)p.size();
+// 
+// 	if (n < m)
+// 	{
+// 		cout << 0 << '\n';
+// 		return 0;
+// 	}
+// 
+// 	vector<int> lis(m, 0);
+// 	for (int i = 1; i < m; i++)
+// 	{
+// 		int j = lis[i - 1];
+// 		while (j > 0 && p[i] != p[j]) j = lis[j - 1];
+// 		if (p[i] == p[j]) j++;
+// 		lis[i] = j;
+// 	}
+// 
+// 	for (int i = 0, j = 0; i < n; i++)
+// 	{
+// 		while (j > 0 && s[i] != p[j]) j = lis[j - 1];
+// 		if (s[i] == p[j])
+// 		{
+// 			j++;
+// 			if (j == m)
+// 			{
+// 				cout << 1 << '\n';
+// 				return 0;
+// 			}
+// 		}
+// 	}
+// 
+// 	cout << 0 << '\n';
+// }
 
 // 2025-10-03 D+3 REVIEW
 // boyer_moore_search 연습. 시간 복잡도 O(N * M)

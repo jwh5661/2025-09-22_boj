@@ -1522,3 +1522,83 @@ for (int i = 0, j = 0; i < n; i++)
   
   ---
   
+  ## 📅 2025-10-20
+  **BOJ 7569 - 토마토**
+  **BOJ 2589 - 보물섬**
+  **BOJ 1520 - 내리막 길**
+  
+  ### BOJ 7569 - 토마토 (Tomato)
+  - **Topic:** BFS | Graph | 3D Grid
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(H*N*M)
+  - **Space Complexity:** O(H*N*M)
+
+  - **Key Idea:**
+   - 익은 토마토를 멀티 소스로 큐에 넣고 6방향 BFS로 전파.
+   - 익을 수 없는 칸은 visited가 -1로 남으므로 탐색 후 한 번에 판정.
+
+  - **Caution:**
+   - 경계: `0 <= x < H`, `0 <= y < N`, `0 <= z < M`.
+   - 입력 시 0칸만 `visited = -1`로 초기화해 미방문 표시.
+   - 이웃 확장 시 **값 필터**(`tomato[nx][ny][nz] == 0`)와 **상태 필터**(`visited[nx][ny][nz] == -1`)을 함께 적용.
+
+  - **Improvement:**
+   - 방향 벡터를 `int d[6][3] = {{-1,0,0}, {1,0,0}. {0,-1,0}, {0,1,0}, {0,0,-1},{0,0,1}};`로 묶어 인덱스 실수 감소.
+   - `visited`를 `short`로 낮춰 메모리 절감(최대 일수 범위 확인 필수).
+   - 의미 명확화를 위해 레벨별 루프(큐 크기 기준)로 하루 단위 증가를 명시적으로 구현.
+
+  - **Problem Hint:**
+   - "하루마다 익는다" -> **BFS 레벨**로 치환.
+   - 출발점이 여러 개 -> **멀티 소스 BFS** 적용.
+   - "모두 익는 최소 일수" = **최대 레벨**, 방문 불가가 있으면 `-1`.
+  
+  ---
+  
+  ### BOJ 2589 - 보물섬 (Treasure Island)
+  - **Topic:** BFS | Graph | Grid
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O((N·M)·(N·M))
+  - **Space Complexity:** O(N·M)
+
+  - **Key Idea:**
+   - 각 육지 칸을 시작점으로 **BFS**를 돌려 그 지점에서의 최장 최단거리를 구하고, 그들 중 **최댓값**을 출력한다.
+
+  - **Caution:**
+   - 고립된 육지의 경우도 거리는 **0** -> `ans = 0`으로 초기화(현재 코드 OK).
+   - 방문 배열은 거리 기록용으로 `-1` 미방문, `0` 시작점, `+1`씩 증가 패턴 유지.
+   - 경계 체크: `0 <= x < n`, `0 <= y < m`.
+
+  - **Improvement:**
+   - **컴포넌트 기반 2-BFS 최적화:** 각 연결 컴포넌트별로 임의의 육지에서 BFS->가장 먼 점 u 찾기, u에서 다시 BFS->지름(diameter). 모든 칸에서 BFS 하는 것보다 평균적으로 빠름.
+   - **시작점 휴리스틱:** 바다에 인접한 육지(경계 육지)에서만 BFS 시작 -> 평균 시간 단축.
+   - **메모리/가독성:** `vector<sring>`으로 지도를 보관하고 `visited`만 `vector<vector<int>>`로 유지.
+
+  - **Problem Hint:**
+   - 격자에서의 최단거리는 **BFS 레벨** = 거리.
+   - "가장 먼 두 육지"는 한 지점에서의 **최장 최단거리**의 **최댓값**과 동일.
+  
+  ---
+  
+  ### BOJ 1520 - 내리막 길 (Downhill)
+  - **Topic:** DFS | DP (Memoization) | DAG
+  - **Folder:** `dp/graph/`
+  - **Time Complexity:** O(M·N)
+  - **Space Complexity:** O(M·N)
+
+  - **Key Idea:**
+   - 내리막 제약으로 DAG가 되므로, 각 칸에서 도착지까지의 **경로 수**를 DFS로 계산하고 `dp`에 캐시.
+
+  - **Caution:**
+   - `visited`는 사용하지 않는다(경로 공유를 막아 오답 유발).
+   - 기저 및 전이 조건을 엄격히: `map[nx][ny] < map[x][y]`.
+
+  - **Improvement:**
+   - 경로 수가 커질 수 있으니 `vector<vector<long long>> dp` 고려.
+   - 방향 배열을 `int d[4][2] = {{0,1},{0,-1},{-1,0},{1,0}};`로 묶어 실수 감소.
+   - 큰 입력에서 최적화 플래그(-O2) 사용 권장.
+
+  - **Problem Hint:**
+   - "경로 수 세기"는 **Top-Down DP** 패턴: 한 번 푼 칸은 다시 풀지 않는다.
+  
+  ---
+  
