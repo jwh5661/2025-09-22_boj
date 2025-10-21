@@ -1602,3 +1602,80 @@ for (int i = 0, j = 0; i < n; i++)
   
   ---
   
+  ## 📅 2025-10-21
+  **BOJ 6549 - 히스토그램에서 가장 큰 직사각형**
+  **BOJ 11003 - 최솟값 찾기**
+  **BOJ 5427 - 불**
+  
+  ### BOJ 6549 - 히스토그램에서 가장 큰 직사각형 (Largest Rectangle in a Histogram)
+  - **Topic:** Stack | Monotonic Stack | Greedy
+  - **Folder:** `stack/monotonic/`
+  - **Time Complexity:** O(N)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 인덱스 기반 **단조 증가 스택** 유지. 현재 높이가 감소하면 pop된 막대를 그 구간의 **최소 높이**로 보고 면적 계산.
+   - 오른쪽 경계 = 현재 i(미포함), 왼쪽 경계 = pop 후 스택 top(없으면 -1).
+    `width = i - (left + 1)`, `area = h[top] * width`.
+
+  - **Caution:**
+   - 면적은 반드시 `long long`.
+   - 배열 끝에 **센티널 0**을 추가해 잔여 스택을 한 번에 정산.
+   - 스택 비었을 때와 아닐 때의 **너비 분기**를 정확히 구현.
+
+  - **Improvement:**
+   - 타입 일관성: (A) 인덱스 `int` + `int N = (int)h.size();`, (B) 전부 `size_t` + 곱셈 직전 `width`만 `long long` 캐스팅.
+   - `h.reserve(n + 1)`로 재할당 최소화, 미세 성능 향상.
+
+  - **Problem Hint:**
+   - 최대면적은 어떤 구간에서의 **최소 높이**로 결정되고, 그 최소가 바뀌는 순간이 **스택이 깨질 때**다.
+   - 그래서 **감소하는 순간**에만 면적을 갱신하면 전체가 **선형 시간**으로 끝난다.
+  
+  ---
+  
+  ### BOJ 11003 - 최솟값 찾기 (Sliding Window Minimum)
+  - **Topic:** Deque | Monotonic Queue | Sliding Window
+  - **Folder:** `deque/monoqueue/`
+  - **Time Complexity:** O(N)
+  - **Space Complexity:** O(N)
+
+  - **Key Idea:**
+   - 인덱스 기반 **단조 증가 데크**를 유지하여 각 단계의 윈도우 최솟값을 `O(1)`에 얻는다.
+   - 앞은 범위를 벗어나면 제거, 뒤는 현재 값 이상을 제거해 후보만 유지.
+
+  - **Caution:**
+   - 경계 체크는 `dq.front() <= i - L`로 명확히.
+   - 대용량 입출력 최적화 유지, 마지막에 **개행 출력**.
+
+  - **Improvement:**
+   - 메모리 절약을 위해 결과를 **즉시 출력**(현재 방식) 유지.
+   - 필요 시 출력 버퍼링으로 약간의 속도 향상 가능.
+
+  - **Problem Hint:**
+   - 슬라이딩 윈도우 최소/최대는 모노토닉 데크 패턴으로 각 원소가 **1번 들어가고 1번 나온다** -> 선형 시간.
+  
+  ---
+  
+  ### BOJ 5427 - 불 (Fire) - 방법 A: 단일 큐(불->사람 순)
+  - **Topic:** BFS | Multi-source | Simulation
+  - **Folder:** `graph/bfs/`
+  - **Time Complexity:** O(H·W)
+  - **Space Complexity:** O(H·W)
+
+  - **Key Idea:**
+   - 초기 큐에 `*`들을 먼저, 그다음 `@`을 넣어 매 시각 **불 먼저->사람** 순서 유지.
+   - 불이 확산될 때 해당 칸을 즉시 `'*'`로 마킹해 동시 도착 시 불 우선 보장.
+
+  - **Caution:**
+   - 큐 처리 순서에 민감(동일 시각 섞임 주의).
+   - 사람 쪽 방문/거리 테이블 필요. 시작점 부재 시 즉시 실패 처리.
+
+  - **Improvement:**
+   - 레벨 단위(큐 크기)로 "불 레벨 모두 ->  사람 레벨 모두" 처리 명시.
+   - 문자 덮어쓰기 대신 `dist`/보조 배열로 판정 분리.
+   
+  - **Problem Hint:**
+   - 멀티 소스 BFS, 동시 도착 시 불 우선, 경계 밖 탈출이 포인트.
+  
+  ---
+  

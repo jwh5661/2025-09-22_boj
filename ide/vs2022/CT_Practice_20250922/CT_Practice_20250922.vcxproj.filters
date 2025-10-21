@@ -112,6 +112,9 @@
     <Filter Include="소스 파일\dp\graph">
       <UniqueIdentifier>{871b9df6-56da-479c-ad61-f2a72fbf9e90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\deque\monoqueue">
+      <UniqueIdentifier>{72dac80c-e459-431f-b81c-de926c9dc9bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -281,6 +284,15 @@
     </ClCompile>
     <ClCompile Include="boj_01520_Downhill.cpp">
       <Filter>소스 파일\dp\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_06549_Largest_Rectangle_in_a_Histogram.cpp">
+      <Filter>소스 파일\stack\monotonic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11003_Sliding_Window_Minimum.cpp">
+      <Filter>소스 파일\deque\monoqueue</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_05427.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
