@@ -21,7 +21,7 @@ Folder: stack/brackets
 - 복잡한 괄호 라인도 규칙대로만 처리하면 yes/no가 명확히 결정된다.
 */
 
-// 2025-10-03 D+3 REVIEW
+// 2025-10-23 D+14 REVIEW
 
 #include <iostream>
 #include <stack>
@@ -45,23 +45,23 @@ int main()
 				stk.push(c);
 			else if (c == ')')
 			{
-				if (!stk.empty() && stk.top() == '(')
-					stk.pop();
-				else
+				if (stk.empty() || stk.top() != '(')
 				{
 					is_balanced = false;
 					break;
 				}
+				else
+					stk.pop();
 			}
 			else if (c == ']')
 			{
-				if (!stk.empty() && stk.top() == '[')
-					stk.pop();
-				else
+				if (stk.empty() || stk.top() != '[')
 				{
 					is_balanced = false;
 					break;
 				}
+				else
+					stk.pop();
 			}
 		}
 
@@ -70,7 +70,59 @@ int main()
 		else
 			cout << "no\n";
 	}
+
 }
+
+// 2025-10-03 D+3 REVIEW
+
+// #include <iostream>
+// #include <stack>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string str;
+// 	while (getline(cin, str) && str != ".")
+// 	{
+// 		stack<char> stk;
+// 		bool is_balanced = true;
+// 		for (char c : str)
+// 		{
+// 			if (c == '(' || c == '[')
+// 				stk.push(c);
+// 			else if (c == ')')
+// 			{
+// 				if (!stk.empty() && stk.top() == '(')
+// 					stk.pop();
+// 				else
+// 				{
+// 					is_balanced = false;
+// 					break;
+// 				}
+// 			}
+// 			else if (c == ']')
+// 			{
+// 				if (!stk.empty() && stk.top() == '[')
+// 					stk.pop();
+// 				else
+// 				{
+// 					is_balanced = false;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 
+// 		if (is_balanced && stk.empty())
+// 			cout << "yes\n";
+// 		else
+// 			cout << "no\n";
+// 	}
+// }
 
 // 2025-10-01 D+0 REVIEW
 

@@ -20,10 +20,10 @@ Folder: stack/basic
 - 자료구조 상태 변화 후 곧바로 요구 결과를 출력하는 패턴을 유지.
 */
 
-// 2025-10-04 D+3 REVIEW
+// 2025-10-23 D+14 REVIEW
 
 #include <iostream>
-#include <vector>
+#include <stack>
 #include <string>
 
 using namespace std;
@@ -36,49 +36,99 @@ int main()
 	int n;
 	cin >> n;
 
-	vector<int> v;
-	v.reserve(n);
-
+	stack<int> stk;
 	while (n--)
 	{
-		string s;
-		cin >> s;
+		string str;
+		cin >> str;
 
-		if (s == "push")
+		if (str[0] == 'p')
 		{
-			int val;
-			cin >> val;
-
-			v.push_back(val);
-		}
-		else if (s == "pop")
-		{
-			if (!v.empty())
+			if (str[1] == 'u')
 			{
-				cout << v.back() << '\n';
-				v.pop_back();
+				int val;
+				cin >> val;
+				stk.push(val);
 			}
-			else
-				cout << -1 << '\n';
+			else if (str[1] == 'o')
+			{
+				if (!stk.empty())
+				{
+					cout << stk.top() << '\n';
+					stk.pop();
+				}
+				else
+					cout << -1 << '\n';
+			}
 		}
-		else if (s == "size")
-			cout << v.size() << '\n';
-		else if (s == "empty")
-		{
-			if (v.empty())
-				cout << 1 << '\n';
-			else
-				cout << 0 << '\n';
-		}
-		else if (s == "top")
-		{
-			if (!v.empty())
-				cout << v.back() << '\n';
-			else
-				cout << -1 << '\n';
-		}
+		else if (str[0] == 's')
+			cout << stk.size() << '\n';
+		else if (str[0] == 'e')
+			cout << (stk.empty() ? 1 : 0) << '\n';
+		else if (str[0] == 't')
+			cout << (stk.empty() ? -1 : stk.top()) << '\n';
 	}
 }
+
+// 2025-10-04 D+3 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	cin >> n;
+// 
+// 	vector<int> v;
+// 	v.reserve(n);
+// 
+// 	while (n--)
+// 	{
+// 		string s;
+// 		cin >> s;
+// 
+// 		if (s == "push")
+// 		{
+// 			int val;
+// 			cin >> val;
+// 
+// 			v.push_back(val);
+// 		}
+// 		else if (s == "pop")
+// 		{
+// 			if (!v.empty())
+// 			{
+// 				cout << v.back() << '\n';
+// 				v.pop_back();
+// 			}
+// 			else
+// 				cout << -1 << '\n';
+// 		}
+// 		else if (s == "size")
+// 			cout << v.size() << '\n';
+// 		else if (s == "empty")
+// 		{
+// 			if (v.empty())
+// 				cout << 1 << '\n';
+// 			else
+// 				cout << 0 << '\n';
+// 		}
+// 		else if (s == "top")
+// 		{
+// 			if (!v.empty())
+// 				cout << v.back() << '\n';
+// 			else
+// 				cout << -1 << '\n';
+// 		}
+// 	}
+// }
 
 // 2025-10-01 D+0 REVIEW
 

@@ -25,7 +25,7 @@ Folder: stack/evaluation
 
 */
 
-// 2025-10-05 D+3 REVIEW
+// 2025-10-23 D+14 REVIEW
 
 #include <iostream>
 #include <stack>
@@ -41,66 +41,143 @@ int main()
 	string str;
 	cin >> str;
 	stack<char> stk;
-	long long sum = 0, mul = 1;
+	long long mul = 1, val = 0;
 	bool just_open = false;
-	
+
 	for (char c : str)
 	{
 		if (c == '(')
 		{
-			mul *= 2;
-			stk.push(c);
 			just_open = true;
+			stk.push(c);
+			mul *= 2;
 		}
 		else if (c == '[')
 		{
-			mul *= 3;
-			stk.push(c);
 			just_open = true;
+			stk.push(c);
+			mul *= 3;
 		}
 		else if (c == ')')
 		{
-			if (!stk.empty() && stk.top() == '(')
+			if (stk.empty() || stk.top() != '(')
+			{
+				cout << 0 << '\n';
+				return 0;
+			}
+			else
 			{
 				if (just_open)
 				{
-					sum += mul;
+					val += mul;
 					just_open = false;
 				}
 				mul /= 2;
 				stk.pop();
 			}
-			else
+		}
+		else if (c == ']')
+		{
+			if (stk.empty() || stk.top() != '[')
 			{
 				cout << 0 << '\n';
 				return 0;
 			}
-		}
-		else if (c == ']')
-		{
-			if (!stk.empty() && stk.top() == '[')
+			else
 			{
 				if (just_open)
 				{
-					sum += mul;
+					val += mul;
 					just_open = false;
 				}
 				mul /= 3;
 				stk.pop();
 			}
-			else
-			{
-				cout << 0 << '\n';
-				return 0;
-			}
 		}
 	}
-	
+
 	if (stk.empty())
-		cout << sum << '\n';
+		cout << val << '\n';
 	else
 		cout << 0 << '\n';
 }
+
+// 2025-10-05 D+3 REVIEW
+
+// #include <iostream>
+// #include <stack>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string str;
+// 	cin >> str;
+// 	stack<char> stk;
+// 	long long sum = 0, mul = 1;
+// 	bool just_open = false;
+// 	
+// 	for (char c : str)
+// 	{
+// 		if (c == '(')
+// 		{
+// 			mul *= 2;
+// 			stk.push(c);
+// 			just_open = true;
+// 		}
+// 		else if (c == '[')
+// 		{
+// 			mul *= 3;
+// 			stk.push(c);
+// 			just_open = true;
+// 		}
+// 		else if (c == ')')
+// 		{
+// 			if (!stk.empty() && stk.top() == '(')
+// 			{
+// 				if (just_open)
+// 				{
+// 					sum += mul;
+// 					just_open = false;
+// 				}
+// 				mul /= 2;
+// 				stk.pop();
+// 			}
+// 			else
+// 			{
+// 				cout << 0 << '\n';
+// 				return 0;
+// 			}
+// 		}
+// 		else if (c == ']')
+// 		{
+// 			if (!stk.empty() && stk.top() == '[')
+// 			{
+// 				if (just_open)
+// 				{
+// 					sum += mul;
+// 					just_open = false;
+// 				}
+// 				mul /= 3;
+// 				stk.pop();
+// 			}
+// 			else
+// 			{
+// 				cout << 0 << '\n';
+// 				return 0;
+// 			}
+// 		}
+// 	}
+// 	
+// 	if (stk.empty())
+// 		cout << sum << '\n';
+// 	else
+// 		cout << 0 << '\n';
+// }
 
 // 2025-10-02 D+0 REVIEW
 

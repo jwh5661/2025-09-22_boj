@@ -24,7 +24,7 @@ Folder: stack/brackets
 
 */
 
-// 2025-10-05 D+3 REVIEW
+// 2025-10-23 D+14 REVIEW
 
 #include <iostream>
 #include <stack>
@@ -43,23 +43,22 @@ int main()
 	while (t--)
 	{
 		string str;
-		stack<char> stk;
-		bool is_vps = true;
 		cin >> str;
-		
+		bool is_vps = true;
+		stack<char> stk;
 		for (char c : str)
 		{
 			if (c == '(')
 				stk.push(c);
 			else if (c == ')')
 			{
-				if (!stk.empty() && stk.top() == '(')
-					stk.pop();
-				else
+				if (stk.empty() || stk.top() != '(')
 				{
 					is_vps = false;
 					break;
 				}
+				else
+					stk.pop();
 			}
 		}
 
@@ -69,6 +68,52 @@ int main()
 			cout << "NO\n";
 	}
 }
+
+// 2025-10-05 D+3 REVIEW
+
+// #include <iostream>
+// #include <stack>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		string str;
+// 		stack<char> stk;
+// 		bool is_vps = true;
+// 		cin >> str;
+// 		
+// 		for (char c : str)
+// 		{
+// 			if (c == '(')
+// 				stk.push(c);
+// 			else if (c == ')')
+// 			{
+// 				if (!stk.empty() && stk.top() == '(')
+// 					stk.pop();
+// 				else
+// 				{
+// 					is_vps = false;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 
+// 		if (is_vps && stk.empty())
+// 			cout << "YES\n";
+// 		else
+// 			cout << "NO\n";
+// 	}
+// }
 
 
 // 2025-10-02 D+0 REVIEW

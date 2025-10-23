@@ -22,7 +22,7 @@ Folder: stack/postfix
 
 */
 
-// 2025-10-05 D+3 REVIEW
+// 2025-10-23 D+14 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -40,34 +40,33 @@ int main()
 	int n;
 	string str;
 	cin >> n >> str;
-	vector<int> val(n);
-	stack<double> stk;
 
+	vector<double> val(n);
 	for (int i = 0; i < n; i++)
 		cin >> val[i];
 
+	stack<double> stk;
 	for (char c : str)
 	{
 		if ('A' <= c && c <= 'Z')
 			stk.push(val[c - 'A']);
 		else if (stk.size() > 1)
 		{
-			double tmp1 = stk.top(); stk.pop();
-			double tmp2 = stk.top(); stk.pop();
-
+			double val1 = stk.top(); stk.pop();
+			double val2 = stk.top(); stk.pop();
 			switch (c)
 			{
 			case '+':
-				stk.push(tmp2 + tmp1);
+				stk.push(val2 + val1);
 				break;
 			case '-':
-				stk.push(tmp2 - tmp1);
+				stk.push(val2 - val1);
 				break;
 			case '*':
-				stk.push(tmp2 * tmp1);
+				stk.push(val2 * val1);
 				break;
 			case '/':
-				stk.push(tmp2 / tmp1);
+				stk.push(val2 / val1);
 				break;
 			}
 		}
@@ -77,6 +76,62 @@ int main()
 
 	cout << fixed << setprecision(2) << stk.top() << '\n';
 }
+
+// 2025-10-05 D+3 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// #include <string>
+// #include <iomanip>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	string str;
+// 	cin >> n >> str;
+// 	vector<int> val(n);
+// 	stack<double> stk;
+// 
+// 	for (int i = 0; i < n; i++)
+// 		cin >> val[i];
+// 
+// 	for (char c : str)
+// 	{
+// 		if ('A' <= c && c <= 'Z')
+// 			stk.push(val[c - 'A']);
+// 		else if (stk.size() > 1)
+// 		{
+// 			double tmp1 = stk.top(); stk.pop();
+// 			double tmp2 = stk.top(); stk.pop();
+// 
+// 			switch (c)
+// 			{
+// 			case '+':
+// 				stk.push(tmp2 + tmp1);
+// 				break;
+// 			case '-':
+// 				stk.push(tmp2 - tmp1);
+// 				break;
+// 			case '*':
+// 				stk.push(tmp2 * tmp1);
+// 				break;
+// 			case '/':
+// 				stk.push(tmp2 / tmp1);
+// 				break;
+// 			}
+// 		}
+// 		else
+// 			return 0;
+// 	}
+// 
+// 	cout << fixed << setprecision(2) << stk.top() << '\n';
+// }
 
 // 2025-10-02 D+0 REVIEW
 

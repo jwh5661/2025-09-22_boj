@@ -21,7 +21,7 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-15 ORIGINAL
+// 2025-10-23 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -41,14 +41,13 @@ int main()
 	int n, m;
 	cin >> n >> m;
 
-	vector<vector<char>> maze(n + 1, vector<char>(m + 1, 0));
+	vector<vector<int>> maze(n + 1, vector<int>(m + 1, 0));
 	vector<vector<int>> visited(n + 1, vector<int>(m + 1, -1));
 
 	for (int i = 1; i <= n; i++)
 	{
 		string str;
 		cin >> str;
-
 		for (int j = 1; j <= m; j++)
 			maze[i][j] = str[j - 1] - '0';
 	}
@@ -60,20 +59,80 @@ int main()
 	while (!q.empty())
 	{
 		auto cur = q.front(); q.pop();
+		int cx = cur.first;
+		int cy = cur.second;
+		if (cur.first == n && cur.second == m)
+			break;
 
 		for (int i = 0; i < 4; i++)
 		{
-			int nxt_x = cur.first + dx[i];
-			int nxt_y = cur.second + dy[i];
+			int nx = cx + dx[i];
+			int ny = cy + dy[i];
 
-			if (nxt_x <= 0 || nxt_x > n || nxt_y <= 0 || nxt_y > m) continue;
-			if (maze[nxt_x][nxt_y] == 0) continue;
-			if (visited[nxt_x][nxt_y] != -1) continue;
-			
-			q.emplace(nxt_x, nxt_y);
-			visited[nxt_x][nxt_y] = visited[cur.first][cur.second] + 1;
+			if (nx <= 0 || nx > n || ny <= 0 || ny > m) continue;
+			if (maze[nx][ny] == 0) continue;
+			if (visited[nx][ny] != -1) continue;
+			q.emplace(nx, ny);
+			visited[nx][ny] = visited[cx][cy] + 1;
 		}
 	}
 
 	cout << visited[n][m] << '\n';
 }
+
+// 2025-10-15 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <string>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { 1, -1, 0, 0 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m;
+// 	cin >> n >> m;
+// 
+// 	vector<vector<char>> maze(n + 1, vector<char>(m + 1, 0));
+// 	vector<vector<int>> visited(n + 1, vector<int>(m + 1, -1));
+// 
+// 	for (int i = 1; i <= n; i++)
+// 	{
+// 		string str;
+// 		cin >> str;
+// 
+// 		for (int j = 1; j <= m; j++)
+// 			maze[i][j] = str[j - 1] - '0';
+// 	}
+// 
+// 	queue<pair<int, int>> q;
+// 	q.emplace(1, 1);
+// 	visited[1][1] = 1;
+// 
+// 	while (!q.empty())
+// 	{
+// 		auto cur = q.front(); q.pop();
+// 
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			int nxt_x = cur.first + dx[i];
+// 			int nxt_y = cur.second + dy[i];
+// 
+// 			if (nxt_x <= 0 || nxt_x > n || nxt_y <= 0 || nxt_y > m) continue;
+// 			if (maze[nxt_x][nxt_y] == 0) continue;
+// 			if (visited[nxt_x][nxt_y] != -1) continue;
+// 			
+// 			q.emplace(nxt_x, nxt_y);
+// 			visited[nxt_x][nxt_y] = visited[cur.first][cur.second] + 1;
+// 		}
+// 	}
+// 
+// 	cout << visited[n][m] << '\n';
+// }
