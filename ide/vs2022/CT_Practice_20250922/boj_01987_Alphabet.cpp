@@ -23,10 +23,12 @@ Folder: graph/dfs
 
 */
 
-// 2025-10-15 ORIGINAL
+// 2025-10-27 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -44,21 +46,22 @@ int main()
 	cin.tie(nullptr);
 
 	cin >> r >> c;
-	mx = -1;
-	depth = 0;
 
-	board = vector<vector<char>>(r + 1, vector<char>(c + 1));
+	board = vector<vector<char>>(r, vector<char>(c));
 	is_used = vector<bool>(26, false);
 
-	for (int i = 1; i <= r; i++)
+	for (int i = 0; i < r; i++)
 	{
 		string str;
 		cin >> str;
-		for (int j = 1; j <= c; j++)
-			board[i][j] = str[j - 1];
+
+		for (int j = 0; j < c; j++)
+			board[i][j] = str[j];
 	}
 
-	Solve(1, 1);
+	depth = 0;
+	mx = -1;
+	Solve(0, 0);
 
 	cout << mx << '\n';
 }
@@ -67,19 +70,82 @@ void Solve(int x, int y)
 {
 	if (mx == 26) return;
 	int idx = board[x][y] - 'A';
-	is_used[idx] = true;
 	depth++;
+	mx = max(depth, mx);
+	is_used[idx] = true;
+
 	for (int i = 0; i < 4; i++)
 	{
 		int nx = x + dx[i];
 		int ny = y + dy[i];
 
-		if (nx <= 0 || nx > r || ny <= 0 || ny > c) continue;
+		if (nx < 0 || nx >= r || ny < 0 || ny >= c) continue;
 		int nidx = board[nx][ny] - 'A';
 		if (is_used[nidx]) continue;
 		Solve(nx, ny);
 	}
-	is_used[idx] = false;
-	if (mx < depth) mx = depth;
+
 	depth--;
+	is_used[idx] = false;
 }
+
+// 2025-10-15 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// void Solve(int x, int y);
+// 
+// vector<vector<char>> board;
+// vector<bool> is_used;
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { 1, -1, 0, 0 };
+// int r, c, mx, depth;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	cin >> r >> c;
+// 	mx = -1;
+// 	depth = 0;
+// 
+// 	board = vector<vector<char>>(r + 1, vector<char>(c + 1));
+// 	is_used = vector<bool>(26, false);
+// 
+// 	for (int i = 1; i <= r; i++)
+// 	{
+// 		string str;
+// 		cin >> str;
+// 		for (int j = 1; j <= c; j++)
+// 			board[i][j] = str[j - 1];
+// 	}
+// 
+// 	Solve(1, 1);
+// 
+// 	cout << mx << '\n';
+// }
+// 
+// void Solve(int x, int y)
+// {
+// 	if (mx == 26) return;
+// 	int idx = board[x][y] - 'A';
+// 	is_used[idx] = true;
+// 	depth++;
+// 	for (int i = 0; i < 4; i++)
+// 	{
+// 		int nx = x + dx[i];
+// 		int ny = y + dy[i];
+// 
+// 		if (nx <= 0 || nx > r || ny <= 0 || ny > c) continue;
+// 		int nidx = board[nx][ny] - 'A';
+// 		if (is_used[nidx]) continue;
+// 		Solve(nx, ny);
+// 	}
+// 	is_used[idx] = false;
+// 	if (mx < depth) mx = depth;
+// 	depth--;
+// }

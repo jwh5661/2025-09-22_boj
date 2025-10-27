@@ -22,7 +22,7 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-15 ORIGINAL
+// 2025-10-27 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -50,7 +50,6 @@ int main()
 	{
 		int dep, arr;
 		cin >> dep >> arr;
-
 		con_list[dep].push_back(arr);
 		con_list[arr].push_back(dep);
 	}
@@ -75,11 +74,73 @@ void BFS(int node)
 	{
 		int cur = q.front(); q.pop();
 
-		for (int i : con_list[cur])
+		for (int next : con_list[cur])
 		{
-			if (visited[i]) continue;
-			q.push(i);
-			visited[i] = true;
+			if (visited[next]) continue;
+			q.push(next);
+			visited[next] = true;
 		}
 	}
 }
+
+// 2025-10-15 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// void BFS(int node);
+// 
+// vector<vector<int>> con_list;
+// vector<bool> visited;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m, cnt = 0;
+// 	cin >> n >> m;
+// 
+// 	con_list = vector<vector<int>>(n + 1);
+// 	visited = vector<bool>(n + 1, false);
+// 
+// 	for (int i = 0; i < m; i++)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 
+// 		con_list[dep].push_back(arr);
+// 		con_list[arr].push_back(dep);
+// 	}
+// 
+// 	for (int i = 1; i <= n; i++)
+// 	{
+// 		if (visited[i]) continue;
+// 		cnt++;
+// 		BFS(i);
+// 	}
+// 
+// 	cout << cnt << '\n';
+// }
+// 
+// void BFS(int node)
+// {
+// 	queue<int> q;
+// 	q.push(node);
+// 	visited[node] = true;
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur = q.front(); q.pop();
+// 
+// 		for (int i : con_list[cur])
+// 		{
+// 			if (visited[i]) continue;
+// 			q.push(i);
+// 			visited[i] = true;
+// 		}
+// 	}
+// }
