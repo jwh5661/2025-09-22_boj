@@ -20,10 +20,9 @@ Folder: queue/simulation
 
 */
 
-// 2025-10-16 ORIGINAL
+// 2025-10-31 D+3 REVIEW
 
 #include <iostream>
-#include <vector>
 #include <queue>
 
 using namespace std;
@@ -36,12 +35,11 @@ int main()
 	int n, k;
 	cin >> n >> k;
 
-	vector<int> num;
-	num.reserve(n);
 	queue<int> q;
 	for (int i = 1; i <= n; i++)
 		q.push(i);
 
+	cout << "<";
 	while (!q.empty())
 	{
 		int i = k - 1;
@@ -50,11 +48,48 @@ int main()
 			q.push(q.front());
 			q.pop();
 		}
-		num.push_back(q.front());
+		cout << q.front();
 		q.pop();
+		if (!q.empty()) cout << ", ";
 	}
-
-	cout << '<';
-	for (int i = 0; i < n; i++)
-		cout << num[i] << (i == n - 1 ? ">\n" : ", ");
+	cout << ">\n";
 }
+
+// 2025-10-16 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, k;
+// 	cin >> n >> k;
+// 
+// 	vector<int> num;
+// 	num.reserve(n);
+// 	queue<int> q;
+// 	for (int i = 1; i <= n; i++)
+// 		q.push(i);
+// 
+// 	while (!q.empty())
+// 	{
+// 		int i = k - 1;
+// 		while (i--)
+// 		{
+// 			q.push(q.front());
+// 			q.pop();
+// 		}
+// 		num.push_back(q.front());
+// 		q.pop();
+// 	}
+// 
+// 	cout << '<';
+// 	for (int i = 0; i < n; i++)
+// 		cout << num[i] << (i == n - 1 ? ">\n" : ", ");
+// }

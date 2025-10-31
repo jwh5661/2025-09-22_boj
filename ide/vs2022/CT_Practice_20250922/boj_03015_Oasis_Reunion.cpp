@@ -24,7 +24,7 @@ Folder: stack/monotonic
 
 */
 
-// 2025-10-16 ORIGINAL
+// 2025-10-31 D+3 REIVEW
 
 #include <iostream>
 #include <stack>
@@ -37,36 +37,82 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	long long n;
-	cin >> n;
+	int n;
 	long long cnt = 0;
+	cin >> n;
 
-	vector<long long> height(n, 0);
+	vector<long long> h(n);
+	stack<pair<long long, long long>> stk;
 
 	for (int i = 0; i < n; i++)
-		cin >> height[i];
-
-	stack<pair<long long, long long>> stk;
-	stk.emplace(height[0], 1);
+		cin >> h[i];
+	stk.emplace(h[0], 1);
 
 	for (int i = 1; i < n; i++)
 	{
-		while (!stk.empty() && stk.top().first < height[i])
+		while (!stk.empty() && stk.top().first < h[i])
 		{
 			cnt += stk.top().second;
 			stk.pop();
 		}
 
 		long long cur_cnt = 1;
-		if (!stk.empty() && stk.top().first == height[i])
+		if (!stk.empty() && stk.top().first == h[i])
 		{
 			cnt += stk.top().second;
 			cur_cnt += stk.top().second;
 			stk.pop();
 		}
 		if (!stk.empty()) cnt++;
-		stk.emplace(height[i], cur_cnt);
+		stk.emplace(h[i], cur_cnt);
 	}
 
 	cout << cnt << '\n';
 }
+
+// 2025-10-16 ORIGINAL
+
+// #include <iostream>
+// #include <stack>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	long long n;
+// 	cin >> n;
+// 	long long cnt = 0;
+// 
+// 	vector<long long> height(n, 0);
+// 
+// 	for (int i = 0; i < n; i++)
+// 		cin >> height[i];
+// 
+// 	stack<pair<long long, long long>> stk;
+// 	stk.emplace(height[0], 1);
+// 
+// 	for (int i = 1; i < n; i++)
+// 	{
+// 		while (!stk.empty() && stk.top().first < height[i])
+// 		{
+// 			cnt += stk.top().second;
+// 			stk.pop();
+// 		}
+// 
+// 		long long cur_cnt = 1;
+// 		if (!stk.empty() && stk.top().first == height[i])
+// 		{
+// 			cnt += stk.top().second;
+// 			cur_cnt += stk.top().second;
+// 			stk.pop();
+// 		}
+// 		if (!stk.empty()) cnt++;
+// 		stk.emplace(height[i], cur_cnt);
+// 	}
+// 
+// 	cout << cnt << '\n';
+// }

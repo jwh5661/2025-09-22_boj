@@ -24,7 +24,7 @@ Folder: stack/monotonic
 
 */
 
-// 2025-10-16 ORIGINAL
+// 2025-10-31 D+3 REIVEW
 
 #include <iostream>
 #include <vector>
@@ -41,18 +41,51 @@ int main()
 	long long cnt = 0;
 	cin >> n;
 
-	vector<int> build(n);
+	vector<int> h(n);
+	stack<int> stk;
 
 	for (int i = 0; i < n; i++)
-		cin >> build[i];
+		cin >> h[i];
 
-	stack<int> stk;
 	for (int i = 0; i < n; i++)
 	{
-		while (!stk.empty() && stk.top() <= build[i]) stk.pop();
-		cnt += static_cast<long long>(stk.size());
-		stk.push(build[i]);
+		while (!stk.empty() && stk.top() <= h[i]) stk.pop();
+		cnt += (long long)stk.size();
+		stk.push(h[i]);
 	}
 
 	cout << cnt << '\n';
 }
+
+// 2025-10-16 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	long long cnt = 0;
+// 	cin >> n;
+// 
+// 	vector<int> build(n);
+// 
+// 	for (int i = 0; i < n; i++)
+// 		cin >> build[i];
+// 
+// 	stack<int> stk;
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		while (!stk.empty() && stk.top() <= build[i]) stk.pop();
+// 		cnt += static_cast<long long>(stk.size());
+// 		stk.push(build[i]);
+// 	}
+// 
+// 	cout << cnt << '\n';
+// }

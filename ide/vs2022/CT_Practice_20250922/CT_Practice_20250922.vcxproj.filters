@@ -303,6 +303,9 @@
     <ClCompile Include="boj_04991_Robot_Cleaner.cpp">
       <Filter>소스 파일\dp\bitmask</Filter>
     </ClCompile>
+    <ClCompile Include="boj_24479_DFS_1.cpp">
+      <Filter>소스 파일\graph\dfs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
