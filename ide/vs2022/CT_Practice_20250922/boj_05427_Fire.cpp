@@ -28,12 +28,12 @@ BOJ 5427 — 불 (Fire) 방법 A (단일 큐: 불 먼저, 그다음 사람)
 
 */
 
-// 2025-10-21 ORIGINAL
+// 2025-11-04 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <tuple>
+#include <string>
 
 using namespace std;
 
@@ -50,72 +50,178 @@ int main()
 
 	while (t--)
 	{
-		int w, h, stx = -1, sty = -1;
-		bool found = false;
+		int w, h;
 		cin >> w >> h;
 
-		vector<vector<char>> building(h, vector<char>(w));
-		vector<vector<int>> time(h, vector<int>(w, -1));
-		queue<tuple<char, int, int>> q;
+		vector<vector<int>> fire(h, vector<int>(w, -1));
+		vector<vector<int>> person(h, vector<int>(w, -1));
+		queue<pair<int, int>> fire_q;
+		queue<pair<int, int>> person_q;
+
 		for (int i = 0; i < h; i++)
 		{
+			string str;
+			cin >> str;
 			for (int j = 0; j < w; j++)
 			{
-				cin >> building[i][j];
-				if (building[i][j] == '*')
-					q.emplace(building[i][j], i, j);
-				else if (building[i][j] == '@')
+				if (str[j] == '#')
 				{
-					stx = i; sty = j;
+					fire[i][j] = 0;
+					person[i][j] = 0;
+				}
+				else if (str[j] == '*')
+				{
+					fire[i][j] = 0;
+					fire_q.emplace(i, j);
+				}
+				else if (str[j] == '@')
+				{
+					person[i][j] = 0;
+					person_q.emplace(i, j);
 				}
 			}
 		}
 
-		if (stx == -1 || sty == -1)
+		while (!fire_q.empty())
 		{
-			cout << "IMPOSSIBLE\n";
-			continue;
-		}
-
-		q.emplace(building[stx][sty], stx, sty);
-		time[stx][sty] = 0;
-
-		while (!found && !q.empty())
-		{
-			auto cur = q.front(); q.pop();
-			int cx = get<1>(cur);
-			int cy = get<2>(cur);
+			auto cur = fire_q.front(); fire_q.pop();
+			int cx = cur.first;
+			int cy = cur.second;
 
 			for (int i = 0; i < 4; i++)
 			{
-				char c = get<0>(cur);
 				int nx = cx + dx[i];
 				int ny = cy + dy[i];
 
-				if (c == '*')
-				{
-					if (nx < 0 || nx >= h || ny < 0 || ny >= w) continue;
-					if (building[nx][ny] == '#' || building[nx][ny] == '*') continue;
-				}
-				else if (c == '@')
-				{
-					if (nx < 0 || nx >= h || ny < 0 || ny >= w)
-					{
-						cout << time[cx][cy] + 1 << '\n';
-						found = true;
-						break;
-					}
-					if (building[nx][ny] == '#' || building[nx][ny] == '*') continue;
-					if (time[nx][ny] != -1) continue;
-					time[nx][ny] = time[cx][cy] + 1;
-				}
+				if (nx < 0 || nx >= h || ny < 0 || ny >= w) continue;
+				if (fire[nx][ny] != -1) continue;
 
-				q.emplace(c, nx, ny);
-				building[nx][ny] = c;
+				fire_q.emplace(nx, ny);
+				fire[nx][ny] = fire[cx][cy] + 1;
 			}
 		}
 
-		if (!found)
-			cout << "IMPOSSIBLE" << '\n';
+		bool can_exit = false;
+		while (!person_q.empty())
+		{
+			auto cur = person_q.front(); person_q.pop();
+			int cx = cur.first;
+			int cy = cur.second;
+
+			for (int i = 0; i < 4; i++)
+			{
+				int nx = cx + dx[i];
+				int ny = cy + dy[i];
+				int t = person[cx][cy] + 1;
+				if (nx < 0 || nx >= h || ny < 0 || ny >= w)
+				{
+					cout << t << '\n';
+					can_exit = true;
+					break;
+				}
+				if (person[nx][ny] != -1) continue;
+				if (fire[nx][ny] != -1 && fire[nx][ny] <= t) continue;
+				
+				person_q.emplace(nx, ny);
+				person[nx][ny] = t;
+			}
+
+			if (can_exit) break;
+		}
+
+		if (!can_exit)
+			cout << "IMPOSSIBLE\n";
 	}
 }
+
+// 2025-10-21 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <tuple>
+// 
+// using namespace std;
+// 
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { -1, 1, 0, 0 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int t;
+// 	cin >> t;
+// 
+// 	while (t--)
+// 	{
+// 		int w, h, stx = -1, sty = -1;
+// 		bool found = false;
+// 		cin >> w >> h;
+// 
+// 		vector<vector<char>> building(h, vector<char>(w));
+// 		vector<vector<int>> time(h, vector<int>(w, -1));
+// 		queue<tuple<char, int, int>> q;
+// 		for (int i = 0; i < h; i++)
+// 		{
+// 			for (int j = 0; j < w; j++)
+// 			{
+// 				cin >> building[i][j];
+// 				if (building[i][j] == '*')
+// 					q.emplace(building[i][j], i, j);
+// 				else if (building[i][j] == '@')
+// 				{
+// 					stx = i; sty = j;
+// 				}
+// 			}
+// 		}
+// 
+// 		if (stx == -1 || sty == -1)
+// 		{
+// 			cout << "IMPOSSIBLE\n";
+// 			continue;
+// 		}
+// 
+// 		q.emplace(building[stx][sty], stx, sty);
+// 		time[stx][sty] = 0;
+// 
+// 		while (!found && !q.empty())
+// 		{
+// 			auto cur = q.front(); q.pop();
+// 			int cx = get<1>(cur);
+// 			int cy = get<2>(cur);
+// 
+// 			for (int i = 0; i < 4; i++)
+// 			{
+// 				char c = get<0>(cur);
+// 				int nx = cx + dx[i];
+// 				int ny = cy + dy[i];
+// 
+// 				if (c == '*')
+// 				{
+// 					if (nx < 0 || nx >= h || ny < 0 || ny >= w) continue;
+// 					if (building[nx][ny] == '#' || building[nx][ny] == '*') continue;
+// 				}
+// 				else if (c == '@')
+// 				{
+// 					if (nx < 0 || nx >= h || ny < 0 || ny >= w)
+// 					{
+// 						cout << time[cx][cy] + 1 << '\n';
+// 						found = true;
+// 						break;
+// 					}
+// 					if (building[nx][ny] == '#' || building[nx][ny] == '*') continue;
+// 					if (time[nx][ny] != -1) continue;
+// 					time[nx][ny] = time[cx][cy] + 1;
+// 				}
+// 
+// 				q.emplace(c, nx, ny);
+// 				building[nx][ny] = c;
+// 			}
+// 		}
+// 
+// 		if (!found)
+// 			cout << "IMPOSSIBLE" << '\n';
+// 	}
+// }

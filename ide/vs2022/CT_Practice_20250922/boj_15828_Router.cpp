@@ -24,7 +24,7 @@ Folder: queue/simulation
 
 */
 
-// 2025-10-06 D+3 REVIEW
+// 2025-11-04 D+14 REVIEW
 
 #include <iostream>
 #include <queue>
@@ -36,29 +36,66 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, inf;
+	int n, val;
 	cin >> n;
+
 	queue<int> q;
 
-	while (cin >> inf && inf != -1)
+	while (cin >> val && val != -1)
 	{
-		if (inf == 0)
-		{
-			if (!q.empty()) q.pop();
-		}
-		else if (q.size() < n) q.push(inf);
+		if (val != 0 && static_cast<int>(q.size()) < n) q.push(val);
+		else if (!q.empty() && val == 0) q.pop();
 	}
 
-	if (q.empty())
-		cout << "empty";
+	if (q.empty()) 
+		cout << "empty\n";
 
 	while (!q.empty())
 	{
-		cout << q.front() << ' ';
+		cout << q.front();
 		q.pop();
+		if (!q.empty()) 
+			cout << " ";
+		else 
+			cout << '\n';
 	}
-	cout << '\n';
 }
+
+// 2025-10-06 D+3 REVIEW
+
+// #include <iostream>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, inf;
+// 	cin >> n;
+// 	queue<int> q;
+// 
+// 	while (cin >> inf && inf != -1)
+// 	{
+// 		if (inf == 0)
+// 		{
+// 			if (!q.empty()) q.pop();
+// 		}
+// 		else if (q.size() < n) q.push(inf);
+// 	}
+// 
+// 	if (q.empty())
+// 		cout << "empty";
+// 
+// 	while (!q.empty())
+// 	{
+// 		cout << q.front() << ' ';
+// 		q.pop();
+// 	}
+// 	cout << '\n';
+// }
 
 // 2025-10-03 D+0 REVIEW
 

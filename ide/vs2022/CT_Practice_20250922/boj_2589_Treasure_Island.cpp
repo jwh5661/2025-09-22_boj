@@ -17,12 +17,13 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-20 ORIGINAL
+// 2025-11-04 D+3 REVIEW
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -38,7 +39,7 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int mx_val = -1;
+	int mx = 0;
 	cin >> n >> m;
 
 	treasure = vector<vector<int>>(n, vector<int>(m, 0));
@@ -58,41 +59,122 @@ int main()
 	{
 		for (int j = 0; j < m; j++)
 		{
-			if (treasure[i][j] == 0) continue;
-			mx_val = max(mx_val, BFS(i, j));
+			if (treasure[i][j] != 1) continue;
+			mx = max(mx, BFS(i, j));
 		}
 	}
 
-	cout << mx_val << '\n';
+	cout << mx << '\n';
 }
 
 int BFS(int x, int y)
 {
 	queue<pair<int, int>> q;
 	vector<vector<int>> visited(n, vector<int>(m, -1));
-	int ans = 0;
-
+	int ret = 0;
 	q.emplace(x, y);
 	visited[x][y] = 0;
 
 	while (!q.empty())
 	{
 		auto cur = q.front(); q.pop();
+		int cx = cur.first;
+		int cy = cur.second;
 
 		for (int i = 0; i < 4; i++)
 		{
-			int nx = cur.first + dx[i];
-			int ny = cur.second + dy[i];
+			int nx = cx + dx[i];
+			int ny = cy + dy[i];
 
 			if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
 			if (treasure[nx][ny] == 0) continue;
 			if (visited[nx][ny] != -1) continue;
 
 			q.emplace(nx, ny);
-			visited[nx][ny] = visited[cur.first][cur.second] + 1;
-			ans = max(ans, visited[nx][ny]);
+			visited[nx][ny] = visited[cx][cy] + 1;
+			ret = max(ret, visited[nx][ny]);
 		}
 	}
 
-	return ans;
+	return ret;
 }
+
+// 2025-10-20 ORIGINAL
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int BFS(int x, int y);
+// 
+// vector<vector<int>> treasure;
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { -1, 1, 0, 0 };
+// int n, m;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int mx_val = -1;
+// 	cin >> n >> m;
+// 
+// 	treasure = vector<vector<int>>(n, vector<int>(m, 0));
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		string str;
+// 		cin >> str;
+// 		for (int j = 0; j < m; j++)
+// 		{
+// 			if (str[j] == 'L')
+// 				treasure[i][j] = 1;
+// 		}
+// 	}
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		for (int j = 0; j < m; j++)
+// 		{
+// 			if (treasure[i][j] == 0) continue;
+// 			mx_val = max(mx_val, BFS(i, j));
+// 		}
+// 	}
+// 
+// 	cout << mx_val << '\n';
+// }
+// 
+// int BFS(int x, int y)
+// {
+// 	queue<pair<int, int>> q;
+// 	vector<vector<int>> visited(n, vector<int>(m, -1));
+// 	int ans = 0;
+// 
+// 	q.emplace(x, y);
+// 	visited[x][y] = 0;
+// 
+// 	while (!q.empty())
+// 	{
+// 		auto cur = q.front(); q.pop();
+// 
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			int nx = cur.first + dx[i];
+// 			int ny = cur.second + dy[i];
+// 
+// 			if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+// 			if (treasure[nx][ny] == 0) continue;
+// 			if (visited[nx][ny] != -1) continue;
+// 
+// 			q.emplace(nx, ny);
+// 			visited[nx][ny] = visited[cur.first][cur.second] + 1;
+// 			ans = max(ans, visited[nx][ny]);
+// 		}
+// 	}
+// 
+// 	return ans;
+// }

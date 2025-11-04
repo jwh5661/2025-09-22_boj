@@ -30,7 +30,7 @@ BOJ 6549 — 히스토그램에서 가장 큰 직사각형
 
 */
 
-// 2025-10-21 ORIGINAL
+// 2025-11-04 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -45,30 +45,75 @@ int main()
 	cin.tie(nullptr);
 
 	int n;
+	
 	while (cin >> n && n != 0)
 	{
-		vector<long long> h(n + 1);
+		vector<long long> h(n + 1, 0);
+		long long ans = 0;
+
 		for (int i = 0; i < n; i++)
 			cin >> h[i];
-		h[n] = 0;
-		
-		long long mx_val = 0;
+
 		stack<int> stk;
-		for (int i = 0; i < static_cast<int>(h.size()); i++)
+
+		for (int i = 0; i < h.size(); i++)
 		{
 			while (!stk.empty() && h[stk.top()] > h[i])
 			{
 				long long top_h = h[stk.top()];
 				stk.pop();
-				if(stk.empty())
-					mx_val = max(mx_val, top_h * i);
+				if(!stk.empty())
+					ans = max(ans, top_h * (i - (stk.top() + 1)));
 				else
-					mx_val = max(mx_val, top_h * (i - (stk.top() + 1)));
+					ans = max(ans, top_h * i);
 			}
 
 			stk.push(i);
 		}
 
-		cout << mx_val << '\n';
+		cout << ans << '\n';
 	}
 }
+
+// 2025-10-21 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <stack>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	while (cin >> n && n != 0)
+// 	{
+// 		vector<long long> h(n + 1);
+// 		for (int i = 0; i < n; i++)
+// 			cin >> h[i];
+// 		h[n] = 0;
+// 		
+// 		long long mx_val = 0;
+// 		stack<int> stk;
+// 		for (int i = 0; i < static_cast<int>(h.size()); i++)
+// 		{
+// 			while (!stk.empty() && h[stk.top()] > h[i])
+// 			{
+// 				long long top_h = h[stk.top()];
+// 				stk.pop();
+// 				if(stk.empty())
+// 					mx_val = max(mx_val, top_h * i);
+// 				else
+// 					mx_val = max(mx_val, top_h * (i - (stk.top() + 1)));
+// 			}
+// 
+// 			stk.push(i);
+// 		}
+// 
+// 		cout << mx_val << '\n';
+// 	}
+// }

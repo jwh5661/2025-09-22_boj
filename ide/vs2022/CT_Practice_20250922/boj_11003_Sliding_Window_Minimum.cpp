@@ -27,7 +27,7 @@ BOJ 11003 — 최솟값 찾기 (Sliding Window Minimum)
 
 */
 
-// 2025-10-21 ORIGINAL
+// 2025-11-04 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -43,17 +43,50 @@ int main()
 	int n, l;
 	cin >> n >> l;
 
-	vector<int> num(n);
+	vector<int> num(n, 0);
+
 	for (int i = 0; i < n; i++)
 		cin >> num[i];
 
 	deque<int> dq;
-	
+
 	for (int i = 0; i < n; i++)
 	{
-		while (!dq.empty() && dq.front() <= i - l) dq.pop_front();
+		while (!dq.empty() && i - dq.front() >= l) dq.pop_front();
 		while (!dq.empty() && num[dq.back()] > num[i]) dq.pop_back();
 		dq.push_back(i);
 		cout << num[dq.front()] << " ";
 	}
+	cout << '\n';
 }
+
+// 2025-10-21 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <deque>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, l;
+// 	cin >> n >> l;
+// 
+// 	vector<int> num(n);
+// 	for (int i = 0; i < n; i++)
+// 		cin >> num[i];
+// 
+// 	deque<int> dq;
+// 	
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		while (!dq.empty() && dq.front() <= i - l) dq.pop_front();
+// 		while (!dq.empty() && num[dq.back()] > num[i]) dq.pop_back();
+// 		dq.push_back(i);
+// 		cout << num[dq.front()] << " ";
+// 	}
+// }

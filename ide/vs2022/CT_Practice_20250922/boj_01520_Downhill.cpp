@@ -1,6 +1,4 @@
-﻿// 2025-10-20 ORIGINAL
-
-/*
+﻿/*
 BOJ 1520 — 내리막 길
 주제: DFS | DP(메모이제이션) | DAG
 폴더: dp/graph
@@ -28,6 +26,60 @@ BOJ 1520 — 내리막 길
 - 한 번 계산한 칸은 다시 풀지 않는다(메모이제이션으로 중복 제거).
 
 */
+
+// 2025-11-04 D+3 REVIEW
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int DFS(int x, int y);
+
+vector<vector<int>> travel_map;
+vector<vector<int>> dp;
+int dx[4] = { 0, 0, -1, 1 };
+int dy[4] = { -1, 1, 0, 0 };
+int m, n;
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+	cin >> n >> m;
+
+	travel_map = vector<vector<int>>(n, vector<int>(m, 0));
+	dp = vector<vector<int>>(n, vector<int>(m, -1));
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+			cin >> travel_map[i][j];
+	}
+
+	cout << DFS(0, 0) << '\n';
+}
+
+int DFS(int x, int y)
+{
+	if (dp[x][y] != -1) return dp[x][y];
+	if (x == n - 1 && y == m - 1) return 1;
+	int cnt = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		int nx = x + dx[i];
+		int ny = y + dy[i];
+
+		if (nx < 0 || nx >= n || ny < 0 || ny >= m)continue;
+		if (travel_map[x][y] <= travel_map[nx][ny]) continue;
+		cnt += DFS(nx, ny);
+	}
+
+	return dp[x][y] = cnt;
+}
+
+// 2025-10-20 ORIGINAL
 
 #include <iostream>
 #include <vector>

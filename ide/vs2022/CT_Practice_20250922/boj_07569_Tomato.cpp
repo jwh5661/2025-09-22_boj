@@ -23,7 +23,7 @@ Folder: graph/bfs
 
 */
 
-// 2025-10-20 ORIGINAL
+// 2025-11-04 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -42,12 +42,13 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int m, n, h;
+	int m, n, h, ans = -1;
 	cin >> m >> n >> h;
 
-	vector<vector<vector<int>>> tomato(h, vector<vector<int>>(n, vector<int>(m, 0)));
+	vector<vector<vector<int>>> tomato(h, vector<vector<int>>(n, vector<int>(m)));
 	vector<vector<vector<int>>> visited(h, vector<vector<int>>(n, vector<int>(m, 0)));
 	queue<tuple<int, int, int>> q;
+
 	for (int i = 0; i < h; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -62,7 +63,7 @@ int main()
 			}
 		}
 	}
-	
+
 	while (!q.empty())
 	{
 		auto cur = q.front(); q.pop();
@@ -77,7 +78,6 @@ int main()
 			int nz = cz + dz[i];
 
 			if (nx < 0 || nx >= h || ny < 0 || ny >= n || nz < 0 || nz >= m) continue;
-			if (tomato[nx][ny][nz] != 0) continue;	// 없어도 되는데 의미를 명확하게 하기 위해 놔둠
 			if (visited[nx][ny][nz] != -1) continue;
 
 			q.emplace(nx, ny, nz);
@@ -85,7 +85,6 @@ int main()
 		}
 	}
 
-	int mx = -1;
 	for (int i = 0; i < h; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -97,11 +96,94 @@ int main()
 					cout << -1 << '\n';
 					return 0;
 				}
-				
-				mx = max(mx, visited[i][j][k]);
+
+				ans = max(visited[i][j][k], ans);
 			}
 		}
 	}
 
-	cout << mx << '\n';
+	cout << ans << '\n';
 }
+
+// 2025-10-20 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <tuple>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int dx[6] = { -1, 1, 0, 0, 0, 0 };
+// int dy[6] = { 0, 0, 0, 0, 1, -1 };
+// int dz[6] = { 0, 0, -1, 1, 0, 0 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int m, n, h;
+// 	cin >> m >> n >> h;
+// 
+// 	vector<vector<vector<int>>> tomato(h, vector<vector<int>>(n, vector<int>(m, 0)));
+// 	vector<vector<vector<int>>> visited(h, vector<vector<int>>(n, vector<int>(m, 0)));
+// 	queue<tuple<int, int, int>> q;
+// 	for (int i = 0; i < h; i++)
+// 	{
+// 		for (int j = 0; j < n; j++)
+// 		{
+// 			for (int k = 0; k < m; k++)
+// 			{
+// 				cin >> tomato[i][j][k];
+// 				if (tomato[i][j][k] == 1)
+// 					q.emplace(i, j, k);
+// 				else if (tomato[i][j][k] == 0)
+// 					visited[i][j][k] = -1;
+// 			}
+// 		}
+// 	}
+// 	
+// 	while (!q.empty())
+// 	{
+// 		auto cur = q.front(); q.pop();
+// 		int cx = get<0>(cur);
+// 		int cy = get<1>(cur);
+// 		int cz = get<2>(cur);
+// 
+// 		for (int i = 0; i < 6; i++)
+// 		{
+// 			int nx = cx + dx[i];
+// 			int ny = cy + dy[i];
+// 			int nz = cz + dz[i];
+// 
+// 			if (nx < 0 || nx >= h || ny < 0 || ny >= n || nz < 0 || nz >= m) continue;
+// 			if (tomato[nx][ny][nz] != 0) continue;	// 없어도 되는데 의미를 명확하게 하기 위해 놔둠
+// 			if (visited[nx][ny][nz] != -1) continue;
+// 
+// 			q.emplace(nx, ny, nz);
+// 			visited[nx][ny][nz] = visited[cx][cy][cz] + 1;
+// 		}
+// 	}
+// 
+// 	int mx = -1;
+// 	for (int i = 0; i < h; i++)
+// 	{
+// 		for (int j = 0; j < n; j++)
+// 		{
+// 			for (int k = 0; k < m; k++)
+// 			{
+// 				if (visited[i][j][k] == -1)
+// 				{
+// 					cout << -1 << '\n';
+// 					return 0;
+// 				}
+// 				
+// 				mx = max(mx, visited[i][j][k]);
+// 			}
+// 		}
+// 	}
+// 
+// 	cout << mx << '\n';
+// }
