@@ -1755,4 +1755,72 @@ for (int i = 0, j = 0; i < n; i++)
       - 방문 순서 → **진입 시 카운터 증가**가 간단하고 안전.
     
     ---
+
+    ## 📅 2025-11-05
+    **BOJ 24480 - 알고리즘 수업: 깊이 우선 탐색 2**
+    **BOJ 11403 - 경로 찾기**
+    **BOJ 2660 - 회장 뽑기**
+
+    ### BOJ 24480 - 알고리즘 수업: 깊이 우선 탐색 2 (DFS 2)
+    - **Topic:** DFS  | Graph | Traversal
+    - **Folder:** `graph/dfs/`
+    - **Time Complexity:** O(N + M) + 정렬 O(∑deg log deg) 
+    - **Space Complexity:** O(N + M)
+
+    - **Key Idea:**
+     - 인접 리스트 내림차순 정렬 -> DFS에서 진입 시점에 방문 순서 기록(1부터).
+
+    - **Caution:**
+     - 긴 체인 그래프에서 재귀 깊이 제한 주의.
+
+    - **Improvement:**
+     - 반복 DFS(스택)로 전환해 스택 오버플로 방지.
+     - 출력은 `for (i=1..n) ans[i-1]` 형식 유지.
+
+    - **Problem Hint:**
+     - 24479는 오름차순, **24480은 내림차순** 정렬이 포인트.
+     - 방문 순서는 **진입 시 카운트**가 자연스럽다.
+    
+    ---
+    
+    ### BOJ 11403 - 경로 찾기 (Find Path)
+    - **Topic:** Graph | Transitive Closure | Floyd-Warshall
+    - **Folder:** `graph/floyd/`
+    - **Time Complexity:** O(N^3)
+    - **Space Complexity:** O(N^2)
+
+    - **Key Idea:**
+     - `k`를 경유점으로 삼아 `A[i][j] |= (A[i][k] & A[k][j])`를 모든 `(i, j)`에 적용 -> 전이 폐쇄 완성.
+
+    - **Caution:**
+     - 자기 자신으로의 경로는 사이클이 있을 때만 1로 찍힘(문제 맞춤 동작).
+
+    - **Improvement:**
+     - (🟥 현재 코드에 없음) 분기 제거 한 줄 갱신식으로 단순화.
+     - (🟥 현재 코드에 없음) `bitset` 행 연산으로 상수배 개선.
+     - (🟩 현재 코드에 존재) 이미 1이면 건너뛰는 가지치기.
+
+    - **Problem Hint:** 지문 키워드 → 접근법
+     - "경로 존재 여부"는 **중간 정점 허용 여부**로 귀결 -> **Floyd-Warshall 전이 폐쇄**가 정석.
+    ---
+    
+    ### BOJ 2660 - 회장 뽑기 (Select the President)
+    - **Topic:** Graph | Floyd-Warshall | APSP
+    - **Folder:** `graph/floyd/`
+    - **Time Complexity:** O(N^3)
+    - **Space Complexity:** O(N^2)
+
+    - **Key Idea:**
+     - Floyd-Warshall로 전쌍 최단거리 -> 각 정점의 최대거리(eccentricity) -> 최소값과 그 정점 출력
+
+    - **Caution:**
+     - 도달 불가는 **INF**, 자기 자신은 **0**으로 초기화해야 오답 방지.
+
+    - **Improvement:**
+     - 분기 제거 갱신식과 INF 초기화로 안정성 향상.
+
+    - **Problem Hint:**
+     - "회장 점수"는 그래프에서 **중심성(최대 거리의 최소화)** 개념.
+    
+    ---
     

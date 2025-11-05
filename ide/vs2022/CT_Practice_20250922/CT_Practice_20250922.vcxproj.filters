@@ -118,6 +118,9 @@
     <Filter Include="소스 파일\dp\bitmask">
       <UniqueIdentifier>{766a9be2-25aa-43dd-87a0-16a886fa4b28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\graph\floyd">
+      <UniqueIdentifier>{32b2277c-db3a-49c8-b0c7-23fc01d95a5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -305,6 +308,15 @@
     </ClCompile>
     <ClCompile Include="boj_24479_DFS_1.cpp">
       <Filter>소스 파일\graph\dfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_24480_DFS_2.cpp">
+      <Filter>소스 파일\graph\dfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11403_Find_Path.cpp">
+      <Filter>소스 파일\graph\floyd</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02660_Select_the_President.cpp">
+      <Filter>소스 파일\graph\floyd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
