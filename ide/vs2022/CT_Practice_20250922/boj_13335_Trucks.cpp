@@ -23,7 +23,7 @@ Folder: queue/simulation
 
 */
 
-// 2025-10-13 D+3 REVIEW
+// 2025-11-06 D+14 REVIEW
 
 #include <iostream>
 #include <queue>
@@ -35,43 +35,90 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, w, L;
+	int n, w, L, t = 0, cur_weight = 0;
 	cin >> n >> w >> L;
 
-	int cur_weight = 0, time = 0;
-	queue<int> waiting;
-	queue<int> bridge;
+	queue<int> bridge_q;
+	queue<int> waiting_q;
 
 	for (int i = 0; i < n; i++)
 	{
-		int weight;
-		cin >> weight;
-		waiting.push(weight);
+		int val;
+		cin >> val;
+		waiting_q.push(val);
 	}
 
-	while (!waiting.empty())
+	while (!waiting_q.empty())
 	{
-		if (bridge.size() == w)
+		if (bridge_q.size() >= w)
 		{
-			cur_weight -= bridge.front();
-			bridge.pop();
+			cur_weight -= bridge_q.front();
+			bridge_q.pop();
 		}
 
-		int cur_truck = waiting.front();
-
-		if (bridge.size() < w && cur_weight + cur_truck <= L)
+		if (cur_weight + waiting_q.front() <= L)
 		{
-			waiting.pop();
-			cur_weight += cur_truck;
-			bridge.push(cur_truck);
+			cur_weight += waiting_q.front();
+			bridge_q.push(waiting_q.front());
+			waiting_q.pop();
 		}
 		else
-			bridge.push(0);
-		time++;
+			bridge_q.push(0);
+		t++;
 	}
 
-	cout << time + w << '\n';
+	cout << t + w << '\n';
 }
+
+// 2025-10-13 D+3 REVIEW
+
+// #include <iostream>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, w, L;
+// 	cin >> n >> w >> L;
+// 
+// 	int cur_weight = 0, time = 0;
+// 	queue<int> waiting;
+// 	queue<int> bridge;
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		int weight;
+// 		cin >> weight;
+// 		waiting.push(weight);
+// 	}
+// 
+// 	while (!waiting.empty())
+// 	{
+// 		if (bridge.size() == w)
+// 		{
+// 			cur_weight -= bridge.front();
+// 			bridge.pop();
+// 		}
+// 
+// 		int cur_truck = waiting.front();
+// 
+// 		if (bridge.size() < w && cur_weight + cur_truck <= L)
+// 		{
+// 			waiting.pop();
+// 			cur_weight += cur_truck;
+// 			bridge.push(cur_truck);
+// 		}
+// 		else
+// 			bridge.push(0);
+// 		time++;
+// 	}
+// 
+// 	cout << time + w << '\n';
+// }
 
 // 2025-10-06 ORIGINAL
 

@@ -27,7 +27,7 @@ BOJ 4179 — 불! (Fire)
 - “탈출”은 **격자 밖으로 한 칸 나간 순간**이다.
 */
 
-// 2025-10-30 ORIGINAL
+// 2025-11-06 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -47,25 +47,24 @@ int main()
 	int r, c;
 	cin >> r >> c;
 
-	vector<vector<char>> maze(r, vector<char>(c, 0));
+	vector<vector<char>> maze(r, vector<char>(c, '.'));
 	vector<vector<int>> fire(r, vector<int>(c, -1));
-	vector<vector<int>> visited(r, vector<int>(c, -1));
-
+	vector<vector<int>> person(r, vector<int>(c, -1));
 	queue<pair<int, int>> fire_q;
-	queue<pair<int, int>> jihoon_q;
+	queue<pair<int, int>> person_q;
 
 	for (int i = 0; i < r; i++)
 	{
 		string str;
 		cin >> str;
 
-		for (int j = 0; j < c; j++) 
+		for (int j = 0; j < c; j++)
 		{
 			maze[i][j] = str[j];
 			if (str[j] == 'J')
 			{
-				jihoon_q.emplace(i, j);
-				visited[i][j] = 0;
+				person_q.emplace(i, j);
+				person[i][j] = 0;
 			}
 			else if (str[j] == 'F')
 			{
@@ -74,7 +73,6 @@ int main()
 			}
 		}
 	}
-
 
 	while (!fire_q.empty())
 	{
@@ -90,14 +88,15 @@ int main()
 			if (nx < 0 || nx >= r || ny < 0 || ny >= c) continue;
 			if (maze[nx][ny] == '#') continue;
 			if (fire[nx][ny] != -1) continue;
+
 			fire_q.emplace(nx, ny);
 			fire[nx][ny] = fire[cx][cy] + 1;
 		}
 	}
 
-	while (!jihoon_q.empty())
+	while (!person_q.empty())
 	{
-		auto cur = jihoon_q.front(); jihoon_q.pop();
+		auto cur = person_q.front(); person_q.pop();
 		int cx = cur.first;
 		int cy = cur.second;
 
@@ -105,20 +104,117 @@ int main()
 		{
 			int nx = cx + dx[i];
 			int ny = cy + dy[i];
+			int t = person[cx][cy] + 1;
 
 			if (nx < 0 || nx >= r || ny < 0 || ny >= c)
 			{
-				cout << visited[cx][cy] + 1 << '\n';
+				cout << t << '\n';
 				return 0;
 			}
 			if (maze[nx][ny] == '#') continue;
-			if (visited[nx][ny] != -1) continue;
-			int nt = visited[cx][cy] + 1;
-			if (fire[nx][ny] != -1 && fire[nx][ny] <= nt) continue;
-			jihoon_q.emplace(nx, ny);
-			visited[nx][ny] = nt;
+			if (person[nx][ny] != -1) continue;
+			if (fire[nx][ny] != -1 && fire[nx][ny] <= t) continue;
+
+			person_q.emplace(nx, ny);
+			person[nx][ny] = person[cx][cy] + 1;
 		}
 	}
 
 	cout << "IMPOSSIBLE\n";
 }
+
+// 2025-10-30 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { -1, 1, 0, 0 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int r, c;
+// 	cin >> r >> c;
+// 
+// 	vector<vector<char>> maze(r, vector<char>(c, 0));
+// 	vector<vector<int>> fire(r, vector<int>(c, -1));
+// 	vector<vector<int>> visited(r, vector<int>(c, -1));
+// 
+// 	queue<pair<int, int>> fire_q;
+// 	queue<pair<int, int>> jihoon_q;
+// 
+// 	for (int i = 0; i < r; i++)
+// 	{
+// 		string str;
+// 		cin >> str;
+// 
+// 		for (int j = 0; j < c; j++) 
+// 		{
+// 			maze[i][j] = str[j];
+// 			if (str[j] == 'J')
+// 			{
+// 				jihoon_q.emplace(i, j);
+// 				visited[i][j] = 0;
+// 			}
+// 			else if (str[j] == 'F')
+// 			{
+// 				fire_q.emplace(i, j);
+// 				fire[i][j] = 0;
+// 			}
+// 		}
+// 	}
+// 
+// 
+// 	while (!fire_q.empty())
+// 	{
+// 		auto cur = fire_q.front(); fire_q.pop();
+// 		int cx = cur.first;
+// 		int cy = cur.second;
+// 
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			int nx = cx + dx[i];
+// 			int ny = cy + dy[i];
+// 
+// 			if (nx < 0 || nx >= r || ny < 0 || ny >= c) continue;
+// 			if (maze[nx][ny] == '#') continue;
+// 			if (fire[nx][ny] != -1) continue;
+// 			fire_q.emplace(nx, ny);
+// 			fire[nx][ny] = fire[cx][cy] + 1;
+// 		}
+// 	}
+// 
+// 	while (!jihoon_q.empty())
+// 	{
+// 		auto cur = jihoon_q.front(); jihoon_q.pop();
+// 		int cx = cur.first;
+// 		int cy = cur.second;
+// 
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			int nx = cx + dx[i];
+// 			int ny = cy + dy[i];
+// 
+// 			if (nx < 0 || nx >= r || ny < 0 || ny >= c)
+// 			{
+// 				cout << visited[cx][cy] + 1 << '\n';
+// 				return 0;
+// 			}
+// 			if (maze[nx][ny] == '#') continue;
+// 			if (visited[nx][ny] != -1) continue;
+// 			int nt = visited[cx][cy] + 1;
+// 			if (fire[nx][ny] != -1 && fire[nx][ny] <= nt) continue;
+// 			jihoon_q.emplace(nx, ny);
+// 			visited[nx][ny] = nt;
+// 		}
+// 	}
+// 
+// 	cout << "IMPOSSIBLE\n";
+// }

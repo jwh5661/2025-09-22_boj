@@ -21,7 +21,7 @@ Folder: deque/rotation
 
 */
 
-// 2025-10-13 D+3 REVIEW
+// 2025-11-06 D+14 REVIEW
 
 #include <iostream>
 #include <deque>
@@ -43,7 +43,7 @@ int main()
 
 	while (m--)
 	{
-		int target;
+		int target, idx = -1, dq_size = (int)dq.size();
 		cin >> target;
 
 		if (target == dq.front())
@@ -53,7 +53,7 @@ int main()
 		}
 
 		int left = find(dq.begin(), dq.end(), target) - dq.begin();
-		int right = static_cast<int>(dq.size()) - left;
+		int right = dq_size - left;
 
 		while (dq.front() != target)
 		{
@@ -74,6 +74,60 @@ int main()
 
 	cout << cnt << '\n';
 }
+
+// 2025-10-13 D+3 REVIEW
+
+// #include <iostream>
+// #include <deque>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m, cnt = 0;
+// 	cin >> n >> m;
+// 
+// 	deque<int> dq;
+// 	for (int i = 1; i <= n; i++)
+// 		dq.push_back(i);
+// 
+// 	while (m--)
+// 	{
+// 		int target;
+// 		cin >> target;
+// 
+// 		if (target == dq.front())
+// 		{
+// 			dq.pop_front();
+// 			continue;
+// 		}
+// 
+// 		int left = find(dq.begin(), dq.end(), target) - dq.begin();
+// 		int right = static_cast<int>(dq.size()) - left;
+// 
+// 		while (dq.front() != target)
+// 		{
+// 			if (left <= right)
+// 			{
+// 				dq.push_back(dq.front());
+// 				dq.pop_front();
+// 			}
+// 			else
+// 			{
+// 				dq.push_front(dq.back());
+// 				dq.pop_back();
+// 			}
+// 			cnt++;
+// 		}
+// 		dq.pop_front();
+// 	}
+// 
+// 	cout << cnt << '\n';
+// }
 
 // 2025-10-06 ORIGINAL
 

@@ -25,7 +25,7 @@ Folder: queue/basic
 
 */
 
-// 2025-10-13 D+3 REVIEW
+// 2025-11-06 D+14 REVIEW
 
 #include <iostream>
 #include <string>
@@ -42,7 +42,6 @@ int main()
 	cin >> n;
 
 	queue<int> q;
-
 	while (n--)
 	{
 		string str;
@@ -54,6 +53,7 @@ int main()
 			{
 				int val;
 				cin >> val;
+
 				q.push(val);
 			}
 			else if (str[1] == 'o')
@@ -77,6 +77,59 @@ int main()
 			cout << (q.empty() ? -1 : q.back()) << '\n';
 	}
 }
+
+// 2025-10-13 D+3 REVIEW
+
+// #include <iostream>
+// #include <string>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	cin >> n;
+// 
+// 	queue<int> q;
+// 
+// 	while (n--)
+// 	{
+// 		string str;
+// 		cin >> str;
+// 
+// 		if (str[0] == 'p')
+// 		{
+// 			if (str[1] == 'u')
+// 			{
+// 				int val;
+// 				cin >> val;
+// 				q.push(val);
+// 			}
+// 			else if (str[1] == 'o')
+// 			{
+// 				if (!q.empty())
+// 				{
+// 					cout << q.front() << '\n';
+// 					q.pop();
+// 				}
+// 				else
+// 					cout << -1 << '\n';
+// 			}
+// 		}
+// 		else if (str[0] == 's')
+// 			cout << q.size() << '\n';
+// 		else if (str[0] == 'e')
+// 			cout << (q.empty() ? 1 : 0) << '\n';
+// 		else if (str[0] == 'f')
+// 			cout << (q.empty() ? -1 : q.front()) << '\n';
+// 		else if (str[0] == 'b')
+// 			cout << (q.empty() ? -1 : q.back()) << '\n';
+// 	}
+// }
 
 // 2025-10-06 ORIGINAL
 

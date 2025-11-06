@@ -28,7 +28,7 @@ BOJ 24479 — 알고리즘 수업: 깊이 우선 탐색 1 (DFS 1)
 - “미도달은 0” → **초기값 0 유지**.
 */
 
-// 2025-10-31 ORIGINAL
+// 2025-11-06 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -52,11 +52,10 @@ int main()
 	cin >> n >> m >> r;
 
 	con_list = vector<vector<int>>(n + 1);
-	visited = vector<bool>(n + 1, false);
+	visited = vector<bool>(n + 1);
 	out = vector<int>(n + 1, 0);
-	order = 1;
 
-	for (int i = 1; i <= m; i++)
+	for (int i = 0; i < m; i++)
 	{
 		int dep, arr;
 		cin >> dep >> arr;
@@ -68,6 +67,7 @@ int main()
 	for (int i = 1; i <= n; i++)
 		sort(con_list[i].begin(), con_list[i].end());
 
+	order = 1;
 	DFS(r);
 
 	for (int i = 1; i <= n; i++)
@@ -78,9 +78,67 @@ void DFS(int node)
 {
 	visited[node] = true;
 	out[node] = order++;
-	for (int next : con_list[node])
+
+	for (int x : con_list[node])
 	{
-		if (visited[next]) continue;
-		DFS(next);
+		if (visited[x]) continue;
+		DFS(x);
 	}
 }
+
+// 2025-10-31 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// void DFS(int node);
+// 
+// vector<vector<int>> con_list;
+// vector<bool> visited;
+// vector<int> out;
+// int n, m, order;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int r;
+// 	cin >> n >> m >> r;
+// 
+// 	con_list = vector<vector<int>>(n + 1);
+// 	visited = vector<bool>(n + 1, false);
+// 	out = vector<int>(n + 1, 0);
+// 	order = 1;
+// 
+// 	for (int i = 1; i <= m; i++)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 
+// 		con_list[dep].push_back(arr);
+// 		con_list[arr].push_back(dep);
+// 	}
+// 
+// 	for (int i = 1; i <= n; i++)
+// 		sort(con_list[i].begin(), con_list[i].end());
+// 
+// 	DFS(r);
+// 
+// 	for (int i = 1; i <= n; i++)
+// 		cout << out[i] << '\n';
+// }
+// 
+// void DFS(int node)
+// {
+// 	visited[node] = true;
+// 	out[node] = order++;
+// 	for (int next : con_list[node])
+// 	{
+// 		if (visited[next]) continue;
+// 		DFS(next);
+// 	}
+// }
