@@ -1824,3 +1824,26 @@ for (int i = 0, j = 0; i < n; i++)
     
     ---
     
+    ## 📅 2026-01-28
+    
+    ### BOJ 1920 - 수 찾기
+    - **Topic:** search | binary_search | stl
+    - **Folder:** `search/binary/`
+    - **Time Complexity:** O(N log N)
+    - **Space Complexity:** O(N)
+
+    - **Key Idea:**
+     - 수열을 정렬하고 각 질의를 `std::binary_search`로 확인.
+    - **Caution:**
+     - 출력은 매 질의마다 `'\n'`을 바로 출력해도 채점에 문제 없음(마지막 줄 분기 불필요)
+     - 입력 범위가 크다면 `long long` 고려(현 문제는 `int`로 충분)
+
+    - **Improvement:**
+     - (가독성) 마지막 개행 분기 없이 `cout << (binary_search(...) ? 1 : 0) << '\n';`으로 단순화.
+     - (대안) `unordered_set<int>` 사용 시 평균 O(N + M)이지만, 해시 성능/메모리 의존.
+
+    - **Problem Hint:**
+     - 정렬 후 이분 탐색이 기본 해법. `lower_bound`로 직접 구현해도 동일.
+    
+    ---
+    

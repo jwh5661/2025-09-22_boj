@@ -25,7 +25,7 @@ Folder: string/impl
 - 🔄 [수정] `(int)s.size()` 캐스팅 제거 → `size_t` 사용 권장.
 */
 
-// 2025-10-06 REVIEW D+14
+// 2026-01-28 Reboot
 
 #include <iostream>
 #include <string>
@@ -47,14 +47,45 @@ int main()
 
 	for (int i = 0; i < str.size(); i++)
 	{
-		if (arr[str[i] - 'a'] == -1)
-			arr[str[i] - 'a'] = i;
+		int cur = str[i] - 'a';
+		if (arr[cur] == -1)
+			arr[cur] = i;
 	}
 
-	for (int i : arr)
-		cout << i << ' ';
-	cout << '\n';
+	for (int i = 0; i < 26; i++)
+		cout << arr[i] << (i == 25 ? '\n' : ' ');
 }
+
+// 2025-10-06 REVIEW D+14
+
+// #include <iostream>
+// #include <string>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int arr[26];
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string str;
+// 	cin >> str;
+// 
+// 	fill(arr, arr + 26, -1);
+// 
+// 	for (int i = 0; i < str.size(); i++)
+// 	{
+// 		if (arr[str[i] - 'a'] == -1)
+// 			arr[str[i] - 'a'] = i;
+// 	}
+// 
+// 	for (int i : arr)
+// 		cout << i << ' ';
+// 	cout << '\n';
+// }
 
 // 2025-09-25 D+3 REVIEW
 // 
