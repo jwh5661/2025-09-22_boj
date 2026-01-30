@@ -19,7 +19,7 @@ Folder: dp/lcs/
 - 문자열 길이 ≤ 1000 → O(n*m) DP 충분히 가능
 */
 
-// 2025-10-06 D+14 REVIEW
+// 2026-01-30 Reboot
 
 #include <iostream>
 #include <vector>
@@ -35,6 +35,7 @@ int main()
 
 	string str1, str2;
 	cin >> str1 >> str2;
+
 	int n = (int)str1.size(), m = (int)str2.size();
 
 	if (n < m)
@@ -44,10 +45,11 @@ int main()
 	}
 
 	vector<int> lcs(m + 1, 0);
-	for (int i = 1; i <= n; i++)	// 이건 j랑 맞추려고 1-base
+
+	for (int i = 1; i <= n; i++)
 	{
 		int prev_diag = 0;
-		for (int j = 1; j <= m; j++)	// j-1을 사용하니까 1-base
+		for (int j = 1; j <= m; j++)
 		{
 			int tmp = lcs[j];
 			if (str1[i - 1] == str2[j - 1]) lcs[j] = prev_diag + 1;
@@ -58,6 +60,47 @@ int main()
 
 	cout << lcs[m] << '\n';
 }
+
+
+// 2025-10-06 D+14 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string str1, str2;
+// 	cin >> str1 >> str2;
+// 	int n = (int)str1.size(), m = (int)str2.size();
+// 
+// 	if (n < m)
+// 	{
+// 		swap(str1, str2);
+// 		swap(n, m);
+// 	}
+// 
+// 	vector<int> lcs(m + 1, 0);
+// 	for (int i = 1; i <= n; i++)	// 이건 j랑 맞추려고 1-base
+// 	{
+// 		int prev_diag = 0;
+// 		for (int j = 1; j <= m; j++)	// j-1을 사용하니까 1-base
+// 		{
+// 			int tmp = lcs[j];
+// 			if (str1[i - 1] == str2[j - 1]) lcs[j] = prev_diag + 1;
+// 			else lcs[j] = max(lcs[j], lcs[j - 1]);
+// 			prev_diag = tmp;
+// 		}
+// 	}
+// 
+// 	cout << lcs[m] << '\n';
+// }
 
 // 2025-09-25 D+3 REVIEW
 

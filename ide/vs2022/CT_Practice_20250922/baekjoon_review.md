@@ -1873,3 +1873,28 @@ for (int i = 0, j = 0; i < n; i++)
     
     ---
     
+    ## 📅 2026-01-30
+    **BOJ 2664 - 촌수계산**
+    
+    ### BOJ 2664 - 촌수계산 (Kinship)
+    - **Topic:** graph | bfs
+    - **Folder:** `graph/bfs/`
+    - **Time Complexity:** O(N+M)
+    - **Space Complexity:** O(N+M)
+
+    - **Key Idea:**
+     - 시작점에서 BFS로 최단거리 계산 후 `dist[target2]` 출력.
+
+    - **Caution:**
+     - 비연결 그래프 고려하여 기본값 `-1`.
+     - 조기 종료 `if (cur == target2) break;`로 미세 최적화.
+
+    - **Improvement:**
+     - 변수명 `visited` -> `dist`로 변경 시 가독성↑.
+     - 입력 간선 수가 많을 때 `reserve` 활용 가능(선택).
+
+    - **Problem Hint:** 
+     - DFS도 가능하지만, 최단거리 보장은 BFS가 간단/명확.
+    
+    ---
+    
