@@ -17,7 +17,7 @@ Folder: search/binary
 - 정렬 후 이분 탐색이 정석. 해시(unordered_set)로도 평균 O(1) 가능하지만, 최악/메모리 관점에서 정렬+이분 탐색이 안정적이다.
 */
 
-// 2026-01-28 ORIGINAL
+// 2026-02-02 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -31,25 +31,62 @@ int main()
 	cin.tie(nullptr);
 
 	int n, m;
-
 	cin >> n;
-	vector<int> num = vector<int>(n);
 
+	vector<int> num(n);
+	
 	for (int i = 0; i < n; i++)
 		cin >> num[i];
 
 	sort(num.begin(), num.end());
 
 	cin >> m;
+
 	while (m--)
 	{
 		int target;
 		cin >> target;
+
 		if (binary_search(num.begin(), num.end(), target))
-			cout << 1;
+			cout << 1 << '\n';
 		else
-			cout << 0;
-		if (m != 0)
-			cout << '\n';
+			cout << 0 << '\n';
 	}
 }
+
+// 2026-01-28 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m;
+// 
+// 	cin >> n;
+// 	vector<int> num = vector<int>(n);
+// 
+// 	for (int i = 0; i < n; i++)
+// 		cin >> num[i];
+// 
+// 	sort(num.begin(), num.end());
+// 
+// 	cin >> m;
+// 	while (m--)
+// 	{
+// 		int target;
+// 		cin >> target;
+// 		if (binary_search(num.begin(), num.end(), target))
+// 			cout << 1;
+// 		else
+// 			cout << 0;
+// 		if (m != 0)
+// 			cout << '\n';
+// 	}
+// }

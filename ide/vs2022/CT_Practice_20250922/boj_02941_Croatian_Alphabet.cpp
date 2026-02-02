@@ -25,6 +25,8 @@ Folder: string/
 
 */
 
+// 2026-02-02 Reboot 간단 복습 완료
+
 // 2025-10-11 D+14 REVIEW
 
 #include <iostream>

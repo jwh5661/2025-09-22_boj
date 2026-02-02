@@ -1898,3 +1898,32 @@ for (int i = 0, j = 0; i < n; i++)
     
     ---
     
+    ## 📅 2026-02-02
+    **BOJ 3184 - 양**
+    
+    ### BOJ 3184 - 양 (Sheep)
+    - **Topic:** graph | bfs | connected_component
+    - **Folder:** `graph/bfs/`
+    - **Time Complexity:** O(R * C)
+    - **Space Complexity:** O(R * C)
+
+    - **Key Idea:**
+     - 벽을 미리 방문 처리하고, 미방문 칸에서 BFS로 연결요소를 확장하며 'o'/'v'를 카운트.
+     - 영역 종료 시 `양>늑대 ? sheep += 양 : wolf += 늑대`.
+
+    - **Caution:**
+     - `dx, dy` 방향만 실수 없으면 OK.
+     - 반환을 부호로 구분(양+: 양 수, 늑대: -늑대 수)하는 트릭은 깔끔하지만, 가독성을 위해 `pair<int, int>` 반환도 선택지.
+     - row와 col 제대로 구분하자!!
+
+    - **Improvement:**
+     - `visited`를 `vector<vector<char>>`로 바꾸고 값도 `0/1`로 단순화 가능(메모리 미세 절감).
+     - 입력은 `string row;`로 받고 `farm[i][j]=row[j];`로 채우면 더 일반적.
+
+    - **Problem Hint:**
+     - 울타리 `#`로 막힌 **하나의 영역** 내에서만 양/늑대 수를 비교한다.
+     - **양 > 늑대**면 늑대가 쫓겨나고, **그 외**에는 양이 잡아먹힌다.
+     - 전체 정답은 각 여영ㄱ 결과의 합이다.
+    
+    ---
+    

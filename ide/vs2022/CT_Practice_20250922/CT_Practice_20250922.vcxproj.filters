@@ -333,6 +333,9 @@
     <ClCompile Include="boj_02644_Kinship.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
+    <ClCompile Include="boj_03184_Sheep.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
