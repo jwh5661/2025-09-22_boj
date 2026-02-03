@@ -19,7 +19,7 @@ Folder: graph/bfs
 - 추가 정렬 불필요. dist 한 번만 잘 채우면 됨.
 */
 
-// 2026-01-29 ORIGINAL
+// 2026-02-03 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -27,11 +27,6 @@ Folder: graph/bfs
 #include <algorithm>
 
 using namespace std;
-
-void BFS(int node);
-
-vector<vector<int>> barn;
-vector<int> visited;
 
 int main()
 {
@@ -41,10 +36,11 @@ int main()
 	int n, m;
 	cin >> n >> m;
 
-	barn = vector<vector<int>>(n + 1);
-	visited = vector<int>(n + 1, -1);
+	vector<vector<int>> barn(n + 1);
+	vector<int> visited(n + 1, -1);
+	queue<int> q;
 
-	while (m--)
+	for (int i = 0; i < m; i++)
 	{
 		int dep, arr;
 		cin >> dep >> arr;
@@ -53,33 +49,12 @@ int main()
 		barn[arr].push_back(dep);
 	}
 
-	BFS(1);
-
-	int mx = -1, idx = -1, cnt = 0;
-	for (int i = 1; i <= n; i++) mx = max(mx, visited[i]);
-	for (int i = 1; i <= n; i++)
-	{
-		if (visited[i] == mx)
-		{
-			if (idx == -1)
-				idx = i;
-			cnt++;
-		}
-	}
-
-	cout << idx << ' ' << mx << ' ' << cnt << '\n';
-}
-
-void BFS(int node)
-{
-	queue<int> q;
-	q.push(node);
-	visited[node] = 0;
+	q.push(1);
+	visited[1] = 0;
 
 	while (!q.empty())
 	{
-		int cur = q.front();
-		q.pop();
+		int cur = q.front(); q.pop();
 
 		for (int next : barn[cur])
 		{
@@ -88,4 +63,92 @@ void BFS(int node)
 			visited[next] = visited[cur] + 1;
 		}
 	}
+
+	int idx = -1, dist = -1, cnt = 0;
+	
+	for (int i = 1; i <= n; i++)
+		dist = max(dist, visited[i]);
+
+	for (int i = 1; i <= n; i++)
+	{
+		if (visited[i] == dist)
+		{
+			if (idx == -1)
+				idx = i;
+			cnt++;
+		}
+	}
+
+	cout << idx << ' ' << dist << ' ' << cnt << '\n';
 }
+
+// 2026-01-29 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// void BFS(int node);
+// 
+// vector<vector<int>> barn;
+// vector<int> visited;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m;
+// 	cin >> n >> m;
+// 
+// 	barn = vector<vector<int>>(n + 1);
+// 	visited = vector<int>(n + 1, -1);
+// 
+// 	while (m--)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 
+// 		barn[dep].push_back(arr);
+// 		barn[arr].push_back(dep);
+// 	}
+// 
+// 	BFS(1);
+// 
+// 	int mx = -1, idx = -1, cnt = 0;
+// 	for (int i = 1; i <= n; i++) mx = max(mx, visited[i]);
+// 	for (int i = 1; i <= n; i++)
+// 	{
+// 		if (visited[i] == mx)
+// 		{
+// 			if (idx == -1)
+// 				idx = i;
+// 			cnt++;
+// 		}
+// 	}
+// 
+// 	cout << idx << ' ' << mx << ' ' << cnt << '\n';
+// }
+// 
+// void BFS(int node)
+// {
+// 	queue<int> q;
+// 	q.push(node);
+// 	visited[node] = 0;
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur = q.front();
+// 		q.pop();
+// 
+// 		for (int next : barn[cur])
+// 		{
+// 			if (visited[next] != -1) continue;
+// 			q.push(next);
+// 			visited[next] = visited[cur] + 1;
+// 		}
+// 	}
+// }
