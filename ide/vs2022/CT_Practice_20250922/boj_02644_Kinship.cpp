@@ -21,7 +21,7 @@ Folder: graph/bfs
 - DFS도 가능하지만, 최단거리 보장은 BFS가 간단/명확.
 */
 
-// 2026-01-30 ORIGINAL
+// 2026-02-04 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -34,11 +34,12 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, target1, target2, m;
-	cin >> n >> target1 >> target2 >> m;
+	int n, m, p1, p2;
+	cin >> n >> p1 >> p2 >> m;
 
 	vector<vector<int>> family(n + 1);
-	vector<int> visited(n + 1, -1);
+	vector<int> degree(n + 1, -1);
+	queue<int> q;
 
 	while (m--)
 	{
@@ -49,21 +50,67 @@ int main()
 		family[arr].push_back(dep);
 	}
 
-	queue<int> q;
-	q.push(target1);
-	visited[target1] = 0;
+	q.push(p1);
+	degree[p1] = 0;
 
 	while (!q.empty())
 	{
 		int cur = q.front(); q.pop();
-		if (cur == target2) break;
+
 		for (int next : family[cur])
 		{
-			if (visited[next] != -1) continue;
+			if (degree[next] != -1) continue;
 			q.push(next);
-			visited[next] = visited[cur] + 1;
+			degree[next] = degree[cur] + 1;
 		}
 	}
 
-	cout << visited[target2] << '\n';
+	cout << degree[p2] << '\n';
 }
+
+// 2026-01-30 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, target1, target2, m;
+// 	cin >> n >> target1 >> target2 >> m;
+// 
+// 	vector<vector<int>> family(n + 1);
+// 	vector<int> visited(n + 1, -1);
+// 
+// 	while (m--)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 
+// 		family[dep].push_back(arr);
+// 		family[arr].push_back(dep);
+// 	}
+// 
+// 	queue<int> q;
+// 	q.push(target1);
+// 	visited[target1] = 0;
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur = q.front(); q.pop();
+// 		if (cur == target2) break;
+// 		for (int next : family[cur])
+// 		{
+// 			if (visited[next] != -1) continue;
+// 			q.push(next);
+// 			visited[next] = visited[cur] + 1;
+// 		}
+// 	}
+// 
+// 	cout << visited[target2] << '\n';
+// }

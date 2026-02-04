@@ -1874,9 +1874,9 @@ for (int i = 0, j = 0; i < n; i++)
     ---
     
     ## 📅 2026-01-30
-    **BOJ 2664 - 촌수계산**
+    **BOJ 2644 - 촌수계산**
     
-    ### BOJ 2664 - 촌수계산 (Kinship)
+    ### BOJ 2644 - 촌수계산 (Kinship)
     - **Topic:** graph | bfs
     - **Folder:** `graph/bfs/`
     - **Time Complexity:** O(N+M)
