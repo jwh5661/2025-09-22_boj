@@ -21,6 +21,8 @@ Folder: impl/
 - “0~9의 각 숫자가 몇 번씩 쓰였는가” → 등장 빈도 출력.
 */
 
+// 2026-02-05 Reboot 간단 복습 완료
+
 // 2025-09-27 D+3 REVIEW
 
 #include <iostream>
