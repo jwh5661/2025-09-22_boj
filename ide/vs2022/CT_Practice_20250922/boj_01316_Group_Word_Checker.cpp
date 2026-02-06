@@ -28,6 +28,8 @@ Folder: string/impl
 
 */
 
+// 2026-02-06 D+3 REVIEW 간단 복습
+
 // 2026-02-04 Reboot 간단 복습
 // a-z까지 배열 만들고 본 알파벳은 true표시
 // 만약 현재 알파벳이 이미 본 알파벳이면, 이전 알파벳을 확인
@@ -35,44 +37,44 @@ Folder: string/impl
 
 // 2025-10-11 D+14 REVIEW
 
-// #include <iostream>
-// #include <string>
-// 
-// using namespace std;
-// 
-// int main()
-// {
-// 	ios::sync_with_stdio(false);
-// 	cin.tie(nullptr);
-// 
-// 	int n, cnt = 0;
-// 	cin >> n;
-// 
-// 	while (n--)
-// 	{
-// 		string str;
-// 		cin >> str;
-// 
-// 		bool seen[26] = {}, is_group = true;
-// 		int prev = -1;
-// 		for (char c : str)
-// 		{
-// 			int idx = c - 'a';
-// 			if (prev != idx && seen[idx])
-// 			{
-// 				is_group = false;
-// 				break;
-// 			}
-// 			seen[idx] = true;	// 문제에서 소문자만 입력으로 나온다고 했으므로 크게 신경 안써도 될듯
-// 			prev = idx;
-// 		}
-// 
-// 		if (is_group)
-// 			cnt++;
-// 	}
-// 
-// 	cout << cnt << '\n';
-// }
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
+	int n, cnt = 0;
+	cin >> n;
+
+	while (n--)
+	{
+		string str;
+		cin >> str;
+
+		bool seen[26] = {}, is_group = true;
+		int prev = -1;
+		for (char c : str)
+		{
+			int idx = c - 'a';
+			if (prev != idx && seen[idx])
+			{
+				is_group = false;
+				break;
+			}
+			seen[idx] = true;	// 문제에서 소문자만 입력으로 나온다고 했으므로 크게 신경 안써도 될듯
+			prev = idx;
+		}
+
+		if (is_group)
+			cnt++;
+	}
+
+	cout << cnt << '\n';
+}
 
 // 2025-09-26 D+3 REVIEW
 
