@@ -24,7 +24,7 @@ Folder: dp/lis/
 - n 최대 1,000,000 -> 최적화 필요.
 */
 
-// 2025-09-27 D+3 REVIEW
+// 2026-02-09 Reboot
 
 #include <iostream>
 #include <vector>
@@ -38,8 +38,8 @@ int main()
 	cin.tie(nullptr);
 
 	int n;
-	vector<int> lis;
 	cin >> n;
+	vector<int> lis;
 
 	for (int i = 0; i < n; i++)
 	{
@@ -49,9 +49,38 @@ int main()
 		if (lis.empty() || lis.back() < x) lis.push_back(x);
 		else *lower_bound(lis.begin(), lis.end(), x) = x;
 	}
-	
-	cout << (int)lis.size() << "\n";
+
+	cout << lis.size() << '\n';
 }
+
+// 2025-09-27 D+3 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n;
+// 	vector<int> lis;
+// 	cin >> n;
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		int x;
+// 		cin >> x;
+// 
+// 		if (lis.empty() || lis.back() < x) lis.push_back(x);
+// 		else *lower_bound(lis.begin(), lis.end(), x) = x;
+// 	}
+// 	
+// 	cout << (int)lis.size() << "\n";
+// }
 
 // 2025-09-24 D+0 REVIEW
 

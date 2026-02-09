@@ -24,7 +24,7 @@ Folder: string/kmp/
 - 공백 포함 가능 → `getline`으로 전체 라인 입력.
 */
 
-// 2026-02-04 Reboot 
+// 2026-02-09 D+3 REVIEW 
 
 #include <iostream>
 #include <string>
@@ -42,9 +42,9 @@ int main()
 	getline(cin, p);
 
 	int n = (int)t.size(), m = (int)p.size();
-	
-	if (n < m)
-	{
+
+	if(n < m)
+	{ 
 		cout << 0 << '\n' << '\n';
 		return 0;
 	}
@@ -66,16 +66,69 @@ int main()
 		if (t[i] == p[j]) j++;
 		if (j == m)
 		{
-			idx.push_back(i - m + 1);
 			j = dp[j - 1];
+			idx.push_back(i - m + 2);
 		}
 	}
 
 	cout << idx.size() << '\n';
-	for (int i : idx)
-		cout << i + 1 << ' ';
+	for (int x : idx)
+		cout << x << ' ';
 	cout << '\n';
 }
+
+// 2026-02-04 Reboot 
+
+// #include <iostream>
+// #include <string>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	string t, p;
+// 	getline(cin, t);
+// 	getline(cin, p);
+// 
+// 	int n = (int)t.size(), m = (int)p.size();
+// 	
+// 	if (n < m)
+// 	{
+// 		cout << 0 << '\n' << '\n';
+// 		return 0;
+// 	}
+// 
+// 	vector<int> dp(m, 0), idx;
+// 	idx.reserve(n - m + 1);
+// 
+// 	for (int i = 1; i < m; i++)
+// 	{
+// 		int j = dp[i - 1];
+// 		while (j > 0 && p[i] != p[j]) j = dp[j - 1];
+// 		if (p[i] == p[j]) j++;
+// 		dp[i] = j;
+// 	}
+// 
+// 	for (int i = 0, j = 0; i < n; i++)
+// 	{
+// 		while (j > 0 && t[i] != p[j]) j = dp[j - 1];
+// 		if (t[i] == p[j]) j++;
+// 		if (j == m)
+// 		{
+// 			idx.push_back(i - m + 1);
+// 			j = dp[j - 1];
+// 		}
+// 	}
+// 
+// 	cout << idx.size() << '\n';
+// 	for (int i : idx)
+// 		cout << i + 1 << ' ';
+// 	cout << '\n';
+// }
 
 // 2025-10-11 D+14 REVIEW
 

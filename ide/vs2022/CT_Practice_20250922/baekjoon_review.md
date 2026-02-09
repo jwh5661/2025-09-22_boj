@@ -1981,3 +1981,31 @@ for (int i = 0, j = 0; i < n; i++)
     
     ---
     
+    ## 📅 2026-02-09
+    **BOJ 16234 - 인구 이동**
+    
+    ### BOJ 16234 - 인구 이동 (Population Movement)
+    - **Topic:** graph | bfs | simulation
+    - **Folder:** `graph/bfs/`
+    - **Time Complexity:** O(D * N^2) -> D+3 review때 줄이고 그 날 다시 작성하자
+    - **Space Complexity:** O(N^2)
+
+    - **Key Idea:**
+     - 하루마다 `visited`를 리셋하고, 각 칸을 시작으로 BFS를 돌며 **연합**(칸 목록)을 구성.
+     - 연합별 평균(내림)을 구해 **하루가 끝난 뒤 일괄 갱신**.
+     - 모든 연합의 크기가 1이면(=국경 개방 없음) 종료.
+
+    - **Caution:**
+    - 시작 칸을 연합 목록에 반드시 포함해야 평균 적용이 빠지지 않음.
+    - 컨테이너 초기화 시 `unite = vector<...>(n*n);` 후 **추가 `clear()` 금지**
+    - 차이 조건은 `L <= diff <= R`로 체크.
+
+    - **Improvement:**
+     - D+3 복습 때는 종료 판정을 `moved` 플래그(연합 크기>=2가 한 번이라도 있었는지)로 바꾸면 더 직관적이고 견고함.
+     - 하루 시작 시점에 `visited.assign(...)`, `unite.assign(n*n,{})`, `unite_population.clear()`, `unite_count=0`를 모아두면 가독성↑.
+
+    - **Problem Hint:**
+     - 핵심은 "**하루 단위 시뮬레이션** + **BFS로 연합 구성** + **동시 갱신**".
+    
+    ---
+    
