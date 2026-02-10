@@ -23,6 +23,8 @@ Folder: impl/simulation/
 - 입력 크기 5 -> 단순 시뮬레이션으로 충분.
 */
 
+// 2026-02-10 Reboot 간단 복습 완료
+
 // 2025-10-13 D+14 REVIEW
 
 #include <iostream>

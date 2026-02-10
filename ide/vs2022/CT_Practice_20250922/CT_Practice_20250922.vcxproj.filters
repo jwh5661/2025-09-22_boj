@@ -345,6 +345,9 @@
     <ClCompile Include="boj_16234_Population_Movement.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
+    <ClCompile Include="boj_14442_Move_and_Break_Walls_2.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">

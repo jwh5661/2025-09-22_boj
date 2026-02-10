@@ -2009,3 +2009,28 @@ for (int i = 0, j = 0; i < n; i++)
     
     ---
     
+    ## 📅 2026-02-10
+    **BOJ 14442 - 벽 부수고 이동하기 2**
+    
+    ### BOJ 14442 - 벽 부수고 이동하기 2 (Move and Break Walls 2)
+    - **Topic:** BFS | Shoretest Path | State Graph
+    - **Folder:** `graph/bfs/`
+    - **Time Complexity:** O(N * M * K)
+    - **Space Complexity:** O(N * M * K)
+
+    - **Key Idea:**
+     - `(x, y)`만으로는 부족하므로 `(x, y, broken)` 상태 BFS.
+     - 방문은 `visited[x][y][broken]`로 관리해야 경로가 잘리지 않음.
+
+    - **Caution:**
+     - `visited` 3번째 차원을 `k`로 잡으면 `broken==k` 상태에서 OOB(특히 k=0 즉시 터짐).
+
+    - **Improvement:**
+     - `vector<bool>` 대신 `char`/flatten 배열로 방문 체크하면 더 빠르고 예측 가능.
+     - 목표 도달 즉시 종료 유지.
+
+    - **Problem Hint:**
+     - "K번까지 가능" -> `0..K` 상태 수만큼 방문 배열이 필요.
+    
+    ---
+    

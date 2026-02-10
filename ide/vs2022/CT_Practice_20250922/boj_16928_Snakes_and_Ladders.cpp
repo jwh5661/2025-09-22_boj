@@ -32,7 +32,7 @@ BFS 특성상 첫 방문이 최단거리이므로 간단히 if (count[next] != -
 BFS의 레벨이 곧 굴림 횟수이므로, 100에 처음 도달했을 때의 거리가 정답입니다.
 */
 
-// 2026-02-05 ORIGINAL
+// 2026-02-10 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -49,21 +49,13 @@ int main()
 	int n, m;
 	cin >> n >> m;
 
-	const int game_size = 100;
+	const int mx = 100;
 
-	vector<int> jump(game_size + 1, -1);
-	vector<int> count(game_size + 1, -1);
+	vector<int> jump(mx + 1, -1);
+	vector<int> count(mx + 1, -1);
 	queue<int> q;
 
-	for (int i = 0; i < n; i++)
-	{
-		int dep, arr;
-		cin >> dep >> arr;
-
-		jump[dep] = arr;
-	}
-
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < n + m; i++)
 	{
 		int dep, arr;
 		cin >> dep >> arr;
@@ -73,24 +65,91 @@ int main()
 
 	q.push(1);
 	count[1] = 0;
-	
+
 	while (!q.empty())
 	{
-		auto cur = q.front(); q.pop();
-		if (cur == game_size) break;
+		int cur = q.front(); q.pop();
 
 		for (int i = 1; i <= 6; i++)
 		{
 			int next = cur + i;
 
-			if (next > game_size) continue;
+			if (next > mx) continue;
 			if (jump[next] != -1) next = jump[next];
-			if (count[next] != -1 && count[next] <= count[cur] + 1) continue;
+			if (count[next] != -1) continue;
 
-			q.push(next);
 			count[next] = count[cur] + 1;
+			if (next == mx)
+			{
+				cout << count[next] << '\n';
+				return 0;
+			}
+			q.push(next);
 		}
 	}
 
-	cout << count[game_size] << '\n';
+	cout << count[mx] << '\n';
 }
+
+// 2026-02-05 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m;
+// 	cin >> n >> m;
+// 
+// 	const int game_size = 100;
+// 
+// 	vector<int> jump(game_size + 1, -1);
+// 	vector<int> count(game_size + 1, -1);
+// 	queue<int> q;
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 
+// 		jump[dep] = arr;
+// 	}
+// 
+// 	for (int i = 0; i < m; i++)
+// 	{
+// 		int dep, arr;
+// 		cin >> dep >> arr;
+// 
+// 		jump[dep] = arr;
+// 	}
+// 
+// 	q.push(1);
+// 	count[1] = 0;
+// 	
+// 	while (!q.empty())
+// 	{
+// 		auto cur = q.front(); q.pop();
+// 		if (cur == game_size) break;
+// 
+// 		for (int i = 1; i <= 6; i++)
+// 		{
+// 			int next = cur + i;
+// 
+// 			if (next > game_size) continue;
+// 			if (jump[next] != -1) next = jump[next];
+// 			if (count[next] != -1 && count[next] <= count[cur] + 1) continue;
+// 
+// 			q.push(next);
+// 			count[next] = count[cur] + 1;
+// 		}
+// 	}
+// 
+// 	cout << count[game_size] << '\n';
+// }
