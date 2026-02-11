@@ -25,12 +25,11 @@ Folder: graph/bfs
 
 */
 
-// 2026-02-06 ORIGINAL
+// 2026-02-11 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <algorithm>
 
 using namespace std;
 
@@ -42,7 +41,7 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, start_x = 0, start_y = 0, cur_size = 2, ate = 0, cur_time = 0;
+	int n, sx, sy, t = 0, shark_size = 2, ate = 0;
 	cin >> n;
 
 	vector<vector<int>> fish(n, vector<int>(n, 0));
@@ -55,68 +54,76 @@ int main()
 
 			if (fish[i][j] == 9)
 			{
-				start_x = i;
-				start_y = j;
 				fish[i][j] = 0;
+				sx = i;
+				sy = j;
 			}
 		}
 	}
 
 	while (true)
 	{
-		vector<vector<int>> t(n, vector<int>(n, -1));
-		vector<pair<int, int>> tmp;
+		vector<vector<int>> time(n, vector<int>(n, -1));
+		pair<int, int> tmp = { n, n };
 		queue<pair<int, int>> q;
-		int dist = -1;
+		int elapsed = -1;
 
-		q.emplace(start_x, start_y);
-		t[start_x][start_y] = 0;
+		q.emplace(sx, sy);
+		time[sx][sy] = 0;
 
 		while (!q.empty())
 		{
 			auto cur = q.front(); q.pop();
 			int cx = cur.first;
 			int cy = cur.second;
-			
+
 			for (int i = 0; i < 4; i++)
 			{
 				int nx = cx + dx[i];
 				int ny = cy + dy[i];
-				
+
 				if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-				if (t[nx][ny] != -1) continue;
-				if (fish[nx][ny] > cur_size) continue;
+				if (time[nx][ny] != -1) continue;
+				if (fish[nx][ny] > shark_size) continue;
 
-				t[nx][ny] = t[cx][cy] + 1;
-
-				if (dist != -1 && dist < t[nx][ny]) continue;
-
-				if (fish[nx][ny] != 0 && fish[nx][ny] < cur_size)
+				time[nx][ny] = time[cx][cy] + 1;
+				
+				if (elapsed != -1 && elapsed < time[nx][ny]) continue;
+				if (fish[nx][ny] != 0 && fish[nx][ny] < shark_size)
 				{
-					if (dist == -1) 
-						dist = t[nx][ny];
-
-					if (dist == t[nx][ny])
-						tmp.emplace_back(nx, ny);
+					if (elapsed == -1)
+						elapsed = time[nx][ny];
+					
+					if (nx < tmp.first)
+					{
+						tmp.first = nx;
+						tmp.second = ny;
+					}
+					else if (nx == tmp.first)
+					{
+						if (ny < tmp.second)
+						{
+							tmp.first = nx;
+							tmp.second = ny;
+						}
+					}
 				}
-
-				q.emplace(nx, ny);
+				if(elapsed == -1)
+					q.emplace(nx, ny);
 			}
 		}
 
-		if (dist != -1)
+		if (elapsed != -1)
 		{
-			sort(tmp.begin(), tmp.end());
-			start_x = tmp[0].first;
-			start_y = tmp[0].second;
+			sx = tmp.first;
+			sy = tmp.second;
+			fish[sx][sy] = 0;
 
-			cur_time += t[start_x][start_y];
+			t += elapsed;
 			ate++;
-			fish[start_x][start_y] = 0;
-
-			if (ate == cur_size)
+			if (ate == shark_size)
 			{
-				cur_size++;
+				shark_size++;
 				ate = 0;
 			}
 		}
@@ -124,5 +131,107 @@ int main()
 			break;
 	}
 
-	cout << cur_time << '\n';
+	cout << t << '\n';
 }
+
+// 2026-02-06 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int dx[4] = { -1, 1, 0, 0 };
+// int dy[4] = { 0, 0, 1, -1 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, start_x = 0, start_y = 0, cur_size = 2, ate = 0, cur_time = 0;
+// 	cin >> n;
+// 
+// 	vector<vector<int>> fish(n, vector<int>(n, 0));
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		for (int j = 0; j < n; j++)
+// 		{
+// 			cin >> fish[i][j];
+// 
+// 			if (fish[i][j] == 9)
+// 			{
+// 				start_x = i;
+// 				start_y = j;
+// 				fish[i][j] = 0;
+// 			}
+// 		}
+// 	}
+// 
+// 	while (true)
+// 	{
+// 		vector<vector<int>> t(n, vector<int>(n, -1));
+// 		vector<pair<int, int>> tmp;
+// 		queue<pair<int, int>> q;
+// 		int dist = -1;
+// 
+// 		q.emplace(start_x, start_y);
+// 		t[start_x][start_y] = 0;
+// 
+// 		while (!q.empty())
+// 		{
+// 			auto cur = q.front(); q.pop();
+// 			int cx = cur.first;
+// 			int cy = cur.second;
+// 			
+// 			for (int i = 0; i < 4; i++)
+// 			{
+// 				int nx = cx + dx[i];
+// 				int ny = cy + dy[i];
+// 				
+// 				if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+// 				if (t[nx][ny] != -1) continue;
+// 				if (fish[nx][ny] > cur_size) continue;
+// 
+// 				t[nx][ny] = t[cx][cy] + 1;
+// 
+// 				if (dist != -1 && dist < t[nx][ny]) continue;
+// 
+// 				if (fish[nx][ny] != 0 && fish[nx][ny] < cur_size)
+// 				{
+// 					if (dist == -1) 
+// 						dist = t[nx][ny];
+// 
+// 					if (dist == t[nx][ny])
+// 						tmp.emplace_back(nx, ny);
+// 				}
+// 
+// 				q.emplace(nx, ny);
+// 			}
+// 		}
+// 
+// 		if (dist != -1)
+// 		{
+// 			sort(tmp.begin(), tmp.end());
+// 			start_x = tmp[0].first;
+// 			start_y = tmp[0].second;
+// 
+// 			cur_time += t[start_x][start_y];
+// 			ate++;
+// 			fish[start_x][start_y] = 0;
+// 
+// 			if (ate == cur_size)
+// 			{
+// 				cur_size++;
+// 				ate = 0;
+// 			}
+// 		}
+// 		else
+// 			break;
+// 	}
+// 
+// 	cout << cur_time << '\n';
+// }
