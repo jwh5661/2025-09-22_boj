@@ -22,7 +22,7 @@ Folder: graph/bfs
 - 종료 조건은 “**그날** 연합 수가 n*n (모두 크기 1)”이면 중지.
 */
 
-// 2026-02-06 ORIGINAL
+// 2026-02-21 D+3 REIVEW
 
 #include <iostream>
 #include <vector>
@@ -31,96 +31,188 @@ Folder: graph/bfs
 
 using namespace std;
 
-int BFS(int x, int y);
-
-vector<vector<int>> population;
-vector<vector<bool>> visited;
-vector<vector<pair<int, int>>> unite;
-vector<int> unite_population;
 int dx[4] = { -1, 1, 0, 0 };
 int dy[4] = { 0, 0, 1, -1 };
-int n, l, r, unite_count;
 
 int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int result = 0;
+	int n, l, r, cnt = 0;
 	cin >> n >> l >> r;
-	unite_count = 0;
-	population = vector<vector<int>>(n, vector<int>(n, 0));
-	visited = vector<vector<bool>>(n, vector<bool>(n, false));
-	unite = vector<vector<pair<int, int>>>(n * n);
+
+	vector<vector<int>> country(n, vector<int>(n));
 
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < n; j++)
-			cin >> population[i][j];
+			cin >> country[i][j];
 	}
-	
+
 	while (true)
 	{
+		vector<vector<bool>> visited(n, vector<bool>(n, false));
+		queue<pair<int, int>> q;
+		bool moved = false;
+
 		for (int i = 0; i < n; i++)
 		{
 			for (int j = 0; j < n; j++)
 			{
 				if (visited[i][j]) continue;
-				unite_population.push_back(BFS(i, j));
-				unite_count++;
-				//cout << 1;
+				vector<pair<int, int>> unite;
+				int unite_population = 0;
+
+				q.emplace(i, j);
+				visited[i][j] = true;
+
+				while (!q.empty())
+				{
+					auto cur = q.front(); q.pop();
+					int cx = cur.first;
+					int cy = cur.second;
+					unite.emplace_back(cx, cy);
+					unite_population += country[cx][cy];
+					
+					for (int d = 0; d < 4; d++)
+					{
+						int nx = cx + dx[d];
+						int ny = cy + dy[d];
+
+						if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+						if (visited[nx][ny]) continue;
+
+						int val = abs(country[cx][cy] - country[nx][ny]);
+						if (val < l || val > r) continue;
+						visited[nx][ny] = true;
+						q.emplace(nx, ny);
+					}
+				}
+
+				int unite_count = (int)unite.size();
+
+				if (unite_count > 1) moved = true;
+
+				int new_population = unite_population / unite_count;
+
+				for (int d = 0; d < unite.size(); d++)
+				{
+					int vx = unite[d].first;
+					int vy = unite[d].second;
+
+					country[vx][vy] = new_population;
+				}
 			}
 		}
 
-		if (unite_count == n*n) break;
-
-		for (int i = 0; i < unite_count; i++)
-		{
-			for (int j = 0; j < unite[i].size(); j++)
-				population[unite[i][j].first][unite[i][j].second] = unite_population[i];
-		}
-
-		visited = vector<vector<bool>>(n, vector<bool>(n, false));
-		unite = vector<vector<pair<int, int>>>(n * n);
-		unite_count = 0;
-		unite_population.clear();
-		result++;
+		if (!moved)
+			break;
+		cnt++;
 	}
 
-	cout << result << '\n';
+	cout << cnt << '\n';
 }
 
-int BFS(int x, int y)
-{
-	queue<pair<int, int>> q;
-	q.emplace(x, y);
-	unite[unite_count].emplace_back(x, y);
-	visited[x][y] = true;
-	int result = population[x][y], count = 1;
-	
-	while (!q.empty())
-	{
-		auto cur = q.front(); q.pop();
-		int cx = cur.first;
-		int cy = cur.second;
+// 2026-02-06 ORIGINAL
 
-		for (int i = 0; i < 4; i++)
-		{
-			int nx = cx + dx[i];
-			int ny = cy + dy[i];
-			
-			if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-			if (visited[nx][ny]) continue;
-			int abs_value = abs(population[nx][ny] - population[cx][cy]);
-			if (abs_value < l || abs_value > r) continue;
-
-			q.emplace(nx, ny);
-			visited[nx][ny] = true;
-			unite[unite_count].emplace_back(nx, ny);
-			result += population[nx][ny];
-			count++;
-		}
-	}
-
-	return result / count;
-}
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <cmath>
+// 
+// using namespace std;
+// 
+// int BFS(int x, int y);
+// 
+// vector<vector<int>> population;
+// vector<vector<bool>> visited;
+// vector<vector<pair<int, int>>> unite;
+// vector<int> unite_population;
+// int dx[4] = { -1, 1, 0, 0 };
+// int dy[4] = { 0, 0, 1, -1 };
+// int n, l, r, unite_count;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int result = 0;
+// 	cin >> n >> l >> r;
+// 	unite_count = 0;
+// 	population = vector<vector<int>>(n, vector<int>(n, 0));
+// 	visited = vector<vector<bool>>(n, vector<bool>(n, false));
+// 	unite = vector<vector<pair<int, int>>>(n * n);
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		for (int j = 0; j < n; j++)
+// 			cin >> population[i][j];
+// 	}
+// 	
+// 	while (true)
+// 	{
+// 		for (int i = 0; i < n; i++)
+// 		{
+// 			for (int j = 0; j < n; j++)
+// 			{
+// 				if (visited[i][j]) continue;
+// 				unite_population.push_back(BFS(i, j));
+// 				unite_count++;
+// 				//cout << 1;
+// 			}
+// 		}
+// 
+// 		if (unite_count == n*n) break;
+// 
+// 		for (int i = 0; i < unite_count; i++)
+// 		{
+// 			for (int j = 0; j < unite[i].size(); j++)
+// 				population[unite[i][j].first][unite[i][j].second] = unite_population[i];
+// 		}
+// 
+// 		visited = vector<vector<bool>>(n, vector<bool>(n, false));
+// 		unite = vector<vector<pair<int, int>>>(n * n);
+// 		unite_count = 0;
+// 		unite_population.clear();
+// 		result++;
+// 	}
+// 
+// 	cout << result << '\n';
+// }
+// 
+// int BFS(int x, int y)
+// {
+// 	queue<pair<int, int>> q;
+// 	q.emplace(x, y);
+// 	unite[unite_count].emplace_back(x, y);
+// 	visited[x][y] = true;
+// 	int result = population[x][y], count = 1;
+// 	
+// 	while (!q.empty())
+// 	{
+// 		auto cur = q.front(); q.pop();
+// 		int cx = cur.first;
+// 		int cy = cur.second;
+// 
+// 		for (int i = 0; i < 4; i++)
+// 		{
+// 			int nx = cx + dx[i];
+// 			int ny = cy + dy[i];
+// 			
+// 			if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+// 			if (visited[nx][ny]) continue;
+// 			int abs_value = abs(population[nx][ny] - population[cx][cy]);
+// 			if (abs_value < l || abs_value > r) continue;
+// 
+// 			q.emplace(nx, ny);
+// 			visited[nx][ny] = true;
+// 			unite[unite_count].emplace_back(nx, ny);
+// 			result += population[nx][ny];
+// 			count++;
+// 		}
+// 	}
+// 
+// 	return result / count;
+// }

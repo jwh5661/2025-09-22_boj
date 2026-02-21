@@ -1,7 +1,7 @@
 ﻿/*
 BOJ 13460 — 구슬 탈출 2 (Bead Escape 2)
 Topic: BFS / Simulation / State Search
-Folder: bfs/simulation
+Folder: graph/bfs
 
 ⏱ 시간복잡도: O((N*M)^2 * 4 * max(N,M))  (상태 수 ≤ (N*M)^2, 한 번 기울일 때 굴리기 O(max))
 💾 공간복잡도: O((N*M)^2)  (visited[rx][ry][bx][by] + 보드)

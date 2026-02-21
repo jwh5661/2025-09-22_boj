@@ -2067,3 +2067,32 @@ for (int i = 0, j = 0; i < n; i++)
     
     ---
     
+    ## 📅 2026-02-21
+    **BOJ 14502 - 연구소**
+    
+    ### BOJ 14502 - 연구소 (Laboratory)
+    - **Topic:** Brute Force | BFS
+    - **Folder:** `graph/bfs/`
+    - **Time Complexity:** O(C(E, 3) * N * M) (E = 빈 칸 수, 최대 64)
+    - **Space Complexity:** O(N * M)
+
+    - **Key Idea:**
+     - 빈 칸 리스트를 만들고 `i < j < k` 조합으로 벽 3개를 세워 중복(순열)을 제거한다.
+     - 각 케이스마다 바이러스 시작점들을 큐에 넣고 BFS로 퍼뜨리며 감염된 빈 칸 수 만큼 `safe_zone--`.
+     - `safe_zone = blank_cnt - 3`에서 시작하면 계산이 단순해진다.
+     - `visited`는 `int` 2차원 배열 + `stamp++`로 "케이스 별 방문"을 구분해 재할당을 피한다.
+
+    - **Caution:**
+     - `visited` 스탬프 방식에서는 바이러스 시작점 포함 방문 체크를 `visited[x][y] = stamp`로 해야 한다. (`true`를 넣으면 stamp가 2 이상일 때 방문 판정이 틀어질 수 있음)
+     - 범위 체크로 **배열 범위 밖 접근(out of bounds)** 방지.
+     - 벽 세운 칸은 반드시 `0`으로 원복.
+
+    - **Improvement:**
+     - BFS 중 `safe_zone <= mx`가 되면 더 퍼져도 안전영역이 늘 수 없으므로 BFS를 조기 종료(가지치기).
+
+    - **Problem Hint:**
+     - "벽 3개만 세우면 된다" + "격자 크기가 작다" -> 조합 완전탐색
+     - "바이러스 확산은 최단거리 문제가 아니라 단순 확산" -> BFS/DFS로 감염 영역 계산
+    
+    ---
+    

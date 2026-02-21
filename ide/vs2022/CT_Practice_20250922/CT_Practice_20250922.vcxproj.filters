@@ -351,6 +351,9 @@
     <ClCompile Include="boj_13460_Bead_Escape_2.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
+    <ClCompile Include="boj_14502_Laboratory.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">

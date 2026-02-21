@@ -1,7 +1,7 @@
 ﻿/*
 BOJ 14442 — 벽 부수고 이동하기 2 (Move and Break Walls 2)
 Topic: BFS / Shortest Path (State BFS)
-Folder: bfs
+Folder: graph/bfs
 
 ⏱ 시간복잡도: O(N * M * K)
 💾 공간복잡도: O(N * M * K)
