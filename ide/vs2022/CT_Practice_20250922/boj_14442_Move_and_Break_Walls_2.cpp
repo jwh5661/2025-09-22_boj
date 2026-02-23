@@ -18,7 +18,7 @@ Folder: graph/bfs
 - “최대 K개까지 벽을 부술 수 있다” → 부순 횟수가 상태(state).
 */
 
-// 2026-02-10 ORIGINAL
+// 2026-02-23 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -40,27 +40,28 @@ int main()
 	cin >> n >> m >> k;
 
 	vector<vector<int>> map(n + 1, vector<int>(m + 1, 0));
-	vector<vector<vector<bool>>> visited(n + 1, 
-		vector<vector<bool>>(m + 1, 
-			vector<bool>(k + 1, false)));
-	queue<tuple<int, int, int>> q;
+	vector<char> visited((n + 1) * (m + 1) * (k + 1), 0);
 
 	for (int i = 1; i <= n; i++)
 	{
 		string str;
 		cin >> str;
+
 		for (int j = 1; j <= m; j++)
 			map[i][j] = str[j - 1] - '0';
 	}
 
+	queue<tuple<int, int, int>> q;
+
 	q.emplace(1, 1, 0);
-	visited[1][1][0] = true;
+	visited[1 * (m + 1) * (k + 1) + 1 * (k + 1) + 0] = true;
 
 	int steps = 1;
 	while (!q.empty())
 	{
 		int step_size = (int)q.size();
-		while (step_size--)
+
+		while(step_size--)
 		{
 			auto [cx, cy, broken] = q.front(); q.pop();
 
@@ -69,24 +70,25 @@ int main()
 				cout << steps << '\n';
 				return 0;
 			}
-
-			for (int i = 0; i < 4; i++)
+			
+			for (int d = 0; d < 4; d++)
 			{
-				int nx = cx + dx[i];
-				int ny = cy + dy[i];
+				int nx = cx + dx[d];
+				int ny = cy + dy[d];
+				int nbroken = broken;
 
 				if (nx <= 0 || nx > n || ny <= 0 || ny > m) continue;
-
-				int n_broken = broken;
 				if (map[nx][ny] == 1)
 				{
-					if (broken == k) continue;
-					n_broken++;
+					if (nbroken >= k)
+						continue;
+					nbroken++;
 				}
-				if (visited[nx][ny][n_broken]) continue;
+				int idx = nx * (m + 1) * (k + 1) + ny * (k + 1) + nbroken;
+				if (visited[idx]) continue;
 
-				q.emplace(nx, ny, n_broken);
-				visited[nx][ny][n_broken] = true;
+				q.emplace(nx, ny, nbroken);
+				visited[idx] = true;
 			}
 		}
 
@@ -95,3 +97,81 @@ int main()
 
 	cout << -1 << '\n';
 }
+
+// 2026-02-10 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <tuple>
+// #include <string>
+// 
+// using namespace std;
+// 
+// int dx[4] = { -1, 1, 0, 0 };
+// int dy[4] = { 0, 0, 1, -1 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m, k;
+// 	cin >> n >> m >> k;
+// 
+// 	vector<vector<int>> map(n + 1, vector<int>(m + 1, 0));
+// 	vector<vector<vector<bool>>> visited(n + 1, 
+// 		vector<vector<bool>>(m + 1, 
+// 			vector<bool>(k + 1, false)));
+// 	queue<tuple<int, int, int>> q;
+// 
+// 	for (int i = 1; i <= n; i++)
+// 	{
+// 		string str;
+// 		cin >> str;
+// 		for (int j = 1; j <= m; j++)
+// 			map[i][j] = str[j - 1] - '0';
+// 	}
+// 
+// 	q.emplace(1, 1, 0);
+// 	visited[1][1][0] = true;
+// 
+// 	int steps = 1;
+// 	while (!q.empty())
+// 	{
+// 		int step_size = (int)q.size();
+// 		while (step_size--)
+// 		{
+// 			auto [cx, cy, broken] = q.front(); q.pop();
+// 
+// 			if (cx == n && cy == m)
+// 			{
+// 				cout << steps << '\n';
+// 				return 0;
+// 			}
+// 
+// 			for (int i = 0; i < 4; i++)
+// 			{
+// 				int nx = cx + dx[i];
+// 				int ny = cy + dy[i];
+// 
+// 				if (nx <= 0 || nx > n || ny <= 0 || ny > m) continue;
+// 
+// 				int n_broken = broken;
+// 				if (map[nx][ny] == 1)
+// 				{
+// 					if (broken == k) continue;
+// 					n_broken++;
+// 				}
+// 				if (visited[nx][ny][n_broken]) continue;
+// 
+// 				q.emplace(nx, ny, n_broken);
+// 				visited[nx][ny][n_broken] = true;
+// 			}
+// 		}
+// 
+// 		steps++;
+// 	}
+// 
+// 	cout << -1 << '\n';
+// }

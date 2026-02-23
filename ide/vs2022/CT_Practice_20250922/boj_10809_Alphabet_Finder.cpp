@@ -25,6 +25,8 @@ Folder: string/impl
 - 🔄 [수정] `(int)s.size()` 캐스팅 제거 → `size_t` 사용 권장.
 */
 
+// 2026-02-23 D+14 REVIEW 간단 복습
+
 // 2026-02-02 D+3 REVIEW 간단 복습
 
 // 2026-01-28 Reboot
