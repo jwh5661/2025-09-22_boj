@@ -358,7 +358,10 @@
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_13913_Hide_and_Seek_4.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_09019_DSLR.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
