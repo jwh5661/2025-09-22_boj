@@ -19,6 +19,12 @@ Folder: dp/lcs/
 - 문자열 길이 ≤ 1000 → O(n*m) DP 충분히 가능
 */
 
+// 2026-02-26 D+14 REVIEW 간단 복습
+// 역추적 과정이 없으므로 prev_diag로 대각선 값을 들고 1차원 dp를 수행
+// j 루프로 들어갈 때 원래의 dp[j]에 대각선 값이 저장되어 있으므로
+// 해당 값을 tmp에 미리 저장해두고 dp[j]에 새 값을 저장
+// 그리고 나서 prev_diag에 tmp값을 저장한다
+
 // 2026-02-04 D+3 REVIEW
 
 #include <iostream>

@@ -24,7 +24,7 @@ Folder: prefix/counting
 - 입력 크기가 최대일 때도 O(n)으로 안전히 동작.
 */
 
-// 2025-10-15 D+14 REVIEW
+// 2026-02-26 Reboot
 
 #include <iostream>
 #include <vector>
@@ -39,19 +39,50 @@ int main()
 	long long n, m, sum = 0, cnt = 0;
 	cin >> n >> m;
 
-	vector<long long> num_res(m, 0);
-	num_res[0]++;
+	vector<long long> num(m, 0);
+	num[0]++;
+
 	for (int i = 0; i < n; i++)
 	{
-		long long val;
-		cin >> val;
+		long long x;
+		cin >> x;
 
-		sum = (sum + val) % m;
-		cnt += num_res[sum];
-		num_res[sum]++;
+		sum = (x + sum) % m;
+		cnt += num[sum];
+		num[sum]++;
 	}
+
 	cout << cnt << '\n';
 }
+
+// 2025-10-15 D+14 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	long long n, m, sum = 0, cnt = 0;
+// 	cin >> n >> m;
+// 
+// 	vector<long long> num_res(m, 0);
+// 	num_res[0]++;
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		long long val;
+// 		cin >> val;
+// 
+// 		sum = (sum + val) % m;
+// 		cnt += num_res[sum];
+// 		num_res[sum]++;
+// 	}
+// 	cout << cnt << '\n';
+// }
 
 // 2025-09-29 D+3 REVIEW
 

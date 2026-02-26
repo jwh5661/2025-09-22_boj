@@ -24,7 +24,7 @@ Folder: graph/bfs
 - N, M이 최대 8이라 완전탐색(벽 3개) + BFS 확산이 정석.
 */
 
-// 2026-02-21 ORIGINAL
+// 2026-02-26 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -44,7 +44,7 @@ int main()
 	int n, m, blank_cnt = 0, mx = 0;
 	cin >> n >> m;
 
-	vector<vector<int>> lab(n, vector<int>(m));
+	vector<vector<int>> lab(n, vector<int>(m, 0));
 	vector<pair<int, int>> virus;
 	vector<pair<int, int>> blank;
 
@@ -53,6 +53,7 @@ int main()
 		for (int j = 0; j < m; j++)
 		{
 			cin >> lab[i][j];
+
 			if (lab[i][j] == 2)
 				virus.emplace_back(i, j);
 			else if (lab[i][j] == 0)
@@ -61,7 +62,7 @@ int main()
 	}
 
 	blank_cnt = (int)blank.size();
-	vector<vector<int>> visited(n, vector<int>(m, 0));
+	vector<vector<int>> visited(n, vector<int>(m, -1));
 	int stamp = 0;
 
 	for (int i = 0; i < blank_cnt; i++)
@@ -82,16 +83,14 @@ int main()
 				int wall3_y = blank[k].second;
 				lab[wall3_x][wall3_y] = 1;
 
-				int safe_zone = blank_cnt - 3;
 				queue<pair<int, int>> q;
+				int safe_zone = blank_cnt - 3;
 				stamp++;
 
-				for (auto origin : virus)
+				for (const auto& v : virus)
 				{
-					int ox = origin.first;
-					int oy = origin.second;
-					q.emplace(ox, oy);
-					visited[ox][oy] = stamp;
+					q.emplace(v);
+					visited[v.first][v.second] = stamp;
 				}
 
 				bool stop = false;
@@ -132,3 +131,112 @@ int main()
 
 	cout << mx << '\n';
 }
+
+// 2026-02-21 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <algorithm>
+// 
+// using namespace std;
+// 
+// int dx[4] = { 0, 0, -1, 1 };
+// int dy[4] = { -1, 1, 0, 0 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, m, blank_cnt = 0, mx = 0;
+// 	cin >> n >> m;
+// 
+// 	vector<vector<int>> lab(n, vector<int>(m));
+// 	vector<pair<int, int>> virus;
+// 	vector<pair<int, int>> blank;
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		for (int j = 0; j < m; j++)
+// 		{
+// 			cin >> lab[i][j];
+// 			if (lab[i][j] == 2)
+// 				virus.emplace_back(i, j);
+// 			else if (lab[i][j] == 0)
+// 				blank.emplace_back(i, j);
+// 		}
+// 	}
+// 
+// 	blank_cnt = (int)blank.size();
+// 	vector<vector<int>> visited(n, vector<int>(m, 0));
+// 	int stamp = 0;
+// 
+// 	for (int i = 0; i < blank_cnt; i++)
+// 	{
+// 		int wall1_x = blank[i].first;
+// 		int wall1_y = blank[i].second;
+// 		lab[wall1_x][wall1_y] = 1;
+// 
+// 		for (int j = i + 1; j < blank_cnt; j++)
+// 		{
+// 			int wall2_x = blank[j].first;
+// 			int wall2_y = blank[j].second;
+// 			lab[wall2_x][wall2_y] = 1;
+// 
+// 			for (int k = j + 1; k < blank_cnt; k++)
+// 			{
+// 				int wall3_x = blank[k].first;
+// 				int wall3_y = blank[k].second;
+// 				lab[wall3_x][wall3_y] = 1;
+// 
+// 				int safe_zone = blank_cnt - 3;
+// 				queue<pair<int, int>> q;
+// 				stamp++;
+// 
+// 				for (auto origin : virus)
+// 				{
+// 					int ox = origin.first;
+// 					int oy = origin.second;
+// 					q.emplace(ox, oy);
+// 					visited[ox][oy] = stamp;
+// 				}
+// 
+// 				bool stop = false;
+// 				while (!q.empty() && !stop)
+// 				{
+// 					auto cur = q.front(); q.pop();
+// 					int cx = cur.first;
+// 					int cy = cur.second;
+// 
+// 					for (int d = 0; d < 4; d++)
+// 					{
+// 						int nx = cx + dx[d];
+// 						int ny = cy + dy[d];
+// 
+// 						if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+// 						if (visited[nx][ny] == stamp) continue;
+// 						if (lab[nx][ny] != 0) continue;
+// 
+// 						q.emplace(nx, ny);
+// 						visited[nx][ny] = stamp;
+// 						safe_zone--;
+// 						if (safe_zone <= mx)
+// 						{
+// 							stop = true;
+// 							break;
+// 						}
+// 					}
+// 				}
+// 
+// 				mx = max(mx, safe_zone);
+// 
+// 				lab[wall3_x][wall3_y] = 0;
+// 			}
+// 			lab[wall2_x][wall2_y] = 0;
+// 		}
+// 		lab[wall1_x][wall1_y] = 0;
+// 	}
+// 
+// 	cout << mx << '\n';
+// }
