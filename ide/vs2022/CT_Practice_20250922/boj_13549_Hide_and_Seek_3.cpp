@@ -22,11 +22,11 @@ Folder: shortest_path/01bfs
 - 순간이동은 시간이 0 → 일반 BFS가 아니라 0-1 BFS/다익스트라.
 */
 
-// 2026-02-23 ORIGINAL
+// 2026-02-27 D+3 REIVEW
 
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <deque>
 
 using namespace std;
 
@@ -38,35 +38,90 @@ int main()
 	int n, k;
 	cin >> n >> k;
 
-	const int mx_dist = 100000;
-	vector<int> visited(mx_dist + 1, 1e9);
+	const int mx_loc = 100000;
+	vector<int> dist(mx_loc + 1, 1e9);
+	deque<int> dq;
 
-	priority_queue
-		<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> pq;
+	dist[n] = 0;
+	dq.emplace_front(n);
 
-	pq.emplace(0, n);
-	visited[n] = 0;
-
-	while (!pq.empty())
+	while (!dq.empty())
 	{
-		auto cur = pq.top(); pq.pop();
-		int d = cur.first;
-		int x = cur.second;
+		auto cur = dq.front(); dq.pop_front();
+		int d = dist[cur];
 
-		if (d != visited[x]) continue;	// 오래된 데이터 제거
-		if (x == k) break;
+		if (cur == k) break;
 
-		for (int next : {x - 1, x + 1, 2 * x})
+		int nx = 2 * cur;
+		if (nx <= mx_loc && dist[nx] > d)
 		{
-			if (next < 0 || next > mx_dist) continue;
-			int nd = d;
-			if (next != 2 * x)
-				nd++;
-			if (visited[next] <= nd) continue;
-			pq.emplace(nd, next);
-			visited[next] = nd;
+			dq.push_front(nx);
+			dist[nx] = d;
+		}
+
+		nx = cur - 1;
+		if (nx >= 0 && dist[nx] > d + 1)
+		{
+			dq.push_back(nx);
+			dist[nx] = d + 1;
+		}
+
+		nx = cur + 1;
+		if (nx <= mx_loc && dist[nx] > d + 1)
+		{
+			dq.push_back(nx);
+			dist[nx] = d + 1;
 		}
 	}
 
-	cout << visited[k] << '\n';
+	cout << dist[k] << '\n';
 }
+
+// 2026-02-23 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, k;
+// 	cin >> n >> k;
+// 
+// 	const int mx_dist = 100000;
+// 	vector<int> visited(mx_dist + 1, 1e9);
+// 
+// 	priority_queue
+// 		<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> pq;
+// 
+// 	pq.emplace(0, n);
+// 	visited[n] = 0;
+// 
+// 	while (!pq.empty())
+// 	{
+// 		auto cur = pq.top(); pq.pop();
+// 		int d = cur.first;
+// 		int x = cur.second;
+// 
+// 		if (d != visited[x]) continue;	// 오래된 데이터 제거
+// 		if (x == k) break;
+// 
+// 		for (int next : {x - 1, x + 1, 2 * x})
+// 		{
+// 			if (next < 0 || next > mx_dist) continue;
+// 			int nd = d;
+// 			if (next != 2 * x)
+// 				nd++;
+// 			if (visited[next] <= nd) continue;
+// 			pq.emplace(nd, next);
+// 			visited[next] = nd;
+// 		}
+// 	}
+// 
+// 	cout << visited[k] << '\n';
+// }

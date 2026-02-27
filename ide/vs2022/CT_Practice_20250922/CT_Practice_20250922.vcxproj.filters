@@ -261,7 +261,7 @@
     <ClCompile Include="boj_07576_Tomato.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
-    <ClCompile Include="boj_2606_Virus.cpp">
+    <ClCompile Include="boj_02606_Virus.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_13023_ABCDE.cpp">
@@ -291,7 +291,7 @@
     <ClCompile Include="boj_07569_Tomato.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
-    <ClCompile Include="boj_2589_Treasure_Island.cpp">
+    <ClCompile Include="boj_02589_Treasure_Island.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_01520_Downhill.cpp">
@@ -362,6 +362,9 @@
     </ClCompile>
     <ClCompile Include="boj_09019_DSLR.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01525_Puzzle.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

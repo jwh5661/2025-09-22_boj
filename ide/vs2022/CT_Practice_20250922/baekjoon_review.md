@@ -2014,7 +2014,7 @@ for (int i = 0, j = 0; i < n; i++)
     
     ### BOJ 14442 - 벽 부수고 이동하기 2 (Move and Break Walls 2)
     - **Topic:** BFS | Shoretest Path | State Graph
-    - **Folder:** `graph/bfs/`
+    - **Folder:** `graph/bfs/state/`
     - **Time Complexity:** O(N * M * K)
     - **Space Complexity:** O(N * M * K)
 
@@ -2039,7 +2039,7 @@ for (int i = 0, j = 0; i < n; i++)
     
     ### BOJ 13460 - 구슬 탈출 2 (Bead Escape 2)
     - **Topic:** BFS | Simulation | State Search
-    - **Folder:** `graph/bfs/`
+    - **Folder:** `graph/bfs/state/`
     - **Time Complexity:** O((N * M)^2 * 4 * max(N, M))
     - **Space Complexity:** O((N * M)^2)
 
@@ -2101,8 +2101,9 @@ for (int i = 0, j = 0; i < n; i++)
 
     ### BOJ 13549 - 숨바꼭질 3 (Hide and Seek 3)
     - **Topic:** Shortest Path | 0-1 Weights
-    - **Folder:** `graph/bfs/`
+    - **Folder:** `graph/bfs/01bfs/`
     - **Time Complexity:** O(O log V) (현재 풀이 : 다익스트라) -> 복습 때 0-1 bfs로
+    (2026-02-27 0-1 bfs시 O(V + E))
     - **Space Complexity:** O(V)
 
     - **Key Idea:**
@@ -2171,6 +2172,30 @@ for (int i = 0, j = 0; i < n; i++)
 
     - **Problem Hint:**
      - 무가중치 최단거리 + 경로 출력 -> BFS + 역추적
+    
+    ---
+    
+    ## 📅 2026-02-27
+    **BOJ 1525 - 퍼즐**
+    
+    ### BOJ 1525 - 퍼즐 (Puzzle)
+    - **Topic:** BFS | State Space Search
+    - **Folder:** `graph/bfs/state/`
+    - **Time Complexity:** O(9!)
+    - **Space Complexity:** O(9!)
+
+    - **Key Idea:**
+     - 문자열 상태에서 0의 위치를 기준으로 swap하여 인접 상태를 생성하고 BFS로 최단거리 탐색.
+     - `unordered_map[state] = distance`로 방문/거리 저장.
+
+    - **Caution:**
+     - 입력 9개를 모두 읽어야 상태가 성립한다.
+
+    - **Improvement:**
+     - `unordered_map.reserve()`로 리해시 줄여 성능 개선 가능
+
+    - **Problem Hint:**
+     - "최소 횟수" + "상태 전이" -> BFS
     
     ---
     

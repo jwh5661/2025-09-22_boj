@@ -19,6 +19,8 @@ Folder: string/impl/
 - “첫 번째와 마지막 글자를 출력한다” → 문자열 길이와 관계없이 동일 처리.
 */
 
+// 2026-02-27 Reboot 간단 복습 완료
+
 // 2025-10-20 D+14 REVIEW
 
 #include <iostream>
