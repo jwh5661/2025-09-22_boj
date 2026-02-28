@@ -127,6 +127,12 @@
     <Filter Include="소스 파일\search\binary">
       <UniqueIdentifier>{70b431b1-513d-4592-970a-18a332714bb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\graph\bfs\state">
+      <UniqueIdentifier>{4ee177c4-c3fe-45ce-ba01-060e10e3f5c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\graph\bfs\01bfs">
+      <UniqueIdentifier>{c701452b-1e4c-42e6-9120-e8ef7510e783}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -345,16 +351,7 @@
     <ClCompile Include="boj_16234_Population_Movement.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
-    <ClCompile Include="boj_14442_Move_and_Break_Walls_2.cpp">
-      <Filter>소스 파일\graph\bfs</Filter>
-    </ClCompile>
-    <ClCompile Include="boj_13460_Bead_Escape_2.cpp">
-      <Filter>소스 파일\graph\bfs</Filter>
-    </ClCompile>
     <ClCompile Include="boj_14502_Laboratory.cpp">
-      <Filter>소스 파일\graph\bfs</Filter>
-    </ClCompile>
-    <ClCompile Include="boj_13549_Hide_and_Seek_3.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_13913_Hide_and_Seek_4.cpp">
@@ -364,7 +361,16 @@
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_01525_Puzzle.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\graph\bfs\state</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_13460_Bead_Escape_2.cpp">
+      <Filter>소스 파일\graph\bfs\state</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_14442_Move_and_Break_Walls_2.cpp">
+      <Filter>소스 파일\graph\bfs\state</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_13549_Hide_and_Seek_3.cpp">
+      <Filter>소스 파일\graph\bfs\01bfs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

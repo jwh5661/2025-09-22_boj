@@ -20,7 +20,7 @@ Folder: graph/bfs/
 - 최단 거리 + 경로 출력 → BFS + parent 역추적.
 */
 
-// 2026-02-24 ORIGINAL
+// 2026-02-28 D+3 REVIEW
 
 #include <iostream>
 #include <vector>
@@ -34,51 +34,110 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
+	const int mx_loc = 100000;
+	vector<int> visited(mx_loc + 1, -1);
+	vector<int> path(mx_loc + 1, -1);
+	queue<int> q;
+
 	int n, k;
 	cin >> n >> k;
 
-	const int mx_location = 100001;
-	vector<pair<int, int>> location(mx_location);
-	queue<int> q;
-	for (int i = 0; i < mx_location; i++)
-		location[i] = make_pair(-1, -1);
-
-	location[n].first = 0;
 	q.push(n);
+	visited[n] = 0;
 
 	while (!q.empty())
 	{
 		int cur = q.front(); q.pop();
-
 		if (cur == k) break;
 
 		for (int next : {cur - 1, cur + 1, 2 * cur})
 		{
-			if (next < 0 || next >= mx_location) continue;
-			if (location[next].first != -1) continue;
+			if (next < 0 || next > mx_loc) continue;
+			if (visited[next] != -1) continue;
 
 			q.push(next);
-			location[next].first = location[cur].first + 1;
-			location[next].second = cur;
+			visited[next] = visited[cur] + 1;
+			path[next] = cur;
 		}
 	}
 
-	cout << location[k].first << '\n';
+	cout << visited[k] << '\n';
 
-	stack<int> ans;
-	ans.push(k);
-	while (location[k].second != -1)
+	stack<int> stk;
+	int i = k;
+	while (i != -1)
 	{
-		ans.push(location[k].second);
-		k = location[k].second;
+		stk.push(i);
+		i = path[i];
 	}
-	
 
-	while (!ans.empty())
+	while (!stk.empty())
 	{
-		cout << ans.top() << ' ';
-		ans.pop();
+		cout << stk.top() << ' ';
+		stk.pop();
 	}
-		
 	cout << '\n';
 }
+
+// 2026-02-24 ORIGINAL
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// #include <stack>
+// 
+// using namespace std;
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, k;
+// 	cin >> n >> k;
+// 
+// 	const int mx_location = 100001;
+// 	vector<pair<int, int>> location(mx_location);
+// 	queue<int> q;
+// 	for (int i = 0; i < mx_location; i++)
+// 		location[i] = make_pair(-1, -1);
+// 
+// 	location[n].first = 0;
+// 	q.push(n);
+// 
+// 	while (!q.empty())
+// 	{
+// 		int cur = q.front(); q.pop();
+// 
+// 		if (cur == k) break;
+// 
+// 		for (int next : {cur - 1, cur + 1, 2 * cur})
+// 		{
+// 			if (next < 0 || next >= mx_location) continue;
+// 			if (location[next].first != -1) continue;
+// 
+// 			q.push(next);
+// 			location[next].first = location[cur].first + 1;
+// 			location[next].second = cur;
+// 		}
+// 	}
+// 
+// 	cout << location[k].first << '\n';
+// 
+// 	stack<int> ans;
+// 	ans.push(k);
+// 	while (location[k].second != -1)
+// 	{
+// 		ans.push(location[k].second);
+// 		k = location[k].second;
+// 	}
+// 	
+// 
+// 	while (!ans.empty())
+// 	{
+// 		cout << ans.top() << ' ';
+// 		ans.pop();
+// 	}
+// 		
+// 	cout << '\n';
+// }
