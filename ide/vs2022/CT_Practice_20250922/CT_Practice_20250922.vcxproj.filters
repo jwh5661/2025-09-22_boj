@@ -372,6 +372,9 @@
     <ClCompile Include="boj_13549_Hide_and_Seek_3.cpp">
       <Filter>소스 파일\graph\bfs\01bfs</Filter>
     </ClCompile>
+    <ClCompile Include="boj_01927_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
