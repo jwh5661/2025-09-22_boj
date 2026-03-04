@@ -133,6 +133,12 @@
     <Filter Include="소스 파일\graph\bfs\01bfs">
       <UniqueIdentifier>{c701452b-1e4c-42e6-9120-e8ef7510e783}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\queue\heap">
+      <UniqueIdentifier>{b2d764ed-a4c9-4fb2-b0f8-edfac8a206b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dp\knapsack">
+      <UniqueIdentifier>{1785343c-2739-49ce-bff5-2f4f03e9e0cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -372,7 +378,13 @@
     <ClCompile Include="boj_13549_Hide_and_Seek_3.cpp">
       <Filter>소스 파일\graph\bfs\01bfs</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01927_.cpp">
+    <ClCompile Include="boj_01927_Min_Heap.cpp">
+      <Filter>소스 파일\queue\heap</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02293_Coin_1.cpp">
+      <Filter>소스 파일\dp\knapsack</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01197_.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
