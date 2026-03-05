@@ -139,6 +139,12 @@
     <Filter Include="소스 파일\dp\knapsack">
       <UniqueIdentifier>{1785343c-2739-49ce-bff5-2f4f03e9e0cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\graph\mst">
+      <UniqueIdentifier>{8f2c2d19-f276-46c5-bb01-02dce98c352b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\graph\dijkstra">
+      <UniqueIdentifier>{a7bd5804-4bb7-49aa-b753-68df3fe2ba07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -384,8 +390,14 @@
     <ClCompile Include="boj_02293_Coin_1.cpp">
       <Filter>소스 파일\dp\knapsack</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01197_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_01197_Minimum_Spanning_Tree.cpp">
+      <Filter>소스 파일\graph\mst</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01753_Shortest_Path.cpp">
+      <Filter>소스 파일\graph\dijkstra</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_12865_Ordinary_Knapsack.cpp">
+      <Filter>소스 파일\dp\knapsack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
