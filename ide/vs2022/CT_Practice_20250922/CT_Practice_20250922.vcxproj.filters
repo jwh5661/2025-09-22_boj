@@ -399,6 +399,12 @@
     <ClCompile Include="boj_12865_Ordinary_Knapsack.cpp">
       <Filter>소스 파일\dp\knapsack</Filter>
     </ClCompile>
+    <ClCompile Include="boj_01149_RGB_Street.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01707_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
