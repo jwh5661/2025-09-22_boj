@@ -145,6 +145,9 @@
     <Filter Include="소스 파일\graph\dijkstra">
       <UniqueIdentifier>{a7bd5804-4bb7-49aa-b753-68df3fe2ba07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\dp\basic">
+      <UniqueIdentifier>{5f7fc16d-19f4-4f21-aed0-f3d019f1dd2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -400,10 +403,16 @@
       <Filter>소스 파일\dp\knapsack</Filter>
     </ClCompile>
     <ClCompile Include="boj_01149_RGB_Street.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\dp\basic</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01707_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_01707_Bipartite_Graph.cpp">
+      <Filter>소스 파일\graph\bfs</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11053_Longest_Increasing_Subsequence.cpp">
+      <Filter>소스 파일\dp\lis</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01916_Minimum_Cost.cpp">
+      <Filter>소스 파일\graph\dijkstra</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
