@@ -414,8 +414,11 @@
     <ClCompile Include="boj_01916_Minimum_Cost.cpp">
       <Filter>소스 파일\graph\dijkstra</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01647_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_01647_City_Division_Plan.cpp">
+      <Filter>소스 파일\graph\mst</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_1922_Network_Connection.cpp">
+      <Filter>소스 파일\graph\mst</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
