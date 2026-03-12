@@ -423,6 +423,9 @@
     <ClCompile Include="boj_01504_Specific_Shortest_Path.cpp">
       <Filter>소스 파일\graph\dijkstra</Filter>
     </ClCompile>
+    <ClCompile Include="boj_01715_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
