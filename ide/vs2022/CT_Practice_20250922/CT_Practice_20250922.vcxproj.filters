@@ -148,6 +148,12 @@
     <Filter Include="소스 파일\dp\basic">
       <UniqueIdentifier>{5f7fc16d-19f4-4f21-aed0-f3d019f1dd2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\greedy">
+      <UniqueIdentifier>{ce3fd16f-2b39-4150-9571-10bec83a7d86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\greedy\priority_queue">
+      <UniqueIdentifier>{392f6336-3081-4084-9c9e-47fd27fca393}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -423,8 +429,14 @@
     <ClCompile Include="boj_01504_Specific_Shortest_Path.cpp">
       <Filter>소스 파일\graph\dijkstra</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01715_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_01715_Card_Sorting.cpp">
+      <Filter>소스 파일\greedy\priority_queue</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01932_Triangle.cpp">
+      <Filter>소스 파일\dp\basic</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01202_Jewel_Thief.cpp">
+      <Filter>소스 파일\greedy\priority_queue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
