@@ -154,6 +154,12 @@
     <Filter Include="소스 파일\greedy\priority_queue">
       <UniqueIdentifier>{392f6336-3081-4084-9c9e-47fd27fca393}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\two_pointer">
+      <UniqueIdentifier>{e903bb2e-441e-4ce9-846d-5fdcabdb1ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\two_pointer\sliding_window">
+      <UniqueIdentifier>{0681cc46-a6f1-49ac-8d70-8a4f12cb65f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -443,6 +449,12 @@
     </ClCompile>
     <ClCompile Include="boj_02206_Break_Wall_and_Move.cpp">
       <Filter>소스 파일\graph\bfs\state</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01806_Partial_Sum.cpp">
+      <Filter>소스 파일\two_pointer\sliding_window</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01931_Meeting_Room_Assignment.cpp">
+      <Filter>소스 파일\greedy\priority_queue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
