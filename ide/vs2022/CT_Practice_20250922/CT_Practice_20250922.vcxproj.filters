@@ -456,6 +456,9 @@
     <ClCompile Include="boj_01931_Meeting_Room_Assignment.cpp">
       <Filter>소스 파일\greedy\priority_queue</Filter>
     </ClCompile>
+    <ClCompile Include="boj_11286_Absolute_Heap.cpp">
+      <Filter>소스 파일\queue\heap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
