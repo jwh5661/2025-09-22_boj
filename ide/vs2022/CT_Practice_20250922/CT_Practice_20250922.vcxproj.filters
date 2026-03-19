@@ -160,6 +160,12 @@
     <Filter Include="소스 파일\two_pointer\sliding_window">
       <UniqueIdentifier>{0681cc46-a6f1-49ac-8d70-8a4f12cb65f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\bruteforce">
+      <UniqueIdentifier>{7fa29e26-e13a-4b0e-b5c6-013062c46eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\bruteforce\combination">
+      <UniqueIdentifier>{3de05fa8-d870-420c-a86e-3d8dcdf6e55c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -458,6 +464,9 @@
     </ClCompile>
     <ClCompile Include="boj_11286_Absolute_Heap.cpp">
       <Filter>소스 파일\queue\heap</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_15686_Chicken_Delivery.cpp">
+      <Filter>소스 파일\bruteforce\combination</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
