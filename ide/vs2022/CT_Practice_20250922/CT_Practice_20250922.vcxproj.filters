@@ -468,6 +468,12 @@
     <ClCompile Include="boj_15686_Chicken_Delivery.cpp">
       <Filter>소스 파일\bruteforce\combination</Filter>
     </ClCompile>
+    <ClCompile Include="boj_15683_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01043_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
