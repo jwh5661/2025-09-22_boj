@@ -166,6 +166,12 @@
     <Filter Include="소스 파일\bruteforce\combination">
       <UniqueIdentifier>{3de05fa8-d870-420c-a86e-3d8dcdf6e55c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\bruteforce\backtracking">
+      <UniqueIdentifier>{2daa5955-101c-48c4-95eb-837e5cb839f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\graph\union_find">
+      <UniqueIdentifier>{3c098646-6902-466b-864f-a507255b91fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -468,10 +474,13 @@
     <ClCompile Include="boj_15686_Chicken_Delivery.cpp">
       <Filter>소스 파일\bruteforce\combination</Filter>
     </ClCompile>
-    <ClCompile Include="boj_15683_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_15683_Surveilance.cpp">
+      <Filter>소스 파일\bruteforce\backtracking</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01043_.cpp">
+    <ClCompile Include="boj_01043_Lie.cpp">
+      <Filter>소스 파일\graph\union_find</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01764_.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
