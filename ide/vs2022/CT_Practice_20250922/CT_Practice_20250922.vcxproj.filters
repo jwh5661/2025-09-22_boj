@@ -480,7 +480,10 @@
     <ClCompile Include="boj_01043_Lie.cpp">
       <Filter>소스 파일\graph\union_find</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01764_.cpp">
+    <ClCompile Include="boj_01764_Never_Heard_Never_Seen.cpp">
+      <Filter>소스 파일\string\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_17070_.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

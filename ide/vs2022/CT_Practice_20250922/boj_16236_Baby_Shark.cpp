@@ -25,7 +25,7 @@ Folder: graph/bfs
 
 */
 
-// 2026-02-11 D+3 REVIEW
+// 2026-03-23 (월)
 
 #include <iostream>
 #include <vector>
@@ -41,35 +41,36 @@ int main()
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	int n, sx, sy, t = 0, shark_size = 2, ate = 0;
+	int n, start_x, start_y, cur_size = 2, ate_cnt = 0, total_time = 0;
 	cin >> n;
 
-	vector<vector<int>> fish(n, vector<int>(n, 0));
+	vector<vector<int>> map(n, vector<int>(n, 0));
 
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			cin >> fish[i][j];
+			cin >> map[i][j];
 
-			if (fish[i][j] == 9)
+			if (map[i][j] == 9)
 			{
-				fish[i][j] = 0;
-				sx = i;
-				sy = j;
+				map[i][j] = 0;
+				start_x = i;
+				start_y = j;
 			}
 		}
 	}
 
+	vector<vector<int>> time(n, vector<int>(n, -1));
+	queue<pair<int, int>> q;
+
 	while (true)
 	{
-		vector<vector<int>> time(n, vector<int>(n, -1));
-		pair<int, int> tmp = { n, n };
-		queue<pair<int, int>> q;
-		int elapsed = -1;
-
-		q.emplace(sx, sy);
-		time[sx][sy] = 0;
+		int elapsed = -1, tstart_x = n, tstart_y = n;
+		time.assign(n, vector<int>(n, -1));
+		q = queue<pair<int, int>>();
+		q.emplace(start_x, start_y);
+		time[start_x][start_y] = 0;
 
 		while (!q.empty())
 		{
@@ -77,62 +78,169 @@ int main()
 			int cx = cur.first;
 			int cy = cur.second;
 
-			for (int i = 0; i < 4; i++)
+			for (int d = 0; d < 4; d++)
 			{
-				int nx = cx + dx[i];
-				int ny = cy + dy[i];
+				int nx = cx + dx[d];
+				int ny = cy + dy[d];
 
 				if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+				if (map[nx][ny] > cur_size) continue;
 				if (time[nx][ny] != -1) continue;
-				if (fish[nx][ny] > shark_size) continue;
 
 				time[nx][ny] = time[cx][cy] + 1;
-				
 				if (elapsed != -1 && elapsed < time[nx][ny]) continue;
-				if (fish[nx][ny] != 0 && fish[nx][ny] < shark_size)
+				if (map[nx][ny] != 0 && map[nx][ny] < cur_size)
 				{
 					if (elapsed == -1)
 						elapsed = time[nx][ny];
-					
-					if (nx < tmp.first)
+
+					if (nx < tstart_x)
 					{
-						tmp.first = nx;
-						tmp.second = ny;
+						tstart_x = nx;
+						tstart_y = ny;
 					}
-					else if (nx == tmp.first)
+					else if (nx == tstart_x)
 					{
-						if (ny < tmp.second)
-						{
-							tmp.first = nx;
-							tmp.second = ny;
-						}
+						if (ny < tstart_y)
+							tstart_y = ny;
 					}
 				}
-				if(elapsed == -1)
+
+				if (elapsed == -1)
 					q.emplace(nx, ny);
 			}
 		}
 
 		if (elapsed != -1)
 		{
-			sx = tmp.first;
-			sy = tmp.second;
-			fish[sx][sy] = 0;
+			start_x = tstart_x;
+			start_y = tstart_y;
+			map[start_x][start_y] = 0;
+			total_time += elapsed;
+			ate_cnt++;
 
-			t += elapsed;
-			ate++;
-			if (ate == shark_size)
+			if (ate_cnt == cur_size)
 			{
-				shark_size++;
-				ate = 0;
+				cur_size++;
+				ate_cnt = 0;
 			}
 		}
 		else
 			break;
 	}
 
-	cout << t << '\n';
+	cout << total_time << '\n';
 }
+
+
+// 2026-02-11 D+3 REVIEW
+
+// #include <iostream>
+// #include <vector>
+// #include <queue>
+// 
+// using namespace std;
+// 
+// int dx[4] = { -1, 1, 0, 0 };
+// int dy[4] = { 0, 0, 1, -1 };
+// 
+// int main()
+// {
+// 	ios::sync_with_stdio(false);
+// 	cin.tie(nullptr);
+// 
+// 	int n, sx, sy, t = 0, shark_size = 2, ate = 0;
+// 	cin >> n;
+// 
+// 	vector<vector<int>> fish(n, vector<int>(n, 0));
+// 
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		for (int j = 0; j < n; j++)
+// 		{
+// 			cin >> fish[i][j];
+// 
+// 			if (fish[i][j] == 9)
+// 			{
+// 				fish[i][j] = 0;
+// 				sx = i;
+// 				sy = j;
+// 			}
+// 		}
+// 	}
+// 
+// 	while (true)
+// 	{
+// 		vector<vector<int>> time(n, vector<int>(n, -1));
+// 		pair<int, int> tmp = { n, n };
+// 		queue<pair<int, int>> q;
+// 		int elapsed = -1;
+// 
+// 		q.emplace(sx, sy);
+// 		time[sx][sy] = 0;
+// 
+// 		while (!q.empty())
+// 		{
+// 			auto cur = q.front(); q.pop();
+// 			int cx = cur.first;
+// 			int cy = cur.second;
+// 
+// 			for (int i = 0; i < 4; i++)
+// 			{
+// 				int nx = cx + dx[i];
+// 				int ny = cy + dy[i];
+// 
+// 				if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+// 				if (time[nx][ny] != -1) continue;
+// 				if (fish[nx][ny] > shark_size) continue;
+// 
+// 				time[nx][ny] = time[cx][cy] + 1;
+// 				
+// 				if (elapsed != -1 && elapsed < time[nx][ny]) continue;
+// 				if (fish[nx][ny] != 0 && fish[nx][ny] < shark_size)
+// 				{
+// 					if (elapsed == -1)
+// 						elapsed = time[nx][ny];
+// 					
+// 					if (nx < tmp.first)
+// 					{
+// 						tmp.first = nx;
+// 						tmp.second = ny;
+// 					}
+// 					else if (nx == tmp.first)
+// 					{
+// 						if (ny < tmp.second)
+// 						{
+// 							tmp.first = nx;
+// 							tmp.second = ny;
+// 						}
+// 					}
+// 				}
+// 				if(elapsed == -1)
+// 					q.emplace(nx, ny);
+// 			}
+// 		}
+// 
+// 		if (elapsed != -1)
+// 		{
+// 			sx = tmp.first;
+// 			sy = tmp.second;
+// 			fish[sx][sy] = 0;
+// 
+// 			t += elapsed;
+// 			ate++;
+// 			if (ate == shark_size)
+// 			{
+// 				shark_size++;
+// 				ate = 0;
+// 			}
+// 		}
+// 		else
+// 			break;
+// 	}
+// 
+// 	cout << t << '\n';
+// }
 
 // 2026-02-06 ORIGINAL
 
