@@ -483,8 +483,11 @@
     <ClCompile Include="boj_01764_Never_Heard_Never_Seen.cpp">
       <Filter>소스 파일\string\impl</Filter>
     </ClCompile>
-    <ClCompile Include="boj_17070_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_17070_Moving_Pipe_1.cpp">
+      <Filter>소스 파일\dp\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_17144_Goodbye_Dust.cpp">
+      <Filter>소스 파일\impl\simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
