@@ -172,6 +172,12 @@
     <Filter Include="소스 파일\graph\union_find">
       <UniqueIdentifier>{3c098646-6902-466b-864f-a507255b91fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\graph\topological_sort">
+      <UniqueIdentifier>{7997cc09-3e78-4764-8517-915b838cbb80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\bruteforce\dfs">
+      <UniqueIdentifier>{e59ec581-b435-4a23-bde9-c7b0016051dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -488,6 +494,12 @@
     </ClCompile>
     <ClCompile Include="boj_17144_Goodbye_Dust.cpp">
       <Filter>소스 파일\impl\simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02252_Line_Up.cpp">
+      <Filter>소스 파일\graph\topological_sort</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_14500_Tetromino.cpp">
+      <Filter>소스 파일\bruteforce\dfs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
