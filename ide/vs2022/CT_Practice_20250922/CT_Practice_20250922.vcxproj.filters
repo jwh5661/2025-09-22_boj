@@ -178,6 +178,9 @@
     <Filter Include="소스 파일\bruteforce\dfs">
       <UniqueIdentifier>{e59ec581-b435-4a23-bde9-c7b0016051dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\string\stack">
+      <UniqueIdentifier>{dd6374d9-8881-4a11-a05d-df7e3072b25f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -503,6 +506,12 @@
     </ClCompile>
     <ClCompile Include="boj_02110_Router_Installation.cpp">
       <Filter>소스 파일\search\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02343_Guitar_Lesson.cpp">
+      <Filter>소스 파일\search\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_09935_String_Explosion.cpp">
+      <Filter>소스 파일\string\stack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
