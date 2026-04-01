@@ -181,6 +181,9 @@
     <Filter Include="소스 파일\string\stack">
       <UniqueIdentifier>{dd6374d9-8881-4a11-a05d-df7e3072b25f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\graph\bfs\bitamsk_state">
+      <UniqueIdentifier>{de43407c-d1ba-416d-a446-115935d210a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -512,6 +515,9 @@
     </ClCompile>
     <ClCompile Include="boj_09935_String_Explosion.cpp">
       <Filter>소스 파일\string\stack</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01194_As_the_Moon_Rises_Let%27s_Go.cpp">
+      <Filter>소스 파일\graph\bfs\bitamsk_state</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
