@@ -519,8 +519,11 @@
     <ClCompile Include="boj_01194_As_the_Moon_Rises_Let%27s_Go.cpp">
       <Filter>소스 파일\graph\bfs\bitamsk_state</Filter>
     </ClCompile>
-    <ClCompile Include="boj_11779_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="boj_11779_Minimum_Cost_2.cpp">
+      <Filter>소스 파일\graph\dijkstra</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01238_Party.cpp">
+      <Filter>소스 파일\graph\dijkstra</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
