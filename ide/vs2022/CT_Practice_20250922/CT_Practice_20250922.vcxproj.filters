@@ -525,6 +525,9 @@
     <ClCompile Include="boj_01238_Party.cpp">
       <Filter>소스 파일\graph\dijkstra</Filter>
     </ClCompile>
+    <ClCompile Include="boj_11404_Floyd.cpp">
+      <Filter>소스 파일\graph\floyd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
