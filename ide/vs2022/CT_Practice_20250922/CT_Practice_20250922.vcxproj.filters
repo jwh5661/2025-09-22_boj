@@ -534,6 +534,9 @@
     <ClCompile Include="boj_11657_Time_Machine.cpp">
       <Filter>소스 파일\graph\bellman_ford</Filter>
     </ClCompile>
+    <ClCompile Include="boj_01005_ACM_Craft.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
