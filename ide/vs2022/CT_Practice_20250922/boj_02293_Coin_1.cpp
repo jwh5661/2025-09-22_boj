@@ -6,6 +6,9 @@
 
 using namespace std;
 
+int coin[101];
+long long dp[10001];
+
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -14,12 +17,8 @@ int main()
 	int n, k;
 	cin >> n >> k;
 
-	vector<int> coin(n);
-	vector<long long> dp(k + 1, 0);
 	for (int i = 0; i < n; i++)
 		cin >> coin[i];
-
-	sort(coin.begin(), coin.end());
 
 	dp[0] = 1;
 	for (int i = 0; i < n; i++)

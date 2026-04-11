@@ -6,6 +6,8 @@
 
 using namespace std;
 
+int dp[100001];
+
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -13,8 +15,6 @@ int main()
 
 	int n, k;
 	cin >> n >> k;
-
-	vector<int> dp(k + 1, 0);
 
 	for (int i = 0; i < n; i++)
 	{
