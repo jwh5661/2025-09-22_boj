@@ -187,6 +187,12 @@
     <Filter Include="소스 파일\graph\bellman_ford">
       <UniqueIdentifier>{58542b53-a1c7-4069-9457-c702944a1a20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_02">
+      <UniqueIdentifier>{82e3d267-f611-4006-aed5-c2f5bac9b9da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_02\01_Divide_Conquer">
+      <UniqueIdentifier>{14681dc9-00cd-4f98-be18-1baafa58f7c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -535,7 +541,13 @@
       <Filter>소스 파일\graph\bellman_ford</Filter>
     </ClCompile>
     <ClCompile Include="boj_01005_ACM_Craft.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\graph\topological_sort</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01992_Quad_Tree%28void 반환, 사분면 쪼개기%29.cpp">
+      <Filter>소스 파일\Week_02\01_Divide_Conquer</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01074_Z%28Z-순서, 사분면 점프 최적화%29.cpp">
+      <Filter>소스 파일\Week_02\01_Divide_Conquer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
