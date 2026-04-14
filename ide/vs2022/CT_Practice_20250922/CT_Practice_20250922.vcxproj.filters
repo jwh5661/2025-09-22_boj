@@ -193,6 +193,9 @@
     <Filter Include="소스 파일\Week_02\01_Divide_Conquer">
       <UniqueIdentifier>{14681dc9-00cd-4f98-be18-1baafa58f7c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_02\02_Binary_Search">
+      <UniqueIdentifier>{8332a77a-2e6b-4b22-8203-166cac49ca6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -543,11 +546,14 @@
     <ClCompile Include="boj_01005_ACM_Craft.cpp">
       <Filter>소스 파일\graph\topological_sort</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01992_Quad_Tree%28void 반환, 사분면 쪼개기%29.cpp">
+    <ClCompile Include="boj_01992_QuadTree.cpp">
       <Filter>소스 파일\Week_02\01_Divide_Conquer</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01074_Z%28Z-순서, 사분면 점프 최적화%29.cpp">
+    <ClCompile Include="boj_01074_Z.cpp">
       <Filter>소스 파일\Week_02\01_Divide_Conquer</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01300_KthNumber.cpp">
+      <Filter>소스 파일\Week_02\02_Binary_Search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
