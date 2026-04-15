@@ -196,6 +196,9 @@
     <Filter Include="소스 파일\Week_02\02_Binary_Search">
       <UniqueIdentifier>{8332a77a-2e6b-4b22-8203-166cac49ca6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_02\03_Priority_Queue">
+      <UniqueIdentifier>{6302b484-e31b-4215-8ff8-a6ec6538f518}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -554,6 +557,12 @@
     </ClCompile>
     <ClCompile Include="boj_01300_KthNumber.cpp">
       <Filter>소스 파일\Week_02\02_Binary_Search</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_11279_MaxHeap.cpp">
+      <Filter>소스 파일\Week_02\03_Priority_Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01655_SayMiddle.cpp">
+      <Filter>소스 파일\Week_02\03_Priority_Queue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
