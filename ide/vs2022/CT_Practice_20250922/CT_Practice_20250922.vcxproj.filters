@@ -199,6 +199,9 @@
     <Filter Include="소스 파일\Week_02\03_Priority_Queue">
       <UniqueIdentifier>{6302b484-e31b-4215-8ff8-a6ec6538f518}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_02\04_Graph_Search">
+      <UniqueIdentifier>{b7478739-09b1-4a3d-b392-2e362ba7ca2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -340,9 +343,6 @@
       <Filter>소스 파일\graph\dfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_01012_Organic_Cabbage.cpp">
-      <Filter>소스 파일\graph\bfs</Filter>
-    </ClCompile>
-    <ClCompile Include="boj_02178_Maze_Exploration.cpp">
       <Filter>소스 파일\graph\bfs</Filter>
     </ClCompile>
     <ClCompile Include="boj_11724_Number_of_Connected_Components.cpp">
@@ -563,6 +563,12 @@
     </ClCompile>
     <ClCompile Include="boj_01655_SayMiddle.cpp">
       <Filter>소스 파일\Week_02\03_Priority_Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01260_DFSAndBFS.cpp">
+      <Filter>소스 파일\Week_02\04_Graph_Search</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_02178_MazeExploration.cpp">
+      <Filter>소스 파일\Week_02\04_Graph_Search</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
