@@ -175,7 +175,7 @@
     <ClCompile Include="boj_01715_Card_Sorting.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="boj_01753_Shortest_Path.cpp">
+    <ClCompile Include="boj_01753_ShortestPath.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="boj_01764_Never_Heard_Never_Seen.cpp">

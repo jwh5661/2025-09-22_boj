@@ -202,6 +202,9 @@
     <Filter Include="소스 파일\Week_02\04_Graph_Search">
       <UniqueIdentifier>{b7478739-09b1-4a3d-b392-2e362ba7ca2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_02\05_Shortest_Path">
+      <UniqueIdentifier>{469ee119-8a88-43b3-9d9b-00e045ceadb5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -447,9 +450,6 @@
     <ClCompile Include="boj_01197_Minimum_Spanning_Tree.cpp">
       <Filter>소스 파일\graph\mst</Filter>
     </ClCompile>
-    <ClCompile Include="boj_01753_Shortest_Path.cpp">
-      <Filter>소스 파일\graph\dijkstra</Filter>
-    </ClCompile>
     <ClCompile Include="boj_12865_Ordinary_Knapsack.cpp">
       <Filter>소스 파일\dp\knapsack</Filter>
     </ClCompile>
@@ -569,6 +569,9 @@
     </ClCompile>
     <ClCompile Include="boj_02178_MazeExploration.cpp">
       <Filter>소스 파일\Week_02\04_Graph_Search</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_01753_ShortestPath.cpp">
+      <Filter>소스 파일\Week_02\05_Shortest_Path</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
