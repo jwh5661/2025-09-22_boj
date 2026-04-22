@@ -211,6 +211,9 @@
     <Filter Include="소스 파일\Week_03\01_Hash">
       <UniqueIdentifier>{c284e36a-dc69-4d86-bfe5-ed226ba3b487}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_03\02_Stack_Queue">
+      <UniqueIdentifier>{d12e65f2-1ad7-496e-aff4-e3f2c026d3c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -588,11 +591,11 @@
     <ClCompile Include="prg_42578_Clothes.cpp">
       <Filter>소스 파일\Week_03\01_Hash</Filter>
     </ClCompile>
-    <ClCompile Include="prg_42586_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="prg_42586_FunctionDev.cpp">
+      <Filter>소스 파일\Week_03\02_Stack_Queue</Filter>
     </ClCompile>
-    <ClCompile Include="prg_42587_.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="prg_42587_Process.cpp">
+      <Filter>소스 파일\Week_03\02_Stack_Queue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
