@@ -205,6 +205,12 @@
     <Filter Include="소스 파일\Week_02\05_Shortest_Path">
       <UniqueIdentifier>{469ee119-8a88-43b3-9d9b-00e045ceadb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_03">
+      <UniqueIdentifier>{aaf936c8-eb93-47c3-8bbc-aedc31e2a250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_03\01_Hash">
+      <UniqueIdentifier>{c284e36a-dc69-4d86-bfe5-ed226ba3b487}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -573,9 +579,27 @@
     <ClCompile Include="boj_01753_ShortestPath.cpp">
       <Filter>소스 파일\Week_02\05_Shortest_Path</Filter>
     </ClCompile>
+    <ClCompile Include="prg_42576_UncompletedPlayer.cpp">
+      <Filter>소스 파일\Week_03\01_Hash</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_01845_Ponketmon.cpp">
+      <Filter>소스 파일\Week_03\01_Hash</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42578_Clothes.cpp">
+      <Filter>소스 파일\Week_03\01_Hash</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42586_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42587_.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
+      <Filter>소스 파일\_review-note</Filter>
+    </None>
+    <None Include="programmers_review.md">
       <Filter>소스 파일\_review-note</Filter>
     </None>
   </ItemGroup>
