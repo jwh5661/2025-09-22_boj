@@ -214,6 +214,9 @@
     <Filter Include="소스 파일\Week_03\02_Stack_Queue">
       <UniqueIdentifier>{d12e65f2-1ad7-496e-aff4-e3f2c026d3c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_03\03_Graph">
+      <UniqueIdentifier>{460f94bf-a94b-4a31-9eb1-275669c6f728}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -596,6 +599,12 @@
     </ClCompile>
     <ClCompile Include="prg_42587_Process.cpp">
       <Filter>소스 파일\Week_03\02_Stack_Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_01844_GameMapShortest.cpp">
+      <Filter>소스 파일\Week_03\03_Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="boj_43162_Network.cpp">
+      <Filter>소스 파일\Week_03\03_Graph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
