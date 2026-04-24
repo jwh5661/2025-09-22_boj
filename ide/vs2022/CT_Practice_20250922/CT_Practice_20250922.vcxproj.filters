@@ -217,6 +217,9 @@
     <Filter Include="소스 파일\Week_03\03_Graph">
       <UniqueIdentifier>{460f94bf-a94b-4a31-9eb1-275669c6f728}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_03\04_DP">
+      <UniqueIdentifier>{98027e68-daab-4586-93f9-a49ffb564b24}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -605,6 +608,12 @@
     </ClCompile>
     <ClCompile Include="boj_43162_Network.cpp">
       <Filter>소스 파일\Week_03\03_Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_43105_IntegerTriangle.cpp">
+      <Filter>소스 파일\Week_03\04_DP</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42895_ExpressWithN.cpp">
+      <Filter>소스 파일\Week_03\04_DP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
