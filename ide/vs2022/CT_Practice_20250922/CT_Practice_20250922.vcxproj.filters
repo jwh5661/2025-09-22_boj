@@ -220,6 +220,12 @@
     <Filter Include="소스 파일\Week_03\04_DP">
       <UniqueIdentifier>{98027e68-daab-4586-93f9-a49ffb564b24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_04">
+      <UniqueIdentifier>{91060535-173f-4086-b297-af9a0fad9dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_04\01_Graph_Advanced">
+      <UniqueIdentifier>{ba12aae0-3714-4439-a3cc-2a9f93fe12cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -614,6 +620,12 @@
     </ClCompile>
     <ClCompile Include="prg_42895_ExpressWithN.cpp">
       <Filter>소스 파일\Week_03\04_DP</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_12978_Delivery.cpp">
+      <Filter>소스 파일\Week_04\01_Graph_Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_72413_SharedTaxiFare.cpp">
+      <Filter>소스 파일\Week_04\01_Graph_Advanced</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
