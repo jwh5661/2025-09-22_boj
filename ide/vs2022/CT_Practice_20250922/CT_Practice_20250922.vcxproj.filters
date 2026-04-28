@@ -226,6 +226,9 @@
     <Filter Include="소스 파일\Week_04\01_Graph_Advanced">
       <UniqueIdentifier>{ba12aae0-3714-4439-a3cc-2a9f93fe12cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_04\02_MST">
+      <UniqueIdentifier>{2760d833-be00-480e-956b-22a5f036b4e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -626,6 +629,9 @@
     </ClCompile>
     <ClCompile Include="prg_72413_SharedTaxiFare.cpp">
       <Filter>소스 파일\Week_04\01_Graph_Advanced</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42861_.cpp">
+      <Filter>소스 파일\Week_04\02_MST</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
