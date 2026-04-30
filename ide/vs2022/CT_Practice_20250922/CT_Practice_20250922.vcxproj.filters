@@ -232,6 +232,9 @@
     <Filter Include="소스 파일\Week_04\03_GameMath">
       <UniqueIdentifier>{3e651148-eefd-4f54-b4bd-f10a00d24ec7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_04\04_Matrix">
+      <UniqueIdentifier>{37257e54-b835-4fda-ad62-b983fb97c88c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -638,6 +641,12 @@
     </ClCompile>
     <ClCompile Include="prg_87377_StarIntersections.cpp">
       <Filter>소스 파일\Week_04\03_GameMath</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_12949_MatrixMultiplication.cpp">
+      <Filter>소스 파일\Week_04\04_Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_87390_SliceN2Array.cpp">
+      <Filter>소스 파일\Week_04\04_Matrix</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
