@@ -648,6 +648,9 @@
     <ClCompile Include="prg_87390_SliceN2Array.cpp">
       <Filter>소스 파일\Week_04\04_Matrix</Filter>
     </ClCompile>
+    <ClCompile Include="prg_67259_.cpp">
+      <Filter>소스 파일\Week_04</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="baekjoon_review.md">
