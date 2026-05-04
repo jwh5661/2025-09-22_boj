@@ -13,7 +13,6 @@
 #include <vector>
 #include <queue>
 #include <climits>
-#include <algorithm>
 
 using namespace std;
 
@@ -45,12 +44,12 @@ public:
 
         vector<int> visited(n * n * mx_dir, INT_MAX);
         queue<Edge> q;
-        q.emplace(1, 0, 100, 1);
-        q.emplace(0, 1, 100, 3);
         for (int i = 0; i < mx_dir; i++)
+        {
             visited[Flatten(n, mx_dir, 0, 0, i)] = 0;
-        visited[Flatten(n, mx_dir, 1, 0, 1)] = 100;
-        visited[Flatten(n, mx_dir, 0, 1, 3)] = 100;
+            q.emplace(0, 0, 0, i);
+        }
+
 
         while (!q.empty())
         {
