@@ -244,6 +244,9 @@
     <Filter Include="소스 파일\Week_05\01_Bitmask">
       <UniqueIdentifier>{72e5f337-01a1-4d4e-abb5-ae866f354970}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_05\02_UnionFind">
+      <UniqueIdentifier>{189bfdbf-d6c1-40d2-973e-64b3e609f0f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -665,6 +668,9 @@
     </ClCompile>
     <ClCompile Include="prg_64064_BannedUser.cpp">
       <Filter>소스 파일\Week_05\01_Bitmask</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_43162_Network.cpp">
+      <Filter>소스 파일\Week_05\02_UnionFind</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
