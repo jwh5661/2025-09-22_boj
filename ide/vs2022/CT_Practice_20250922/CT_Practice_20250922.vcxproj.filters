@@ -247,6 +247,9 @@
     <Filter Include="소스 파일\Week_05\02_UnionFind">
       <UniqueIdentifier>{189bfdbf-d6c1-40d2-973e-64b3e609f0f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_05\03_SegmentTree">
+      <UniqueIdentifier>{8b7f2bf7-a45a-402a-9368-8d363f40e5d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -671,6 +674,9 @@
     </ClCompile>
     <ClCompile Include="prg_43162_Network.cpp">
       <Filter>소스 파일\Week_05\02_UnionFind</Filter>
+    </ClCompile>
+    <ClCompile Include="engine_core_SegmentTree.cpp">
+      <Filter>소스 파일\Week_05\03_SegmentTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
