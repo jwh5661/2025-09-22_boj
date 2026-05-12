@@ -250,6 +250,12 @@
     <Filter Include="소스 파일\Week_05\03_SegmentTree">
       <UniqueIdentifier>{8b7f2bf7-a45a-402a-9368-8d363f40e5d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_06">
+      <UniqueIdentifier>{c2a8d73d-ced8-4f6e-bffe-277c30149c3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_06\01_PriorityQueue">
+      <UniqueIdentifier>{2a9788cc-4e1c-49be-9e02-2b134964cbb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -677,6 +683,9 @@
     </ClCompile>
     <ClCompile Include="engine_core_SegmentTree.cpp">
       <Filter>소스 파일\Week_05\03_SegmentTree</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42627_.cpp">
+      <Filter>소스 파일\Week_06\01_PriorityQueue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
