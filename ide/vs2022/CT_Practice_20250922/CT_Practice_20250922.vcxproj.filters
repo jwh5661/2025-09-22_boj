@@ -259,6 +259,9 @@
     <Filter Include="소스 파일\Week_06\02_Greedy">
       <UniqueIdentifier>{296b46ed-bfe1-4ccc-82f4-0ad105c88bdc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_06\03_DP">
+      <UniqueIdentifier>{05c9a83c-8a91-4619-b322-0e51829fb836}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -692,6 +695,9 @@
     </ClCompile>
     <ClCompile Include="prg_42884_SpeedCamera.cpp">
       <Filter>소스 파일\Week_06\02_Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42898_SchoolRoute.cpp">
+      <Filter>소스 파일\Week_06\03_DP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
