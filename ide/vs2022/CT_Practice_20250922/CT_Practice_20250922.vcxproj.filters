@@ -262,6 +262,12 @@
     <Filter Include="소스 파일\Week_06\03_DP">
       <UniqueIdentifier>{05c9a83c-8a91-4619-b322-0e51829fb836}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_07">
+      <UniqueIdentifier>{c6437267-d6e2-4b54-a50b-83f15c426b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_07\01_Graph">
+      <UniqueIdentifier>{e2ac6d8c-76d3-445c-a27f-6ea6639e61f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -698,6 +704,12 @@
     </ClCompile>
     <ClCompile Include="prg_42898_SchoolRoute.cpp">
       <Filter>소스 파일\Week_06\03_DP</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_49189_.cpp">
+      <Filter>소스 파일\Week_07\01_Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_118669_.cpp">
+      <Filter>소스 파일\Week_07\01_Graph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
