@@ -274,6 +274,18 @@
     <Filter Include="소스 파일\Week_02\05_ShortestPath">
       <UniqueIdentifier>{469ee119-8a88-43b3-9d9b-00e045ceadb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_07\04_String_Search">
+      <UniqueIdentifier>{aef33c00-223a-41a5-88ed-fe54fbfd1338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_08">
+      <UniqueIdentifier>{f397149e-3719-4f78-9aaf-f8b22cccb850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_08\01_Two_Pointers">
+      <UniqueIdentifier>{0f8c22df-e349-42e2-a773-3877bad9e2a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_08\02_Bitmasking">
+      <UniqueIdentifier>{b508414c-dae0-42ae-a8af-6fe39c51db08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -728,6 +740,15 @@
     </ClCompile>
     <ClCompile Include="prg_64062_SteppingStones.cpp">
       <Filter>소스 파일\Week_07\03_PararmetricSearch</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_17685_AutoComplete.cpp">
+      <Filter>소스 파일\Week_07\04_String_Search</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_67258_GemShopping.cpp">
+      <Filter>소스 파일\Week_08\01_Two_Pointers</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42890_.CandidateKey.cpp">
+      <Filter>소스 파일\Week_08\02_Bitmasking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
