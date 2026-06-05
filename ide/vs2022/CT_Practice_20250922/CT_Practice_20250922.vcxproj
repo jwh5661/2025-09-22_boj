@@ -493,6 +493,7 @@
     <ClCompile Include="boj_43162_Network.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Custom_prg_92343_SheepAndWolf.cpp" />
     <ClCompile Include="Custom_TrafficRouting.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
