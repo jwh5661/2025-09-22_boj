@@ -295,6 +295,15 @@
     <Filter Include="소스 파일\Week_09\02_NetWorkFlow">
       <UniqueIdentifier>{d75969fd-1902-4b02-a544-1830820a3703}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_09\03_StateSpaceSearch">
+      <UniqueIdentifier>{3bb0350a-4cdb-4360-b2de-55f709c14972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_10">
+      <UniqueIdentifier>{ea534390-5277-443c-9a49-72484962c40c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_10\01_StringParsing">
+      <UniqueIdentifier>{7ffb403f-3db8-4ac4-81dc-208a4c8a7b7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -766,7 +775,13 @@
       <Filter>소스 파일\Week_09\02_NetWorkFlow</Filter>
     </ClCompile>
     <ClCompile Include="Custom_prg_92343_SheepAndWolf.cpp">
-      <Filter>소스 파일\Week_09</Filter>
+      <Filter>소스 파일\Week_09\03_StateSpaceSearch</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_60057_StringCompression.cpp">
+      <Filter>소스 파일\Week_10\01_StringParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_.cpp">
+      <Filter>소스 파일\Week_10</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

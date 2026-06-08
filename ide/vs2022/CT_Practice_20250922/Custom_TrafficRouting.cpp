@@ -6,7 +6,7 @@
  * - 엔진 실무 최적화:
  * 1. Residual Graph Pre-allocation : 인접 리스트 초기화 시 정방향 간선 뿐만 아니라 용량이 0인 역방향 간선을 사전에 강제 개통해여,
  런타임 중 추가적인 동적 메모리 할당 없이 BFS 오버헤드를 최소화함.
- * 2. Shortest Augmenting Path : DFS 기반으 포드-폴커슨( O(E * f )) 대신 BFS 기반의 에드몬드-카프( O(V * E^2) )를 선택하여,
+ * 2. Shortest Augmenting Path : DFS 기반의 포드-폴커슨( O(E * f )) 대신 BFS 기반의 에드몬드-카프( O(V * E^2) )를 선택하여,
  유량의 크기( f )와 무관하게 일정한 다항 시간 내에 알고리즘이 반드시 종결되도록 안정성을 확보함.
  */
 
