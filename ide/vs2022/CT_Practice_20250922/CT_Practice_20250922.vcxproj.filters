@@ -304,6 +304,9 @@
     <Filter Include="소스 파일\Week_10\01_StringParsing">
       <UniqueIdentifier>{7ffb403f-3db8-4ac4-81dc-208a4c8a7b7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_10\02_Tree">
+      <UniqueIdentifier>{c508e05c-e12d-4fc2-a85e-b6b77931f2a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -780,8 +783,11 @@
     <ClCompile Include="prg_60057_StringCompression.cpp">
       <Filter>소스 파일\Week_10\01_StringParsing</Filter>
     </ClCompile>
-    <ClCompile Include="prg_.cpp">
-      <Filter>소스 파일\Week_10</Filter>
+    <ClCompile Include="prg_67257_MaximizeExpression.cpp">
+      <Filter>소스 파일\Week_10\01_StringParsing</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_42892_PathfindingGame.cpp">
+      <Filter>소스 파일\Week_10\02_Tree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
