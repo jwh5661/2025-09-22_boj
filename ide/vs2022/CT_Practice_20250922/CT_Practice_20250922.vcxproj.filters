@@ -307,6 +307,9 @@
     <Filter Include="소스 파일\Week_10\02_Tree">
       <UniqueIdentifier>{c508e05c-e12d-4fc2-a85e-b6b77931f2a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_10\03_AdvancedTree">
+      <UniqueIdentifier>{556fcb91-c57b-4de2-97e0-cacf921823aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -788,6 +791,9 @@
     </ClCompile>
     <ClCompile Include="prg_42892_PathfindingGame.cpp">
       <Filter>소스 파일\Week_10\02_Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_CustomSegmentTree_01.cpp">
+      <Filter>소스 파일\Week_10\03_AdvancedTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
