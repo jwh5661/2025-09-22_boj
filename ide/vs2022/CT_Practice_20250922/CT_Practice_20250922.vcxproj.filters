@@ -310,6 +310,18 @@
     <Filter Include="소스 파일\Week_10\03_AdvancedTree">
       <UniqueIdentifier>{556fcb91-c57b-4de2-97e0-cacf921823aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_10\04_Trie">
+      <UniqueIdentifier>{2f86764a-a128-4d51-a6b2-13145dd98710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11">
+      <UniqueIdentifier>{b4f537c0-f207-484e-9957-990b776c2415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11\NewFilter1">
+      <UniqueIdentifier>{71e1ad37-70fa-4e37-961c-1b93a2399dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_10\05_TopologicalSort">
+      <UniqueIdentifier>{4bfc091b-7cd4-4c18-a1b9-f4bd46cd49ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -794,6 +806,15 @@
     </ClCompile>
     <ClCompile Include="prg_CustomSegmentTree_01.cpp">
       <Filter>소스 파일\Week_10\03_AdvancedTree</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_CustomPrefixFilter.cpp">
+      <Filter>소스 파일\Week_10\04_Trie</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_BuildOrder.cpp">
+      <Filter>소스 파일\Week_10\05_TopologicalSort</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_.cpp">
+      <Filter>소스 파일\Week_11\NewFilter1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
