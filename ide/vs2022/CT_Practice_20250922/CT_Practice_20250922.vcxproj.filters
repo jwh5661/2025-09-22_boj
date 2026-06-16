@@ -316,11 +316,17 @@
     <Filter Include="소스 파일\Week_11">
       <UniqueIdentifier>{b4f537c0-f207-484e-9957-990b776c2415}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Week_11\NewFilter1">
-      <UniqueIdentifier>{71e1ad37-70fa-4e37-961c-1b93a2399dbf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Week_10\05_TopologicalSort">
       <UniqueIdentifier>{4bfc091b-7cd4-4c18-a1b9-f4bd46cd49ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11\01_Dijkstra">
+      <UniqueIdentifier>{71e1ad37-70fa-4e37-961c-1b93a2399dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11\02_FloydWarshall">
+      <UniqueIdentifier>{b5216d83-a94a-4d52-a00a-5d099857c3d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_10\06_UnionFind_Kruskal">
+      <UniqueIdentifier>{ea30e819-16d8-4d98-8bd0-f1214fb59ea7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -813,8 +819,14 @@
     <ClCompile Include="prg_Custom_BuildOrder.cpp">
       <Filter>소스 파일\Week_10\05_TopologicalSort</Filter>
     </ClCompile>
-    <ClCompile Include="prg_.cpp">
-      <Filter>소스 파일\Week_11\NewFilter1</Filter>
+    <ClCompile Include="prg_Custom_OpenworldNavigation.cpp">
+      <Filter>소스 파일\Week_11\01_Dijkstra</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_GlobalShipping.cpp">
+      <Filter>소스 파일\Week_11\02_FloydWarshall</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_MSTNetwork.cpp">
+      <Filter>소스 파일\Week_10\06_UnionFind_Kruskal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
