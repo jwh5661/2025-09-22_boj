@@ -328,6 +328,9 @@
     <Filter Include="소스 파일\Week_10\06_UnionFind_Kruskal">
       <UniqueIdentifier>{ea30e819-16d8-4d98-8bd0-f1214fb59ea7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_11\03_ParametricSearch">
+      <UniqueIdentifier>{7490e027-9a44-43c5-a9fb-e40d71527f16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -827,6 +830,9 @@
     </ClCompile>
     <ClCompile Include="prg_Custom_MSTNetwork.cpp">
       <Filter>소스 파일\Week_10\06_UnionFind_Kruskal</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_ServerAuthLoadBalancer.cpp">
+      <Filter>소스 파일\Week_11\03_ParametricSearch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
