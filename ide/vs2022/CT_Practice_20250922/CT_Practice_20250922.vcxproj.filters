@@ -331,6 +331,9 @@
     <Filter Include="소스 파일\Week_11\03_ParametricSearch">
       <UniqueIdentifier>{7490e027-9a44-43c5-a9fb-e40d71527f16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_11\04_">
+      <UniqueIdentifier>{a2147072-0367-4658-adc6-f53052e6e755}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -833,6 +836,9 @@
     </ClCompile>
     <ClCompile Include="prg_Custom_ServerAuthLoadBalancer.cpp">
       <Filter>소스 파일\Week_11\03_ParametricSearch</Filter>
+    </ClCompile>
+    <ClCompile Include="prg.cpp">
+      <Filter>소스 파일\Week_11\04_</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
