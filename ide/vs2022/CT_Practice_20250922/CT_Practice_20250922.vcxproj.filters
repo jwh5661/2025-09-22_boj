@@ -331,8 +331,23 @@
     <Filter Include="소스 파일\Week_11\03_ParametricSearch">
       <UniqueIdentifier>{7490e027-9a44-43c5-a9fb-e40d71527f16}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Week_11\04_">
+    <Filter Include="소스 파일\Week_11\04_TwoPointers">
       <UniqueIdentifier>{a2147072-0367-4658-adc6-f53052e6e755}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11\05_DynamicProgramming">
+      <UniqueIdentifier>{df8afe44-a422-479d-b386-0e77152f96f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_12">
+      <UniqueIdentifier>{16317b2c-29ab-479c-95a3-e64142e3cfe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_12\01_Backtracking">
+      <UniqueIdentifier>{876dac69-4e40-4880-bed9-ba9eb2009e3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11\06_TreeDP">
+      <UniqueIdentifier>{7a2565d7-c553-4d3f-8884-d58f4445f179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_12\02_">
+      <UniqueIdentifier>{aca04ffa-3253-4de0-8e18-ddb799e79ff7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -837,8 +852,20 @@
     <ClCompile Include="prg_Custom_ServerAuthLoadBalancer.cpp">
       <Filter>소스 파일\Week_11\03_ParametricSearch</Filter>
     </ClCompile>
-    <ClCompile Include="prg.cpp">
-      <Filter>소스 파일\Week_11\04_</Filter>
+    <ClCompile Include="prg_Custom_ExchangeScanner.cpp">
+      <Filter>소스 파일\Week_11\04_TwoPointers</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_AncientKnapsack.cpp">
+      <Filter>소스 파일\Week_11\05_DynamicProgramming</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_SynergyBalancer.cpp">
+      <Filter>소스 파일\Week_12\01_Backtracking</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_EliteGuildRaid.cpp">
+      <Filter>소스 파일\Week_11\06_TreeDP</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_.cpp">
+      <Filter>소스 파일\Week_12\02_</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
