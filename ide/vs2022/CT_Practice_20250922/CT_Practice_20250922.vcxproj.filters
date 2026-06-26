@@ -346,8 +346,14 @@
     <Filter Include="소스 파일\Week_11\06_TreeDP">
       <UniqueIdentifier>{7a2565d7-c553-4d3f-8884-d58f4445f179}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Week_12\02_">
+    <Filter Include="소스 파일\Week_12\04_PrefixSum">
       <UniqueIdentifier>{aca04ffa-3253-4de0-8e18-ddb799e79ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_11\07_DijkstraTracing">
+      <UniqueIdentifier>{6d5f58b7-387f-4dfc-9529-591ccf6ec3d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_12\05_HashMap">
+      <UniqueIdentifier>{9083c6a4-06b4-421e-ac19-b2bb41bb332a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -864,8 +870,14 @@
     <ClCompile Include="prg_Custom_EliteGuildRaid.cpp">
       <Filter>소스 파일\Week_11\06_TreeDP</Filter>
     </ClCompile>
-    <ClCompile Include="prg_.cpp">
-      <Filter>소스 파일\Week_12\02_</Filter>
+    <ClCompile Include="prg_Custom_SiegeImosSimulator.cpp">
+      <Filter>소스 파일\Week_12\04_PrefixSum</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_VictoriaIslandNetwork.cpp">
+      <Filter>소스 파일\Week_11\07_DijkstraTracing</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_PvpArenaMatchmaker.cpp">
+      <Filter>소스 파일\Week_12\05_HashMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
