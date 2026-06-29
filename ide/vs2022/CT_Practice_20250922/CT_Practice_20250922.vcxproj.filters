@@ -355,6 +355,12 @@
     <Filter Include="소스 파일\Week_12\05_HashMap">
       <UniqueIdentifier>{9083c6a4-06b4-421e-ac19-b2bb41bb332a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Week_12\02_BitmaskingDFS">
+      <UniqueIdentifier>{3c94483e-1d9f-477d-a8d6-f793e7379590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Week_12\06_">
+      <UniqueIdentifier>{b5e086ab-d75d-427b-a386-040902e9cdbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="boj_09251_LCS.cpp">
@@ -878,6 +884,12 @@
     </ClCompile>
     <ClCompile Include="prg_Custom_PvpArenaMatchmaker.cpp">
       <Filter>소스 파일\Week_12\05_HashMap</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_MabinogiAltar.cpp">
+      <Filter>소스 파일\Week_12\02_BitmaskingDFS</Filter>
+    </ClCompile>
+    <ClCompile Include="prg_Custom_TreeOfSaviorMediator.cpp">
+      <Filter>소스 파일\Week_12\06_</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
